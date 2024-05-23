@@ -1,0 +1,533 @@
+<HTML><HEAD><TITLE>Direcci�n IP de su conexi�n a Internet 85.53.223.253 --> showmyip.com <--</TITLE><META NAME="DESCRIPTION" CONTENT="Direcci�n IP de su conexi�n a Internet"><META NAME="KEYWORDS"
+  CONTENT="IP Address, ip address properties, Adresse IP, Direcci�n IP, 
+IP-adress, my ip address, show my ip, show my ip address, showmyip, ip 
+organization, ip org, ipconfig, IP address geolocation, Consulte IP, Consulte Direcci�n IP, ip address ISP, ISP ip address, Privacy Ecosystem,
+winipcfg, XML IP address, SOAP IP address, RSS IP address,
+internet protocol address, tcpip, tcp/ip, proxy server IP address, Tor 
+network, dynamic IP address, dynamic DNS, ddns,
+cual es mi ip, mi ip,
+ver mi ip, IP-adressegenskaper,
+wie ist meine IP-adresse,
+IP address ISP, Consulte ISP, Proveedor de acceso a Internet (ISP),
+propri�t�s d'adresses IP,
+votre connexion Internet,
+IP Adresse Ihres Internet-Anschlu�es
+"><META HTTP-EQUIV="refresh" CONTENT="1800;URL=http://www.showmyip.com/es"><META NAME="RATING" CONTENT="General"><META NAME="ROBOTS" CONTENT="index,follow"><META NAME="REVISIT-AFTER" CONTENT="3 days"><link rel="alternate" type="application/rss+xml" title="Direcci�n IP de su conexi�n a Internet" href="http://www.showmyip.com/rss.php" /><SCRIPT LANGUAGE="JAVASCRIPT" SRC="datefunctions.js" TYPE="text/javascript"></SCRIPT><SCRIPT LANGUAGE="JAVASCRIPT" SRC="browserfunctions.js" TYPE="text/javascript"></SCRIPT><SCRIPT LANGUAGE="JAVASCRIPT" SRC="misc.js" TYPE="text/javascript"></SCRIPT><script language="JavaScript1.2">
+var bookmarkurl="http://www.showmyip.com/"
+var bookmarktitle="Direcci�n IP de su conexi�n a Internet"
+function addbookmark()
+{
+if (window.sidebar) { window.sidebar.addPanel(bookmarktitle, bookmarkurl,"");  }
+else if( document.all ) { window.external.AddFavorite( bookmarkurl, bookmarktitle);  }
+else if( window.opera && window.print ) {  return true; }
+}
+</script><STYLE TYPE="text/css">
+  <!--
+  .glossary_table, .glossary_table TD, .glossary_table TH
+  {
+  background-color:#F4EAD9;
+  color:black;
+  text-indent:0;
+  padding-left:6;
+  padding-right:6;
+  padding-top:4;
+  padding-bottom:4;
+  font-family:Verdana;
+  font-size:12;
+  vertical-align:top;
+  text-align:left;
+  }
+  -->
+  </STYLE><STYLE TYPE="text/css">
+  <!--
+  .glossary_tablec, .glossary_tablec TD, .glossary_tablec TH
+  {
+  background-color:#F4EAD9;
+  color:black;
+  text-indent:0;
+  padding-left:6;
+  padding-right:6;
+  padding-top:4;
+  padding-bottom:4;
+  font-family:Verdana;
+  font-size:12;
+  vertical-align:middle;
+  text-align:center;
+  }
+  -->
+  </STYLE><STYLE TYPE="text/css">
+  <!--
+  .glossary_left, .glossary_left TD, .glossary_left TH
+  {
+  background-color:#FFFFFF;
+  color:black;
+  text-indent:0;
+  padding-left:6;
+  padding-right:6;
+  padding-top:4;
+  padding-bottom:4;
+  font-family:Verdana;
+  font-size:12;
+  vertical-align:top;
+  text-align:left;
+  }
+  -->
+  </STYLE><STYLE TYPE="text/css">
+  <!--
+  .glossary_leftc, .glossary_leftc TD, .glossary_leftc TH
+  {
+  background-color:#FFFFFF;
+  color:black;
+  text-indent:0;
+  padding-left:6;
+  padding-right:6;
+  padding-top:4;
+  padding-bottom:4;
+  font-family:Verdana;
+  font-size:12;
+  vertical-align:middle;
+  text-align:center;
+  }
+  -->
+  </STYLE><STYLE TYPE="text/css">
+  <!--
+  .glossary_heading, .glossary_heading TD, .glossary_heading TH
+  {
+  background-color:#FFFFFF;
+  color:black;
+  text-indent:0;
+  padding-left:6;
+  padding-right:6;
+  padding-top:4;
+  padding-bottom:4;
+  font-family:Verdana;
+  font-size:12;
+  vertical-align:top;
+  text-align:left;
+  }
+  -->
+  </STYLE><STYLE TYPE="text/css">
+  <!--
+  .style_20b, .style_20b TD, .style_20b TH
+  {
+  background-color:#FFFFFF;
+  color:black;
+  text-indent:0;
+  padding-left:6;
+  padding-right:6;
+  padding-top:4;
+  padding-bottom:4;
+  font-family:Verdana;
+  font-size:12;
+  vertical-align:top;
+  text-align:left;
+  }
+  -->
+  </STYLE><STYLE TYPE="text/css">
+  <!--
+  .style_20, .style_20 TD, .style_20 TH
+  {
+  background-color:#FFFFFF;
+  color:#808080;
+  text-indent:0;
+  padding-left:6;
+  padding-right:6;
+  padding-top:4;
+  padding-bottom:4;
+  font-family:Verdana;
+  font-size:12;
+  vertical-align:top;
+  text-align:left;
+  }
+  -->
+  </STYLE><STYLE TYPE="text/css">
+  <!--
+  .style_20r, .style_20r TD, .style_20r TH
+  {
+  background-color:#FFFFFF;
+  color:red;
+  text-indent:0;
+  padding-left:6;
+  padding-right:6;
+  padding-top:4;
+  padding-bottom:4;
+  font-family:Verdana;
+  font-size:12;
+  vertical-align:middle;
+  text-align:center;
+  }
+  -->
+  </STYLE><STYLE TYPE="text/css">
+  <!--
+  .style_20bc, .style_20bc TD, .style_20bc TH
+  {
+  background-color:#FFFFFF;
+  color:blue;
+  text-indent:0;
+  padding-left:6;
+  padding-right:6;
+  padding-top:4;
+  padding-bottom:4;
+  font-family:Verdana;
+  font-size:12;
+  vertical-align:middle;
+  text-align:center;
+  }
+  -->
+  </STYLE></HEAD><BODY><TABLE SUMMARY="IP ADDRESS" NAME="TOP" WIDTH="100%" COLS="2" BORDER="0" CELLSPACING="1"><TR VALIGN="MIDDLE"><TD ALIGN="LEFT" CLASS="glossary_left"><SPAN style="font-size:24;"><script type="text/javascript">
+<!--
+displaycopy('85.53.223.253');
+//--></script><noscript>85.53.223.253</noscript></SPAN><p>showmyip.com is part of The Privacy Ecosystem (&trade; pending)<br><a href="http://www.privacy-ecosystem.com/" target="_blank">http://www.privacy-ecosystem.com/</a><br>Follow our blog at <a href="http://privacy-ecosystem.blogspot.com/" target="_blank">http://privacy-ecosystem.blogspot.com/</a></TD><TD ALIGN="RIGHT"><SELECT NAME="Shortcuts" SIZE="1" ONCHANGE="window.location.href=this.options[this.selectedIndex].value"><OPTION VALUE="" SELECTED="SELECTED">Shortcuts...</OPTION><OPTION VALUE="http://www.showmyip.com/">English...</OPTION><OPTION VALUE="http://www.showmyip.com/es/">Espa�ol...</OPTION><OPTION VALUE="http://www.showmyip.com/fr/">Fran�aise...</OPTION><OPTION VALUE="http://www.showmyip.com/sv/">Svenska...</OPTION><OPTION VALUE="http://www.privacy-ecosystem.com/">privacy-ecosystem.com</OPTION><OPTION VALUE="http://privacy-ecosystem.blogspot.com/">Privacy Ecosystem blog</OPTION><OPTION VALUE="">--------------------</OPTION><OPTION VALUE="http://www.showmyip.com/faq/">FAQ</OPTION><OPTION VALUE="http://www.showmyip.com/geo/">geo</OPTION><OPTION VALUE="http://www.showmyip.com/glossary.php">IP Address Glossary</OPTION><OPTION VALUE="http://www.showmyip.com/privacy/public_key.php">our GPG Public Key</OPTION><OPTION VALUE="http://www.showmyip.com/lookups/">lookups</OPTION><OPTION VALUE="http://www.showmyip.com/privacy/">Privacy News/Issues</OPTION><OPTION VALUE="http://www.showmyip.com/proxies/">Proxy News/Issues</OPTION><OPTION VALUE="http://www.showmyip.com/proxy/">proxy</OPTION><OPTION VALUE="http://www.showmyip.com/security/">Security News/Issues</OPTION><OPTION VALUE="http://www.showmyip.com/dynamicDNS/">Super Dynamic DNS</OPTION><OPTION VALUE="http://www.showmyip.com/dynamicDNS/what.php">Super Dynamic DNS - What?</OPTION><OPTION VALUE="http://www.showmyip.com/dynamicDNS/why.php">Super Dynamic DNS - Why?</OPTION><OPTION VALUE="http://www.showmyip.com/torstatus/">Tor network connection status</OPTION><OPTION VALUE="http://www.showmyip.com/whatsnew/">What's New!</OPTION><OPTION VALUE="http://www.showmyip.com/whatscoming/">What's in the Lab!</OPTION><OPTION VALUE="http://www.showmyip.com/wifi/">Wifi News/Issues</OPTION><OPTION VALUE="">--------------------</OPTION><OPTION VALUE="http://www.showmyip.com/rss.php">RSS feed</OPTION><OPTION VALUE="http://www.showmyip.com/simple">simple text interface</OPTION><OPTION VALUE="http://www.showmyip.com/soap/server.php">SOAP interface</OPTION><OPTION VALUE="http://www.showmyip.com/vxml">VoiceXML interface</OPTION><OPTION VALUE="http://www.showmyip.com/xml">XML interface</OPTION></SELECT><br><SELECT NAME="Advertisers" SIZE="1" ONCHANGE="window.location.href=this.options[this.selectedIndex].value"><OPTION VALUE="" SELECTED="SELECTED">Sponsored Links...</OPTION><OPTION VALUE="http://www.showmyip.com/redirect.php?gotomypc">GoToMyPC</OPTION><OPTION VALUE="http://www.showmyip.com/redirect.php?ipt">iPrivacyTools</OPTION><OPTION VALUE="http://www.showmyip.com/redirect.php?maxmind">MaxMind GeoIP</OPTION><OPTION VALUE="http://www.showmyip.com/redirect.php?ip2location">Ip2Location</OPTION><OPTION VALUE="http://www.showmyip.com/redirect.php?roboform">RoboForm</OPTION><OPTION VALUE="http://www.showmyip.com/redirect.php?acii">acii.com Online File Conversions</OPTION></SELECT><br><SELECT NAME="FeaturedArticles" SIZE="1" ONCHANGE="window.location.href=this.options[this.selectedIndex].value"><OPTION VALUE="" SELECTED="SELECTED">Featured Articles...</OPTION><OPTION VALUE="http://www.showmyip.com/wifi/">. . . Wireless . . .</OPTION><OPTION VALUE="http://www.showmyip.com/articles/article_200509_eweek_muni_wireless_nets.php">Plan Now for Municipal Wireless Nets</OPTION><OPTION VALUE="http://www.showmyip.com/articles/article_200504_jiwire_cellular_fills_gaps.php">Cellular Fills Gaps Between Hotspots</OPTION><OPTION VALUE="http://www.showmyip.com/articles/article_200504_eweek_philadelphia_municipal_wireless.php">Philadelphia: Muni Wi-Fi's Worst Case Scenario</OPTION><OPTION VALUE="http://www.showmyip.com/articles/article_200501_eweek_dawn_of_wimax.php">The Dawn of WiMAX</OPTION><OPTION VALUE="http://www.showmyip.com/security/">. . . Security . . .</OPTION><OPTION VALUE="http://www.showmyip.com/articles/article_200505_physorg_windows_usb_security.php">Plugging the hole in Windows USB security</OPTION><OPTION VALUE="http://www.showmyip.com/articles/article_200602_microsoft_infocard_advances_security.php">Advancing Internet Security with "Infocard"</OPTION><OPTION VALUE="http://www.showmyip.com/articles/article_200502_infoworld_rootkits.php">Microsoft on 'rootkits': Be afraid. Be very afraid.</OPTION><OPTION VALUE="http://www.showmyip.com/articles/article_200502_wired_thinking_outside_security_box.php">Thinking Outside the Security Box</OPTION><OPTION VALUE="http://www.showmyip.com/articles/article_200503_bbc_have_hackers_recruited_your_pc.php">Have Hackers Recruited your PC?</OPTION><OPTION VALUE="http://www.showmyip.com/articles/article_200503_securityfocus_web_browser_forensics.php">Web Browser Forensics (Part 1)</OPTION><OPTION VALUE="http://www.showmyip.com/privacy/">. . . Privacy . . .</OPTION><OPTION VALUE="http://www.showmyip.com/articles/article_200607_cnet_fbi_new_net_tapping_push.php">FBI plans new Net-tapping push</OPTION><OPTION VALUE="http://www.showmyip.com/articles/article_200603_cnet_biometrics_unreliable.php">Biometrics Unreliable</OPTION><OPTION VALUE="http://www.showmyip.com/articles/article_200507_wired_locking_down_voip.php">Privacy Guru Locks down VoIP</OPTION><OPTION VALUE="http://www.showmyip.com/articles/article_200505_honeynet_knowing_your_enemy_phishing.php">Knowing your Enemy: Phishing</OPTION><OPTION VALUE="http://www.showmyip.com/articles/article_200504_indymedia_tor_and_birth_of_cypherspace.php">TOR and the Birth of Cypherspace</OPTION><OPTION VALUE="http://www.showmyip.com/articles/article_200503_businessweek_new_weapons.php">New Weapons to Stop Identity Theft</OPTION><OPTION VALUE="http://www.showmyip.com/articles/article_200503_news_tracking_pcs_anywhere.php">Tracking PCs Anywhere on the Net</OPTION><OPTION VALUE="http://www.showmyip.com/articles/article_200503_washingtonpost_secret_service_decoding.php">Secret Service Decoding Encrypted Evidence</OPTION><OPTION VALUE="">. . . Entertainment . . .</OPTION><OPTION VALUE="http://www.showmyip.com/articles/article_200412_wired_best_games.php">The Best Games You Haven't Played</OPTION><OPTION VALUE="http://www.showmyip.com/articles/article_200502_news_blurring_the_line_between.php">Perplex City: Blurring the line between games and life</OPTION><OPTION VALUE="http://www.showmyip.com/articles/article_200504_canoe_jade_empire.php">Jade Empire: How Close to Perfection Can it Get?</OPTION><OPTION VALUE="">. . . Web Infrastructure and Development . . .</OPTION><OPTION VALUE="http://www.showmyip.com/articles/article_200505_gcn_meet_the_new_ip6_internet.php">Meet the New Internet - the same as the Old Internet?</OPTION><OPTION VALUE="http://www.showmyip.com/articles/article_200503_adaptivepath_ajax.php">Ajax: A New Approach to Web Applications</OPTION></SELECT></TD></TR><TR><TD ALIGN="LEFT"></TD></TR></TABLE><p><TABLE COLS="2" BORDER="0" CELLSPACING="0"><TR WIDTH="100%" BORDERCOLOR="FFFFFF"><TD WIDTH="50%" CLASS="glossary_table"><b>Super Dynamic DNS</b> by showmyip.com or <b>Geospoofing</b> by <a href="http://www.pickaproxy.com/" target="_blank">pickaproxy.com</a><br><hr>Looking for a DNS name of your own choosing, that does not change every time your ISP "Uni2" changes your IP Address?<p>Your currently assigned host name is <b>253.pool85-53-223.dynamic.orange.es</b> but you could have a name that never changes, such as robwatson.ippages.com, lovenest.findandconnect.com, monster.game-me.com, monica.wifi-me.com, miami.alias-me.com, or nearly anything you like.<p>Try our Super Dynamic DNS service for as little as �4.95 EUR.&nbsp;Go to <a href="https://www.ippages.com/dynamicDNS/">https://www.ippages.com/dynamicDNS/</a> to learn more about how you can sign up, <a href="http://www.showmyip.com/dynamicDNS/why.php">why</a> you would want Super Dynamic DNS, and <a href="http://www.showmyip.com/dynamicDNS/what.php">what</a> exactly we can offer you.<p>Need an IP Address that changes, or that you control? Check our new <a href="http://www.pickaproxy.com/" target="_blank">pickaproxy.com</a> site to learn about geospoofing.</TD><TD ALIGN="MIDDLE" CLASS="glossary_leftc"><a href="http://www.qksrv.net/click-1331348-3216029" target="_top" onmouseover="window.status='https://www.gotomypc.com/tr/affil/prgrm/g22lp15/pageset/cc_10?target=mm/g22lp15.tmpl';return true;" onmouseout="window.status=' ';return true;">Access Your PC from Anywhere - Free Download</a><br>PC Magazine calls GoToMyPC "Revolutionary."<img src="http://www.qksrv.net/image-1331348-3216029" width="1" height="1" border="0"></TD></TR></TABLE><p><TABLE COLS="1" WIDTH="100%"><TR><TD WIDTH="100%"><iframe SRC="http://www.showmyip.com/articles/article_200505_physorg_windows_usb_security.php?page=main" NAME="Featured Article" WIDTH="100%" HEIGHT="320" FRAMEBORDER="1"></iframe></TD></TR></TABLE><p><TABLE WIDTH="100%" COLS="3" BORDER="1" CELLSPACING="1"><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table"><b>Direcci�n IP Properties</b></TD><TD WIDTH="50%" CLASS="glossary_table"><b>Values</b></TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Navegador (Usuario-Agente): </TD><TD CLASS="glossary_left"></TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Sello de hora: </TD><TD CLASS="glossary_left">20070902 135618 CDT Sunday, September 02, 2007 01:56:18 PM<br>Sun, 02 Sep 2007 18:56:18 UTC/GMT<br>Sun, 02 Sep 2007 13:56:18 -0500</TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Sello de camarero del tiempo: (time.nist.gov) </TD><TD CLASS="glossary_left">no mirado arriba esta vez</TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Hora local: </TD><TD CLASS="glossary_left"><script type="text/javascript">
+<!--
+styleDateShort = 1; styleDate = 2; styleDateTime = 3; styleTime= 4; styleYear = 5; styleGMT = 6;
+//--></script><script language="JavaScript">ShowDateTime(styleDateTime); document.write('<br>'); ShowDateTime(styleGMT);</script><noscript>(not available - requires Javascript)</noscript></TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Tor Network node: </TD><TD CLASS="glossary_left">no<i><li>Details about the Tor network can be found at <a href="http://tor.eff.org/" target="_blank">tor.eff.org</a></i><i><li>Why you should use Tor, by <a href="https://tor-svn.freehaven.net/svn/tor/tags/tor-0_0_9pre3/doc/tor-doc.html" target="_blank">www.freehaven.net</a></i><i><li>How to setup your own Tor network server: <a href="http://tor.eff.org/docs/tor-doc-server.html" target="_blank">tor.eff.org/docs/tor-doc-server.html</a></i></TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Pa�s: </TD><TD CLASS="glossary_left">ES-Spain <b>(verified)</b>&nbsp;<img src="http://www.showmyip.com/flags/es.gif"><p><SELECT NAME="CountryWebSites" SIZE="1" ONCHANGE="window.location.href=this.options[this.selectedIndex].value"><OPTION VALUE="" SELECTED="SELECTED">ES-Spain sitio Web de Pa�s</OPTION><OPTION VALUE="https://www.cia.gov/library/publications/world-leaders-1/world-leaders-s/spain.html">Chiefs of State and Cabinet Ministers for Spain</OPTION><OPTION VALUE="https://www.cia.gov/library/publications/the-world-factbook/geos/sp.html#Intro">CIA World Factbook on Spain</OPTION><OPTION VALUE="http://www.atlapedia.com/online/countries/spain.htm">Atlapedia on Spain</OPTION><OPTION VALUE="http://www.gksoft.com/govt/en/es.html">Governments on the WWW - Spain</OPTION><OPTION VALUE="http://en.wikipedia.org/wiki/spain">Wikipedia.org - Spain</OPTION><OPTION VALUE="http://www.alava.net/">Diputaci&oacute;n Foral de Alava, Arabako Foru Aldundia</OPTION></SELECT><i><p><li><a href="http://www.dpbolvw.net/jc102vpyvpxCEGGEGHLCEDHFKKMG" target="_blank" onmouseover="window.status='http://www.click-shoot.es/';return true;" onmouseout="window.status=' ';return true;">Juego de futbol gratis!</a><img src="http://www.tqlkg.com/d977snrflj4688689D46597CCE8" width="1" height="1" border="0"><li><a href="http://news.google.es" target="_top"><I>Noticias en espa�ol</I><br><img src="http://www.showmyip.com/powered_by_google_135x35.gif" alt="powered by Google" border="0"></a><li><a href="http://www.inm.es/web/infmet/predi/prov.html" target="_top"><i>Informaci�n meteorol�gica</i></a>...<li><a href="http://soccernet.espn.go.com/tables?league=ESP.1&cc=5901" target="_top"><i>Spanish Primera Liga</i></a> en el ESPN.com<li><a href="http://es.maps.yahoo.com" target="_top"><I>Los mapas de Yahoo</I></a> le ayudar�n a encontrar lo que desea...<li><i>Visite JIWIRE.COM para consultar <a href="http://www.jiwire.com/search-wifi-hotspots.htm?command=&ssid=&hotspot_name=&location_type_id=0&technology_id=0&provider_id=0&pay_free=both&favorite_location=-+My+Locations+-&address=&city=&country_id=200&state_id=0&zip=&radius=10&x=51&y=9" target="_top">los puntos de venta de los servicios inal�mbricos de Wi-Fi en Espa�a</I></a>...</i></TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Currency: </TD><TD CLASS="glossary_left">EUR-Euro<p><i><li>Haga clic aqu� para Realizar Conversiones de Divisas <a href="http://www.xe.com/ucc/" target="_top">xe.com</a></i><br><i><li>Conversions of Area, Capacity, Volume, Circular measure, Computer storage, Distance, Length, Energy, Work, Fuel Consumption, Power, Pressure, Speed, Temperature, Time, Torque, Mass and Weight at <a href="http://www.convertplus.com/en/" target="_blank">convertplus.com</a></i><br><i><li>International Phone Dialing Codes by country at <a href="http://www.kropla.com/dialcode.htm#table" target="_blank">kropla.com</a></i></TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Pa�s Code3: </TD><TD CLASS="glossary_left">ESP</TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Continent: </TD><TD CLASS="glossary_left">Europe</TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Nationality: </TD><TD CLASS="glossary_left">Spanish</TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Nationality Plural: </TD><TD CLASS="glossary_left">Spaniards</TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Provincia: </TD><TD CLASS="glossary_left">57-Extremadura</TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Ciudad: </TD><TD CLASS="glossary_left">Montijo</TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Latitude: </TD><TD CLASS="glossary_left">see <a href="http://www.showmyip.com/geo">geo.showmyip.com</a> for this information</TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Longitude: </TD><TD CLASS="glossary_left">see <a href="http://www.showmyip.com/geo">geo.showmyip.com</a> for this information</TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Timezone (relative to UTC): </TD><TD CLASS="glossary_left">see <a href="http://www.showmyip.com/geo">geo.showmyip.com</a> for this information</TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Idioma(s): </TD><TD CLASS="glossary_left"><p><i><li>Traduzca este sitio web en <a href="http://www.showmyip.com/redirect.php?freetranslation">FreeTranslation.com</a>...</i></TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Proveedor de acceso a Internet (ISP): </TD><TD CLASS="glossary_left">Uni2 <b>(or possibly Addresses Ip For Home Clients)</b></TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">La direcci�n IP pertenece a (Empresa): </TD><TD CLASS="glossary_left">Uni2 <b>(or possibly Addresses Ip For Home Clients)</b></TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Nombre del host: </TD><TD CLASS="glossary_left">253.pool85-53-223.dynamic.orange.es<p><i><li>Get <a href="http://www.dnsreport.com/tools/dnsreport.ch?domain=253.pool85-53-223.dynamic.orange.es" target="_blank">DNSreport.com</a> report on this Nombre del host <li>Get <a href="http://www.alexa.com/data/details/traffic_details?url=253.pool85-53-223.dynamic.orange.es" target="_blank">Alexa Site Info</a> <li>Get <a href="http://whois.domaintools.com/253.pool85-53-223.dynamic.orange.es" target="_blank">domaintools.com</a> report<li>See ICANN list of <a href="http://www.icann.org/registrars/accredited-list.html" target="_blank">accredited domain-name registrars</a><li>See IANA list of <a href="http://www.iana.org/root-whois/index.html" target="_blank">whois authorities for each ccTLD (Country Code Top Level Domain)</a></i></TD></TR></TABLE><p><TABLE WIDTH="100%" COLS="3" BORDER="1" CELLSPACING="1"><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table"><b>Navegador (Usuario-Agente) Exposed Headers</b></TD><TD WIDTH="50%" CLASS="glossary_table"><b>Values</b></TD></TR></TABLE><script type="text/javascript;version=1.7" />
+<!--
+is_js = 1.7;
+//-->
+</script><script type="text/javascript;version=1.8" />
+<!--
+is_js = 1.8;
+//-->
+</script><script type="text/javascript;version=1.9" />
+<!--
+is_js = 1.9;
+//-->
+</script><script type="text/javascript;version=2.0" />
+<!--
+is_js = 2.0;
+//-->
+</script><script type="text/javascript;version=2.1" />
+<!--
+is_js = 2.1;
+//-->
+</script><p><TABLE WIDTH="100%" COLS="3" BORDER="1" CELLSPACING="1"><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table"><b>Computer/Device Properties</b></TD><TD WIDTH="50%" CLASS="glossary_table"><b>Values</b></TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Javascript:</TD><TD CLASS="glossary_left"><script LANGUAGE="JavaScript">
+<!--
+if (is_opera) {
+  if (is_opera7up) {
+    document.write("Javascript " + is_js + " <a href='http://www.opera.com/docs/specs/opera07/#ecmascript'>Opera compatibility statement</a>");
+  } else {
+    document.write("Javascript " + is_js + " <a href='http://www.opera.com/docs/specs/#ecmascript'>(but see Opera compatibility statements)</a>");
+  }
+} else {
+  document.write("Javascript " + is_js);
+}
+//-->
+</script><script LANGUAGE="JScript">
+<!--
+if ((document.all) && (is_ie)) {
+  document.write(" " + ScriptEngine() + " " + ScriptEngineMajorVersion() + "." + ScriptEngineMinorVersion() + "." + ScriptEngineBuildVersion());
+}
+//-->
+</script></TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">IP Address (via Javascript):</TD><TD CLASS="glossary_left"><script Language="JavaScript">
+<!--HIDE
+window.onerror=null;
+if (navigator.javaEnabled() && (navigator.appName != "Microsoft Internet Explorer")) {
+  vartool=java.awt.Toolkit.getDefaultToolkit();
+  addr=java.net.InetAddress.getLocalHost();
+  host=addr.getHostName();
+  ip=addr.getHostAddress();
+  document.write(ip);
+} else {
+  document.write("not available, or not enabled...");
+}
+//-->
+</script>
+<noscript>
+not available, or not enabled...
+</noscript></TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Host Name (via Javascript):</TD><TD CLASS="glossary_left"><script Language="JavaScript">
+<!--HIDE
+window.onerror=null;
+if (navigator.javaEnabled() && (navigator.appName != "Microsoft Internet Explorer")) {
+  vartool=java.awt.Toolkit.getDefaultToolkit();
+  addr=java.net.InetAddress.getLocalHost();
+  host=addr.getHostName();
+  ip=addr.getHostAddress();
+  document.write(host);
+} else {
+  document.write("not available, or not enabled...");
+}
+//-->
+</script>
+<noscript>
+not available, or not enabled...
+</noscript></TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Cookies Enabled:</TD><TD CLASS="glossary_left"><script Language="JavaScript">
+<!--HIDE
+if (navigator.cookieEnabled) document.write("yes")
+else document.write("no");
+//-->
+</script>
+<noscript>
+not available, or not enabled...
+</noscript></TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Java Enabled:</TD><TD CLASS="glossary_left"><script Language="JavaScript">
+<!--HIDE
+if (navigator.javaEnabled()) document.write("yes")
+else document.write("no");
+//-->
+</script>
+<noscript>
+not available, or not enabled...
+</noscript></TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Flash Enabled:</TD><TD CLASS="glossary_left"><script Language="JavaScript">
+<!--HIDE
+if (is_Flash) document.write("yes - version " + is_FlashVersion)
+else document.write("no");
+//-->
+</script>
+<noscript>
+not available, or not enabled...
+</noscript></TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">CPU class/type:</TD><TD CLASS="glossary_left"><script Language="JavaScript">
+<!--HIDE
+if (navigator.cpuClass != null) document.write("CPU Class " + navigator.cpuClass)
+else if (navigator.oscpu != null) document.write("OS/CPU " + navigator.oscpu)
+else document.write("?");
+//-->
+</script>
+<noscript>
+not available, or not enabled...
+</noscript></TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Screen Width:</TD><TD CLASS="glossary_left"><script Language="JavaScript">
+<!--HIDE
+if (window.screen) document.write(screen.width)
+else document.write("?");
+//-->
+</script>
+<noscript>
+not available, or not enabled...
+</noscript></TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Screen Height:</TD><TD CLASS="glossary_left"><script Language="JavaScript">
+<!--HIDE
+if (window.screen) document.write(screen.height)
+else document.write("?");
+//-->
+</script>
+<noscript>
+not available, or not enabled...
+</noscript></TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Screen Color Depth:</TD><TD CLASS="glossary_left"><script Language="JavaScript">
+<!--HIDE
+if (window.screen) document.write(screen.colorDepth)
+else document.write("?");
+//-->
+</script>
+<noscript>
+not available, or not enabled...
+</noscript></TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Window Width:</TD><TD CLASS="glossary_left"><script Language="JavaScript">
+<!--HIDE
+if (document.all) {
+  var ow = document.body.offsetWidth;
+  var owp = ((100 * ow)/screen.width);
+  document.write(ow + " (" + owp.toFixed(1) + "% of " + screen.width + ")");
+}
+else if (document.layers) {
+  var ow = document.body.width;
+  var owp = ((100 * ow)/screen.width);
+  document.write(ow + " (" + owp.toFixed(1) + "% of " + screen.width + ")");
+}
+else if (document.body.clientWidth != null) {
+  var ow = document.body.clientWidth;
+  var owp = ((100 * ow)/screen.width);
+  document.write(ow + " (" + owp.toFixed(1) + "% of " + screen.width + ")");
+}
+else document.write("?");
+//-->
+</script>
+<noscript>
+not available, or not enabled...
+</noscript></TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Window Height:</TD><TD CLASS="glossary_left"><script Language="JavaScript">
+<!--HIDE
+if (document.all) {
+  var oh = document.body.offsetHeight;
+  var ohp = ((100 * oh)/screen.height);
+  document.write(oh + " (" + ohp.toFixed(1) + "% of " + screen.height + ")");
+}
+else if (document.layers) {
+  var oh = document.body.height;
+  var ohp = ((100 * oh)/screen.height);
+  document.write(oh + " (" + ohp.toFixed(1) + "% of " + screen.height + ")");
+}
+else if (document.body.clientHeight != null) {
+  var oh = document.body.clientHeight;
+  var ohp = ((100 * oh)/screen.height);
+  document.write(oh + " (" + ohp.toFixed(1) + "% of " + screen.height + ")");
+}
+else document.write("?");
+//-->
+</script>
+<noscript>
+not available, or not enabled...
+</noscript></TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Browser (User-Agent) Brand:</TD><TD CLASS="glossary_left"><script Language="JavaScript">
+<!--HIDE
+if (isNav()) document.write("Netscape Navigator")
+else if (isIE()) document.write("Internet Explorer")
+else if (isSafari()) document.write("Apple Safari")
+else if (isOpera()) document.write("Opera")
+else document.write("?");
+//-->
+</script>
+<noscript>
+not available, or not enabled...
+</noscript></TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Operating System Platform:</TD><TD CLASS="glossary_left"><script Language="JavaScript">
+<!--HIDE
+document.write(navigator.platform+"<br>");
+if (is_vms) document.write("VMS")
+else if (is_bsd) document.write("BSD Unix")
+else if (is_freebsd) document.write("FreeBSD Unix")
+else if (is_sinix) document.write("Sinix")
+else if (is_unixware) document.write("SCO Unixware")
+else if (is_sco) document.write("SCO Unix")
+else if (is_linux) document.write("Linux")
+else if (is_aix4) document.write("IBM AIX 4")
+else if (is_aix3) document.write("IBM AIX 3")
+else if (is_aix2) document.write("IBM AIX 2")
+else if (is_aix1) document.write("IBM AIX 1")
+else if (is_aix) document.write("IBM AIX")
+else if (is_hpux10) document.write("HP UX 10")
+else if (is_hpux9) document.write("HP UX 9")
+else if (is_hpux) document.write("HP UX")
+else if (is_irix6) document.write("Irix 6")
+else if (is_irix5) document.write("Irix 5")
+else if (is_irix) document.write("Irix")
+else if (is_suni86) document.write("Sun Solaris i86")
+else if (is_sun5) document.write("Sun Solaris 5")
+else if (is_sun4) document.write("Sun Solaris 4")
+else if (is_sun) document.write("Sun Solaris")
+else if (is_macppc) document.write("Apple Macintosh PowerPC")
+else if (is_mac68k) document.write("Apple Macintosh 68K")
+else if (is_mac) document.write("Apple Macintosh")
+else if (is_os2) document.write("OS/2")
+else if (is_winxp) document.write("Microsoft Windows XP")
+else if (is_win2k) document.write("Microsoft Windows 2000")
+else if (is_winnt) document.write("Microsoft Windows NT")
+else if (is_winme) document.write("Microsoft Windows ME")
+else if (is_win95) document.write("Microsoft Windows 95")
+else if (is_win31) document.write("Microsoft Windows 3.1")
+else if (is_win) document.write("Microsoft Windows")
+else document.write("?");
+//-->
+</script>
+<noscript>
+not available, or not enabled...
+</noscript></TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="50%" CLASS="glossary_table">Browser (User-Agent) Version:</TD><TD CLASS="glossary_left"><script Language="JavaScript">
+<!--HIDE
+if (is_opera7) document.write("Opera 7")
+else if (is_opera6) document.write("Opera 6")
+else if (is_opera5) document.write("Opera 5")
+else if (is_opera4) document.write("Opera 4")
+else if (is_opera3) document.write("Opera 3")
+else if (is_opera2) document.write("Opera 2")
+else if (is_opera) document.write("Opera")
+else if (is_konq) document.write("Konqueror")
+else if (is_safari) document.write("Safari")
+else if (is_fb) document.write("Firebird")
+else if (is_moz) document.write("Mozilla")
+else if (is_fx) document.write("Firefox")
+else if (is_nav7) document.write("Netscape 7")
+else if (is_nav5) document.write("Netscape 5")
+else if (is_nav6) document.write("Netscape 6")
+else if (isNav4_7()) document.write("Navigator 4.7")
+else if (is_nav4) document.write("Netscape 4")
+else if (is_nav3) document.write("Netscape 3")
+else if (is_nav2) document.write("Netscape 2")
+else if (isMSIE6_0()) document.write("MSIE 6.0")
+else if (is_ie6) document.write("MSIE 6")
+else if (is_ie5_5) document.write("MSIE 5.5")
+else if (is_ie5) document.write("MSIE 5")
+else if (is_ie4) document.write("MSIE 4")
+else if (is_ie3) document.write("MSIE 3")
+else if (is_ie) document.write("MSIE")
+else if (is_aol8) document.write("AOL 8")
+else if (is_aol7) document.write("AOL 7")
+else if (is_aol6) document.write("AOL 6")
+else if (is_aol5) document.write("AOL 5")
+else if (is_aol4) document.write("AOL 4")
+else if (is_aol3) document.write("AOL 3")
+else if (is_aol) document.write("AOL")
+else if (is_webtv) document.write("WebTV")
+else if (is_TVNavigator) document.write("AOL TV")
+else if (is_hotjava3) document.write("Hot Java 3")
+else if (is_hotjava) document.write("Hot Java")
+else if (is_gecko) document.write("Gecko")
+else document.write("?");
+//-->
+</script>
+<noscript>
+not available, or not enabled...
+</noscript></TD></TR></TABLE><p><TABLE WIDTH="100%" COLS="3" BORDER="1" CELLSPACING="1"><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="100%" CLASS="glossary_table"><b>Advertisers...</b></TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="100%" CLASS="glossary_table">Descubra c�mo <a href="http://www.showmyip.com/redirect.php?gotomypc" target="_top"><I>GoToMyPC</I></a> puede ayudarle a aumentar su producci�n.</TD></TR><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="100%" CLASS="glossary_table"><script type="text/javascript"><!--
+google_ad_client = "pub-7351218825495133";
+google_ad_width = 110;
+google_ad_height = 32;
+google_ad_format = "110x32_as_rimg";
+google_cpa_choice = "CAAQ2ZCazgEaCCvPXrFfpg_0KPmNxXQ";
+//--></script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></TD></TR></TABLE><p><TABLE WIDTH="100%" COLS="3" BORDER="1" CELLSPACING="1"><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="100%" CLASS="glossary_table"><b>Other links...</b><br><TR WIDTH="100%" BORDERCOLOR="F4EAD9"><TD WIDTH="100%" CLASS="glossary_table">Haga clic aqu� para visitar sitios sobre <a href="http://dmoz.org/Computers/Internet/Protocols/Transmission_Protocols/Networking_Resources/Addressing/" target="_top">direcciones IP</a>. O pruebe <a href="http://www.google.es/search?num=10&query=mi%20direcci�n%20IP" target="_top">Google</a>.<br>Get your Direcci�n IP geographic location information at <a href="http://www.showmyip.com/geo/">geo.showmyip.com</a>.<br>Reciba informaci�n sobre su Direcci�n IP en formato XML en <a href="http://www.showmyip.com/xml/">xml.showmyip.com <img src="http://www.showmyip.com/xml.gif" alt="showmyip.com XML"></a><br>Reciba informaci�n sobre su Direcci�n IP en formato VoiceXML en <a href="http://www.showmyip.com/voicexml/">voicexml.showmyip.com</a>.<br>Reciba su Direcci�n IP (en formato de texto) en <a href="http://www.showmyip.com/simple/">simple.showmyip.com</a>.<br>Get your Direcci�n IP information using our SOAP interface at <a href="http://www.showmyip.com/soap/server.php">soap.showmyip.com</a>.<br>Lookup Direcci�n IP information using our SOAP interface at <a href="http://www.showmyip.com/soap/lookupserver.php">soaplookup.showmyip.com</a>.<br>Get your Direcci�n IP information using our RSS feed at <a href="http://www.showmyip.com/rss.php">rss.showmyip.com <img src="http://www.showmyip.com/rss.gif" alt="showmyip.com RSS feed"></a><br>�Le interesa saber qu� datos muestra Google sobre su direcci�n IP? <a href="http://www.google.es/search?num=10&query=85.53.223.253 OR 253.pool85-53-223.dynamic.orange.es" target="_top">Haga click aqu�</a>. O pruebe en <a href="http://search.yahoo.com/search?p=+85.53.223.253+or+253.pool85-53-223.dynamic.orange.es"" target="_top">Yahoo!</a><br>�Quiere conseguir las l�neas de c�digo de Visual Basic scripts para usarlas en showmyip.com? <a href="http://www.google.es/search?q=Visual+Basic+showmyip" target="_top">Pruebe la siguiente b�squeda de Google</a>.<br></TD></TR></TABLE>			<a NAME="#DoLookup"><FORM NAME="GetIP" ONSUBMIT=""
+    ACTION="http://www.showmyip.com/lookup.php" METHOD="POST">
+
+    <TABLE WIDTH="100%" COLS="2" BORDER="1" CELLSPACING="1">
+    <TR BORDERCOLOR="F4EAD9">
+    <TD CLASS="glossary_table">
+      <b>IP Address Lookup Form</b></a>
+    </TD>
+	</TR>
+
+
+	<TR>
+	  <TD CLASS="glossary_table">Direcci�n IP: <INPUT TYPE="TEXT" SIZE="18" MAXLENGTH="15" NAME="IPnumber"><br>o Nombre del host: <INPUT TYPE="TEXT" SIZE="36" MAXLENGTH="64" NAME="HostName"><br>Lookup Subscription Key: <INPUT TYPE="TEXT" SIZE="36" MAXLENGTH="32" NAME="LookupKey">
+
+      <br>
+
+	    <INPUT TYPE="SUBMIT"
+		  NAME="SubmitButton"
+		  VALUE="Consulte"
+		  ONCLICK="this.value='Please wait...'">
+		<INPUT TYPE="HIDDEN" NAME="this_subpage" VALUE="es">
+		<INPUT TYPE="HIDDEN" NAME="id_cookie" VALUE="15848113">
+		<INPUT TYPE="HIDDEN" NAME="your_display_language" VALUE="es"> 10000 Lookups allowed per day for unregistered users.</TD></TR>
+  <TR>
+	  <TD CLASS="glossary_table">Check your Subscription status <a href="https://www.ippages.com/lookups/#subscription_status">here</a>.</TD></TR>
+    <TR>
+    <TD CLASS="glossary_table"><p>Choose the lookup fields you want to see. Using our simple text or xml interface, you can specify with the &amp;get= parameter any available field name, in any sequence.&nbsp;For example <a href="http://www.showmyip.com/simple/?host=yahoo.com&amp;get=ip,country,state_name,city,timezone">http://www.showmyip.com/simple/?host=yahoo.com&amp;get=ip,country,state_name,city,timezone</a> will get you a comma-delimited list of only the 5 lookup fields specified.</TD></TR>
+  <TR>
+    <TD CLASS="glossary_table"><p>Multiple data sources are used for some lookup fields. You will see <b>(verified)</b> whenever and wherever we can get the same result from more than 1 data source. In some instances, though, this will only be available to subscribers.
+
+  </TD>
+  </TR>
+	</TABLE>
+  </FORM><a NAME="#DoUploadLookup"><FORM enctype="multipart/form-data"
+	   name="SendLookupFile"
+	   action="http://www.showmyip.com/lookups/uploads.php"
+	   method="post">
+       <TABLE WIDTH="100%" COLS="1" BORDER="1" CELLSPACING="1">
+       <TR>
+	     <TD CLASS="glossary_table">
+	     <input type="hidden" name="MAX_FILE_SIZE" value="100000">
+         <b>IP Address Lookup file to upload:</b> <input name="userfile" size="54" maxlength="128" type="file">
+		 <br>Lookup Subscription Key: <INPUT TYPE="TEXT" SIZE="36" MAXLENGTH="32" NAME="LookupKey">
+		 <br>Lookup data fields to retrieve: <INPUT TYPE="TEXT" SIZE="54" MAXLENGTH="128" NAME="GetFields" VALUE="ip,country_code,remaining_count"><p><li>For a complete list of available Lookup data fields, do your file upload from <a href="http://www.showmyip.com/lookups/#DoUploadLookup">here</a>.<br><br><input type="submit" value="Upload Lookup File"
+		   ONCLICK="this.value='Please wait...'"></TD></TR>
+       </TABLE>
+	  </FORM><p>
+    <TABLE WIDTH="60%" COLS="1" CLASS="glossary_table" BORDER="1" CELLSPACING="0">
+      <TR>
+      <TD>
+      <FONT FACE="Verdana, Arial, Helvetica, sans-serif" SIZE="-1">
+      Need to purchase additional IP Address Lookups? Or get access to all returned data fields? Or need more consistent, faster lookup results?</FONT>
+      <a href="http://www.showmyip.com/lookups/">
+      <img src="http://www.showmyip.com/go_right_arrow.gif" border="0"></a>
+      </TD>
+      </TR>
+    </TABLE>
+    <p><p><TABLE WIDTH="100%"><TR><TD align="RIGHT"><SELECT NAME="Shortcuts" SIZE="1" ONCHANGE="window.location.href=this.options[this.selectedIndex].value"><OPTION VALUE="" SELECTED="SELECTED">Shortcuts...</OPTION><OPTION VALUE="http://www.showmyip.com/">English...</OPTION><OPTION VALUE="http://www.showmyip.com/es/">Espa�ol...</OPTION><OPTION VALUE="http://www.showmyip.com/fr/">Fran�aise...</OPTION><OPTION VALUE="http://www.showmyip.com/sv/">Svenska...</OPTION><OPTION VALUE="http://www.privacy-ecosystem.com/">privacy-ecosystem.com</OPTION><OPTION VALUE="http://privacy-ecosystem.blogspot.com/">Privacy Ecosystem blog</OPTION><OPTION VALUE="">--------------------</OPTION><OPTION VALUE="http://www.showmyip.com/faq/">FAQ</OPTION><OPTION VALUE="http://www.showmyip.com/geo/">geo</OPTION><OPTION VALUE="http://www.showmyip.com/glossary.php">IP Address Glossary</OPTION><OPTION VALUE="http://www.showmyip.com/privacy/public_key.php">our GPG Public Key</OPTION><OPTION VALUE="http://www.showmyip.com/lookups/">lookups</OPTION><OPTION VALUE="http://www.showmyip.com/privacy/">Privacy News/Issues</OPTION><OPTION VALUE="http://www.showmyip.com/proxies/">Proxy News/Issues</OPTION><OPTION VALUE="http://www.showmyip.com/proxy/">proxy</OPTION><OPTION VALUE="http://www.showmyip.com/security/">Security News/Issues</OPTION><OPTION VALUE="http://www.showmyip.com/dynamicDNS/">Super Dynamic DNS</OPTION><OPTION VALUE="http://www.showmyip.com/dynamicDNS/what.php">Super Dynamic DNS - What?</OPTION><OPTION VALUE="http://www.showmyip.com/dynamicDNS/why.php">Super Dynamic DNS - Why?</OPTION><OPTION VALUE="http://www.showmyip.com/torstatus/">Tor network connection status</OPTION><OPTION VALUE="http://www.showmyip.com/whatsnew/">What's New!</OPTION><OPTION VALUE="http://www.showmyip.com/whatscoming/">What's in the Lab!</OPTION><OPTION VALUE="http://www.showmyip.com/wifi/">Wifi News/Issues</OPTION><OPTION VALUE="">--------------------</OPTION><OPTION VALUE="http://www.showmyip.com/rss.php">RSS feed</OPTION><OPTION VALUE="http://www.showmyip.com/simple">simple text interface</OPTION><OPTION VALUE="http://www.showmyip.com/soap/server.php">SOAP interface</OPTION><OPTION VALUE="http://www.showmyip.com/vxml">VoiceXML interface</OPTION><OPTION VALUE="http://www.showmyip.com/xml">XML interface</OPTION></SELECT></TD></TR></TABLE><p><hr><FONT FACE="Verdana, Arial, Helvetica, sans-serif" COLOR="#808080" SIZE="-2">showmyip.com  script Versi�n 3.07.028. Creado din�micamente con <a href="http://es.wikipedia.org/wiki/PHP" target="_top">PHP</a>, <a href="http://www.mysql.com" target="_top">MySQL</a>, <a href="http://es.wikipedia.org/wiki/JavaScript" target="_top">Javascript</a>, <a href="http://www.showmyip.com/redirect.php?maxmind" target="_top" onmouseover="window.status='http://www.maxmind.com';return true;" onmouseout="window.status=' ';return true;">MaxMind GeoIP</a>, y <a href="http://www.showmyip.com/redirect.php?ip2location" target="_top" onmouseover="window.status='http://www.ip2location.com';return true;" onmouseout="window.status=' ';return true;">Ip2Location</a> en 0.7157 segundos.No se puede utilizar m�s de una cada 10 segundos. �Tiene alg�n comentario o idea? Haga clic <a href="mailto:support@privacy-ecosystem.com">aqu�</a>.<br><a href="javascript:window.print();">Imprimir...</a> | <a href="javascript:window.close();">Cerrar</a> | </FONT><script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-256263-1";
+urchinTracker();
+</script><!-- etracker sedo CODE 2.0.0 -->
+<map name="mse">
+<area shape="RECT" alt="Sedo - Buy and Sell Domain Names and Websites" target="_blank" href="http://www.sedo.com" coords="1,1,100,40"> <area shape="RECT" alt="project info: showmyip.com" target="_blank" href="http://www.sedo.com/search/details.php4?domain=showmyip.com" coords="1,70,100,80"> <area shape="RECT" alt="Statistics for project showmyip.com" target="_blank" href="http://www.sedotracker.com/soverview.php?domain=showmyip.com" coords="1,82,100,92"> <area shape="RECT" alt="etracker� web controlling instead of log file analysis" target="_blank" href="http://www.etracker.de" coords="1,100,100,120"> </map><script language="JavaScript"> var et_server="www.sedotracker.com/cnt.php";var et_sw,et_sc="na";var et_pl,tmp; if(navigator.appName=='Netscape'||navigator.appName=='Opera'){for(i=0;i<navigator.plugins.length;++i)et_pl+=navigator.plugins[i].name+';';et_pl=escape(et_pl);}function et_eC(param){var et_ref=escape(document.referrer); if(typeof(top.document)=="object")et_ref=escape(top.document.referrer);if(et_ref!="")et_ref="&amp;ref="+et_ref;et_sw="&amp;swidth="+et_sw;et_sc="&amp;scolor="+et_sc;if(et_pl!="")et_pl="&amp;p="+et_pl;tc=new Date(); document.write("<img border='0' alt='' width='100' height='120' usemap='#mse' "+ "src='http://"+et_server+"?java=y&amp;tc="+tc.getTime()+"&amp;et="+param+"&amp;bp=1&amp;easy=1"+et_sw+et_sc+et_ref+et_pl+"'>");}</script><script type="text/javascript1.2">et_sw=screen.width;et_sc=navigator.appName!='Netscape'?screen.colorDepth:screen.pixelDepth;</script><script type="text/javascript">et_eC('Aw3CKx');</script>
+
+<!-- etracker sedo CODE NOSCRIPT -->
+<noscript>
+<img border="0" width="100" height="120" alt="" usemap="#mse" src="http://metrics.showmyip.com/cnt.php?et=Aw3CKx&java=n&et_easy=1&bp=1">
+</noscript>
+<!-- etracker sedo CODE END --></BODY></HTML>
+85.53.216.4
+85.53.202.136
+85.53.202.136
+85.53.203.146

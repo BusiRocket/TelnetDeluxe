@@ -21,29 +21,24 @@ Partial Class TelnetDeluxe
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(TelnetDeluxe))
+        Me.Currante_Ping = New System.ComponentModel.BackgroundWorker
         Me.GrupoConfig = New System.Windows.Forms.GroupBox
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox
+        Me.label_info_ipant = New System.Windows.Forms.Label
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox
+        Me.txtbox_info_ipact = New System.Windows.Forms.TextBox
         Me.label_inetconex = New System.Windows.Forms.Label
-        Me.boton_cargarini = New System.Windows.Forms.Button
-        Me.txtbox_conf_refresco = New System.Windows.Forms.TextBox
-        Me.Combo_inirouters = New System.Windows.Forms.ComboBox
-        Me.label_conf_inirouter = New System.Windows.Forms.Label
-        Me.label_conf_refresco = New System.Windows.Forms.Label
+        Me.label_info_ipact = New System.Windows.Forms.Label
+        Me.txtbox_info_ipant = New System.Windows.Forms.TextBox
         Me.label_estado = New System.Windows.Forms.Label
-        Me.boton_actualizar = New System.Windows.Forms.Button
-        Me.txtbox_conf_puerto = New System.Windows.Forms.TextBox
-        Me.label_conf_puerto = New System.Windows.Forms.Label
-        Me.txtbox_conf_iprouter = New System.Windows.Forms.TextBox
-        Me.label_conf_iprouter = New System.Windows.Forms.Label
         Me.crono_principal = New System.Windows.Forms.Timer(Me.components)
         Me.GrupoConsola = New System.Windows.Forms.GroupBox
         Me.Consola = New System.Windows.Forms.RichTextBox
-        Me.label_info_ipact = New System.Windows.Forms.Label
-        Me.txtbox_info_ipact = New System.Windows.Forms.TextBox
-        Me.txtbox_info_ipant = New System.Windows.Forms.TextBox
-        Me.label_info_ipant = New System.Windows.Forms.Label
-        Me.GrupoOtros = New System.Windows.Forms.GroupBox
-        Me.boton_ocultar = New System.Windows.Forms.Button
-        Me.boton_Acercade = New System.Windows.Forms.Button
+        Me.MenuConsola = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.MenuConsola_Copiar = New System.Windows.Forms.ToolStripMenuItem
+        Me.MenuConsola_SelTodo = New System.Windows.Forms.ToolStripMenuItem
+        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripSeparator
+        Me.MenuConsola_Limpiar = New System.Windows.Forms.ToolStripMenuItem
         Me.TD_Tray = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.MenuTray = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.RenovarIPToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
@@ -52,161 +47,168 @@ Partial Class TelnetDeluxe
         Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.TD_ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.Timer_ConexInet = New System.Windows.Forms.Timer(Me.components)
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox
+        Me.TDBarraEstado = New System.Windows.Forms.StatusStrip
+        Me.TDBE_labelinfo = New System.Windows.Forms.ToolStripStatusLabel
+        Me.TDBE_Progreso = New System.Windows.Forms.ToolStripProgressBar
+        Me.TDLB_Progreso = New System.Windows.Forms.ToolStripStatusLabel
+        Me.Currante_ConseguirIP = New System.ComponentModel.BackgroundWorker
+        Me.TD_MenuPrincipal = New System.Windows.Forms.MenuStrip
+        Me.TD_MP_Funciones = New System.Windows.Forms.ToolStripMenuItem
+        Me.TD_MP_EjecutarComandos = New System.Windows.Forms.ToolStripMenuItem
+        Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator
+        Me.MToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.TD_MP_Salir = New System.Windows.Forms.ToolStripMenuItem
+        Me.TD_MP_Opciones = New System.Windows.Forms.ToolStripMenuItem
+        Me.TD_MP_Herramientas = New System.Windows.Forms.ToolStripMenuItem
+        Me.TD_MP_MostrarInfoSistema = New System.Windows.Forms.ToolStripMenuItem
+        Me.TD_MP_MostrarInfoRed = New System.Windows.Forms.ToolStripMenuItem
+        Me.TD_MP_ConseguirIP = New System.Windows.Forms.ToolStripMenuItem
+        Me.TD_MP_AcercaDe = New System.Windows.Forms.ToolStripMenuItem
+        Me.Currante_Winsock = New System.ComponentModel.BackgroundWorker
         Me.GrupoConfig.SuspendLayout()
-        Me.GrupoConsola.SuspendLayout()
-        Me.GrupoOtros.SuspendLayout()
-        Me.MenuTray.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GrupoConsola.SuspendLayout()
+        Me.MenuConsola.SuspendLayout()
+        Me.MenuTray.SuspendLayout()
+        Me.TDBarraEstado.SuspendLayout()
+        Me.TD_MenuPrincipal.SuspendLayout()
         Me.SuspendLayout()
+        '
+        'Currante_Ping
+        '
         '
         'GrupoConfig
         '
+        Me.GrupoConfig.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GrupoConfig.Controls.Add(Me.PictureBox2)
+        Me.GrupoConfig.Controls.Add(Me.label_info_ipant)
         Me.GrupoConfig.Controls.Add(Me.PictureBox1)
+        Me.GrupoConfig.Controls.Add(Me.txtbox_info_ipact)
         Me.GrupoConfig.Controls.Add(Me.label_inetconex)
-        Me.GrupoConfig.Controls.Add(Me.boton_cargarini)
-        Me.GrupoConfig.Controls.Add(Me.txtbox_conf_refresco)
-        Me.GrupoConfig.Controls.Add(Me.Combo_inirouters)
-        Me.GrupoConfig.Controls.Add(Me.label_conf_inirouter)
-        Me.GrupoConfig.Controls.Add(Me.label_conf_refresco)
+        Me.GrupoConfig.Controls.Add(Me.label_info_ipact)
+        Me.GrupoConfig.Controls.Add(Me.txtbox_info_ipant)
         Me.GrupoConfig.Controls.Add(Me.label_estado)
-        Me.GrupoConfig.Controls.Add(Me.boton_actualizar)
-        Me.GrupoConfig.Controls.Add(Me.txtbox_conf_puerto)
-        Me.GrupoConfig.Controls.Add(Me.label_conf_puerto)
-        Me.GrupoConfig.Controls.Add(Me.txtbox_conf_iprouter)
-        Me.GrupoConfig.Controls.Add(Me.label_conf_iprouter)
-        Me.GrupoConfig.Location = New System.Drawing.Point(3, 9)
+        Me.GrupoConfig.Location = New System.Drawing.Point(12, 27)
         Me.GrupoConfig.Name = "GrupoConfig"
-        Me.GrupoConfig.Size = New System.Drawing.Size(656, 77)
+        Me.GrupoConfig.Size = New System.Drawing.Size(656, 49)
         Me.GrupoConfig.TabIndex = 0
         Me.GrupoConfig.TabStop = False
-        Me.GrupoConfig.Text = "General"
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox2.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox2.Image = Global.TelnetDeluxe.My.Resources.Resources.Gui_Firefox
+        Me.PictureBox2.Location = New System.Drawing.Point(183, 11)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(26, 26)
+        Me.PictureBox2.TabIndex = 15
+        Me.PictureBox2.TabStop = False
+        '
+        'label_info_ipant
+        '
+        Me.label_info_ipant.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.label_info_ipant.AutoSize = True
+        Me.label_info_ipant.Location = New System.Drawing.Point(463, 19)
+        Me.label_info_ipant.Name = "label_info_ipant"
+        Me.label_info_ipant.Size = New System.Drawing.Size(62, 13)
+        Me.label_info_ipant.TabIndex = 8
+        Me.label_info_ipant.Text = "IP Anterior: "
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox1.Image = Global.TelnetDeluxe.My.Resources.Resources.Gui_Router
+        Me.PictureBox1.Location = New System.Drawing.Point(323, 11)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(26, 26)
+        Me.PictureBox1.TabIndex = 14
+        Me.PictureBox1.TabStop = False
+        '
+        'txtbox_info_ipact
+        '
+        Me.txtbox_info_ipact.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtbox_info_ipact.BackColor = System.Drawing.Color.OliveDrab
+        Me.txtbox_info_ipact.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtbox_info_ipact.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtbox_info_ipact.ForeColor = System.Drawing.Color.White
+        Me.txtbox_info_ipact.Location = New System.Drawing.Point(71, 19)
+        Me.txtbox_info_ipact.Name = "txtbox_info_ipact"
+        Me.txtbox_info_ipact.ReadOnly = True
+        Me.txtbox_info_ipact.Size = New System.Drawing.Size(106, 13)
+        Me.txtbox_info_ipact.TabIndex = 3
+        Me.txtbox_info_ipact.TabStop = False
+        Me.txtbox_info_ipact.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'label_inetconex
         '
+        Me.label_inetconex.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.label_inetconex.BackColor = System.Drawing.Color.Red
         Me.label_inetconex.Font = New System.Drawing.Font("Verdana", 7.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.label_inetconex.ForeColor = System.Drawing.Color.Transparent
-        Me.label_inetconex.Location = New System.Drawing.Point(548, 42)
+        Me.label_inetconex.Location = New System.Drawing.Point(215, 19)
         Me.label_inetconex.Name = "label_inetconex"
-        Me.label_inetconex.Size = New System.Drawing.Size(102, 23)
+        Me.label_inetconex.Size = New System.Drawing.Size(102, 13)
         Me.label_inetconex.TabIndex = 13
         Me.label_inetconex.Text = "Sin Conexión"
         Me.label_inetconex.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'boton_cargarini
+        'label_info_ipact
         '
-        Me.boton_cargarini.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.label_info_ipact.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.boton_cargarini.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.boton_cargarini.Location = New System.Drawing.Point(253, 14)
-        Me.boton_cargarini.Name = "boton_cargarini"
-        Me.boton_cargarini.Size = New System.Drawing.Size(78, 23)
-        Me.boton_cargarini.TabIndex = 2
-        Me.boton_cargarini.Text = "&Cargar INI"
-        Me.boton_cargarini.UseVisualStyleBackColor = True
+        Me.label_info_ipact.AutoSize = True
+        Me.label_info_ipact.Location = New System.Drawing.Point(9, 19)
+        Me.label_info_ipact.Name = "label_info_ipact"
+        Me.label_info_ipact.Size = New System.Drawing.Size(56, 13)
+        Me.label_info_ipact.TabIndex = 6
+        Me.label_info_ipact.Text = "IP Actual: "
         '
-        'txtbox_conf_refresco
+        'txtbox_info_ipant
         '
-        Me.txtbox_conf_refresco.BackColor = System.Drawing.Color.White
-        Me.txtbox_conf_refresco.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtbox_conf_refresco.Location = New System.Drawing.Point(440, 46)
-        Me.txtbox_conf_refresco.Name = "txtbox_conf_refresco"
-        Me.txtbox_conf_refresco.Size = New System.Drawing.Size(29, 13)
-        Me.txtbox_conf_refresco.TabIndex = 7
-        Me.txtbox_conf_refresco.Text = "3"
-        Me.txtbox_conf_refresco.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'Combo_inirouters
-        '
-        Me.Combo_inirouters.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Combo_inirouters.FormattingEnabled = True
-        Me.Combo_inirouters.Location = New System.Drawing.Point(116, 14)
-        Me.Combo_inirouters.MaxDropDownItems = 15
-        Me.Combo_inirouters.Name = "Combo_inirouters"
-        Me.Combo_inirouters.Size = New System.Drawing.Size(131, 21)
-        Me.Combo_inirouters.TabIndex = 1
-        '
-        'label_conf_inirouter
-        '
-        Me.label_conf_inirouter.AutoSize = True
-        Me.label_conf_inirouter.Location = New System.Drawing.Point(9, 19)
-        Me.label_conf_inirouter.Name = "label_conf_inirouter"
-        Me.label_conf_inirouter.Size = New System.Drawing.Size(101, 13)
-        Me.label_conf_inirouter.TabIndex = 6
-        Me.label_conf_inirouter.Text = "Seleccionar Router:"
-        '
-        'label_conf_refresco
-        '
-        Me.label_conf_refresco.AutoSize = True
-        Me.label_conf_refresco.Location = New System.Drawing.Point(357, 46)
-        Me.label_conf_refresco.Name = "label_conf_refresco"
-        Me.label_conf_refresco.Size = New System.Drawing.Size(77, 13)
-        Me.label_conf_refresco.TabIndex = 12
-        Me.label_conf_refresco.Text = "Intervalo (seg):"
+        Me.txtbox_info_ipant.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtbox_info_ipant.BackColor = System.Drawing.Color.DarkOliveGreen
+        Me.txtbox_info_ipant.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtbox_info_ipant.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtbox_info_ipant.ForeColor = System.Drawing.Color.Silver
+        Me.txtbox_info_ipant.Location = New System.Drawing.Point(531, 19)
+        Me.txtbox_info_ipant.Name = "txtbox_info_ipant"
+        Me.txtbox_info_ipant.ReadOnly = True
+        Me.txtbox_info_ipant.Size = New System.Drawing.Size(106, 13)
+        Me.txtbox_info_ipant.TabIndex = 4
+        Me.txtbox_info_ipant.TabStop = False
+        Me.txtbox_info_ipant.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'label_estado
         '
+        Me.label_estado.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.label_estado.BackColor = System.Drawing.Color.Red
         Me.label_estado.Font = New System.Drawing.Font("Verdana", 7.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.label_estado.ForeColor = System.Drawing.Color.Transparent
-        Me.label_estado.Location = New System.Drawing.Point(548, 14)
+        Me.label_estado.Location = New System.Drawing.Point(355, 20)
         Me.label_estado.Name = "label_estado"
-        Me.label_estado.Size = New System.Drawing.Size(102, 23)
+        Me.label_estado.Size = New System.Drawing.Size(102, 13)
         Me.label_estado.TabIndex = 0
         Me.label_estado.Text = "Desconectado"
         Me.label_estado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'boton_actualizar
-        '
-        Me.boton_actualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.boton_actualizar.Location = New System.Drawing.Point(335, 14)
-        Me.boton_actualizar.Name = "boton_actualizar"
-        Me.boton_actualizar.Size = New System.Drawing.Size(99, 23)
-        Me.boton_actualizar.TabIndex = 3
-        Me.boton_actualizar.Text = "&Renovar IP"
-        Me.boton_actualizar.UseVisualStyleBackColor = True
-        '
-        'txtbox_conf_puerto
-        '
-        Me.txtbox_conf_puerto.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtbox_conf_puerto.Location = New System.Drawing.Point(278, 46)
-        Me.txtbox_conf_puerto.Name = "txtbox_conf_puerto"
-        Me.txtbox_conf_puerto.Size = New System.Drawing.Size(53, 13)
-        Me.txtbox_conf_puerto.TabIndex = 6
-        Me.txtbox_conf_puerto.Text = "23"
-        Me.txtbox_conf_puerto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'label_conf_puerto
-        '
-        Me.label_conf_puerto.AutoSize = True
-        Me.label_conf_puerto.Location = New System.Drawing.Point(231, 46)
-        Me.label_conf_puerto.Name = "label_conf_puerto"
-        Me.label_conf_puerto.Size = New System.Drawing.Size(41, 13)
-        Me.label_conf_puerto.TabIndex = 2
-        Me.label_conf_puerto.Text = "Puerto:"
-        '
-        'txtbox_conf_iprouter
-        '
-        Me.txtbox_conf_iprouter.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtbox_conf_iprouter.Location = New System.Drawing.Point(135, 46)
-        Me.txtbox_conf_iprouter.Name = "txtbox_conf_iprouter"
-        Me.txtbox_conf_iprouter.Size = New System.Drawing.Size(78, 13)
-        Me.txtbox_conf_iprouter.TabIndex = 5
-        Me.txtbox_conf_iprouter.Text = "192.168.1.1"
-        Me.txtbox_conf_iprouter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'label_conf_iprouter
-        '
-        Me.label_conf_iprouter.AutoSize = True
-        Me.label_conf_iprouter.Location = New System.Drawing.Point(9, 46)
-        Me.label_conf_iprouter.Name = "label_conf_iprouter"
-        Me.label_conf_iprouter.Size = New System.Drawing.Size(120, 13)
-        Me.label_conf_iprouter.TabIndex = 0
-        Me.label_conf_iprouter.Text = "Dirección IP del Router:"
         '
         'crono_principal
         '
@@ -214,10 +216,12 @@ Partial Class TelnetDeluxe
         '
         'GrupoConsola
         '
-        Me.GrupoConsola.BackColor = System.Drawing.SystemColors.Control
+        Me.GrupoConsola.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.GrupoConsola.BackColor = System.Drawing.Color.Transparent
         Me.GrupoConsola.Controls.Add(Me.Consola)
-        Me.GrupoConsola.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.GrupoConsola.Location = New System.Drawing.Point(3, 92)
+        Me.GrupoConsola.Location = New System.Drawing.Point(12, 82)
         Me.GrupoConsola.Name = "GrupoConsola"
         Me.GrupoConsola.Size = New System.Drawing.Size(656, 345)
         Me.GrupoConsola.TabIndex = 4
@@ -230,8 +234,9 @@ Partial Class TelnetDeluxe
                     Or System.Windows.Forms.AnchorStyles.Left) _
                     Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Consola.AutoWordSelection = True
-        Me.Consola.BackColor = System.Drawing.Color.Black
+        Me.Consola.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.Consola.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.Consola.ContextMenuStrip = Me.MenuConsola
         Me.Consola.DetectUrls = False
         Me.Consola.Font = New System.Drawing.Font("Lucida Console", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Consola.ForeColor = System.Drawing.Color.DarkOrange
@@ -241,88 +246,37 @@ Partial Class TelnetDeluxe
         Me.Consola.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical
         Me.Consola.ShowSelectionMargin = True
         Me.Consola.Size = New System.Drawing.Size(644, 320)
-        Me.Consola.TabIndex = 9
+        Me.Consola.TabIndex = 2
         Me.Consola.Text = ""
         '
-        'label_info_ipact
+        'MenuConsola
         '
-        Me.label_info_ipact.AutoSize = True
-        Me.label_info_ipact.Location = New System.Drawing.Point(9, 16)
-        Me.label_info_ipact.Name = "label_info_ipact"
-        Me.label_info_ipact.Size = New System.Drawing.Size(56, 13)
-        Me.label_info_ipact.TabIndex = 6
-        Me.label_info_ipact.Text = "IP Actual: "
+        Me.MenuConsola.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuConsola_Copiar, Me.MenuConsola_SelTodo, Me.ToolStripMenuItem3, Me.MenuConsola_Limpiar})
+        Me.MenuConsola.Name = "MenuConsola"
+        Me.MenuConsola.Size = New System.Drawing.Size(156, 76)
         '
-        'txtbox_info_ipact
+        'MenuConsola_Copiar
         '
-        Me.txtbox_info_ipact.BackColor = System.Drawing.Color.DarkGreen
-        Me.txtbox_info_ipact.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtbox_info_ipact.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtbox_info_ipact.ForeColor = System.Drawing.Color.White
-        Me.txtbox_info_ipact.Location = New System.Drawing.Point(71, 16)
-        Me.txtbox_info_ipact.Name = "txtbox_info_ipact"
-        Me.txtbox_info_ipact.ReadOnly = True
-        Me.txtbox_info_ipact.Size = New System.Drawing.Size(93, 13)
-        Me.txtbox_info_ipact.TabIndex = 7
-        Me.txtbox_info_ipact.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.MenuConsola_Copiar.Name = "MenuConsola_Copiar"
+        Me.MenuConsola_Copiar.Size = New System.Drawing.Size(155, 22)
+        Me.MenuConsola_Copiar.Text = "&Copiar"
         '
-        'txtbox_info_ipant
+        'MenuConsola_SelTodo
         '
-        Me.txtbox_info_ipant.BackColor = System.Drawing.Color.DarkRed
-        Me.txtbox_info_ipant.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtbox_info_ipant.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtbox_info_ipant.ForeColor = System.Drawing.Color.White
-        Me.txtbox_info_ipant.Location = New System.Drawing.Point(238, 16)
-        Me.txtbox_info_ipant.Name = "txtbox_info_ipant"
-        Me.txtbox_info_ipant.ReadOnly = True
-        Me.txtbox_info_ipant.Size = New System.Drawing.Size(93, 13)
-        Me.txtbox_info_ipant.TabIndex = 9
-        Me.txtbox_info_ipant.Text = " "
-        Me.txtbox_info_ipant.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.MenuConsola_SelTodo.Name = "MenuConsola_SelTodo"
+        Me.MenuConsola_SelTodo.Size = New System.Drawing.Size(155, 22)
+        Me.MenuConsola_SelTodo.Text = "Seleccionar &Todo"
         '
-        'label_info_ipant
+        'ToolStripMenuItem3
         '
-        Me.label_info_ipant.AutoSize = True
-        Me.label_info_ipant.Location = New System.Drawing.Point(170, 16)
-        Me.label_info_ipant.Name = "label_info_ipant"
-        Me.label_info_ipant.Size = New System.Drawing.Size(62, 13)
-        Me.label_info_ipant.TabIndex = 8
-        Me.label_info_ipant.Text = "IP Anterior: "
+        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(152, 6)
         '
-        'GrupoOtros
+        'MenuConsola_Limpiar
         '
-        Me.GrupoOtros.Controls.Add(Me.boton_ocultar)
-        Me.GrupoOtros.Controls.Add(Me.boton_Acercade)
-        Me.GrupoOtros.Controls.Add(Me.label_info_ipant)
-        Me.GrupoOtros.Controls.Add(Me.txtbox_info_ipact)
-        Me.GrupoOtros.Controls.Add(Me.label_info_ipact)
-        Me.GrupoOtros.Controls.Add(Me.txtbox_info_ipant)
-        Me.GrupoOtros.Location = New System.Drawing.Point(3, 443)
-        Me.GrupoOtros.Name = "GrupoOtros"
-        Me.GrupoOtros.Size = New System.Drawing.Size(656, 39)
-        Me.GrupoOtros.TabIndex = 14
-        Me.GrupoOtros.TabStop = False
-        Me.GrupoOtros.Text = "Otros"
-        '
-        'boton_ocultar
-        '
-        Me.boton_ocultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.boton_ocultar.Location = New System.Drawing.Point(455, 11)
-        Me.boton_ocultar.Name = "boton_ocultar"
-        Me.boton_ocultar.Size = New System.Drawing.Size(93, 23)
-        Me.boton_ocultar.TabIndex = 10
-        Me.boton_ocultar.Text = "&Ocultar"
-        Me.boton_ocultar.UseVisualStyleBackColor = True
-        '
-        'boton_Acercade
-        '
-        Me.boton_Acercade.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.boton_Acercade.Location = New System.Drawing.Point(554, 11)
-        Me.boton_Acercade.Name = "boton_Acercade"
-        Me.boton_Acercade.Size = New System.Drawing.Size(93, 23)
-        Me.boton_Acercade.TabIndex = 8
-        Me.boton_Acercade.Text = "&Acerca De"
-        Me.boton_Acercade.UseVisualStyleBackColor = True
+        Me.MenuConsola_Limpiar.Name = "MenuConsola_Limpiar"
+        Me.MenuConsola_Limpiar.Size = New System.Drawing.Size(155, 22)
+        Me.MenuConsola_Limpiar.Text = "&Limpiar Consola"
         '
         'TD_Tray
         '
@@ -368,72 +322,171 @@ Partial Class TelnetDeluxe
         '
         Me.Timer_ConexInet.Interval = 2000
         '
-        'PictureBox2
+        'TDBarraEstado
         '
-        Me.PictureBox2.BackColor = System.Drawing.SystemColors.Control
-        Me.PictureBox2.Image = Global.TelnetDeluxe.My.Resources.Resources.Gui_Firefox
-        Me.PictureBox2.Location = New System.Drawing.Point(516, 39)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(26, 26)
-        Me.PictureBox2.TabIndex = 15
-        Me.PictureBox2.TabStop = False
+        Me.TDBarraEstado.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TDBE_labelinfo, Me.TDBE_Progreso, Me.TDLB_Progreso})
+        Me.TDBarraEstado.Location = New System.Drawing.Point(0, 435)
+        Me.TDBarraEstado.Name = "TDBarraEstado"
+        Me.TDBarraEstado.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
+        Me.TDBarraEstado.Size = New System.Drawing.Size(683, 22)
+        Me.TDBarraEstado.SizingGrip = False
+        Me.TDBarraEstado.TabIndex = 5
+        Me.TDBarraEstado.Text = "Barra de Estado"
         '
-        'PictureBox1
+        'TDBE_labelinfo
         '
-        Me.PictureBox1.Image = Global.TelnetDeluxe.My.Resources.Resources.Gui_Router
-        Me.PictureBox1.Location = New System.Drawing.Point(516, 11)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(26, 26)
-        Me.PictureBox1.TabIndex = 14
-        Me.PictureBox1.TabStop = False
+        Me.TDBE_labelinfo.AutoSize = False
+        Me.TDBE_labelinfo.ForeColor = System.Drawing.Color.Black
+        Me.TDBE_labelinfo.Name = "TDBE_labelinfo"
+        Me.TDBE_labelinfo.Size = New System.Drawing.Size(250, 17)
+        Me.TDBE_labelinfo.Text = "Telnet Deluxe cargado con éxito"
+        '
+        'TDBE_Progreso
+        '
+        Me.TDBE_Progreso.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.TDBE_Progreso.ForeColor = System.Drawing.Color.Orange
+        Me.TDBE_Progreso.Name = "TDBE_Progreso"
+        Me.TDBE_Progreso.Size = New System.Drawing.Size(150, 16)
+        Me.TDBE_Progreso.Style = System.Windows.Forms.ProgressBarStyle.Continuous
+        '
+        'TDLB_Progreso
+        '
+        Me.TDLB_Progreso.AutoSize = False
+        Me.TDLB_Progreso.ForeColor = System.Drawing.Color.Black
+        Me.TDLB_Progreso.Name = "TDLB_Progreso"
+        Me.TDLB_Progreso.Size = New System.Drawing.Size(36, 17)
+        Me.TDLB_Progreso.Text = "100%"
+        '
+        'Currante_ConseguirIP
+        '
+        '
+        'TD_MenuPrincipal
+        '
+        Me.TD_MenuPrincipal.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TD_MP_Funciones, Me.TD_MP_Opciones, Me.TD_MP_Herramientas, Me.TD_MP_AcercaDe})
+        Me.TD_MenuPrincipal.Location = New System.Drawing.Point(0, 0)
+        Me.TD_MenuPrincipal.Name = "TD_MenuPrincipal"
+        Me.TD_MenuPrincipal.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
+        Me.TD_MenuPrincipal.Size = New System.Drawing.Size(683, 24)
+        Me.TD_MenuPrincipal.TabIndex = 0
+        Me.TD_MenuPrincipal.Text = "MenuPrincipal"
+        '
+        'TD_MP_Funciones
+        '
+        Me.TD_MP_Funciones.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TD_MP_EjecutarComandos, Me.ToolStripMenuItem1, Me.MToolStripMenuItem, Me.TD_MP_Salir})
+        Me.TD_MP_Funciones.Name = "TD_MP_Funciones"
+        Me.TD_MP_Funciones.Size = New System.Drawing.Size(67, 20)
+        Me.TD_MP_Funciones.Text = "&Funciones"
+        '
+        'TD_MP_EjecutarComandos
+        '
+        Me.TD_MP_EjecutarComandos.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.TD_MP_EjecutarComandos.Name = "TD_MP_EjecutarComandos"
+        Me.TD_MP_EjecutarComandos.Size = New System.Drawing.Size(225, 22)
+        Me.TD_MP_EjecutarComandos.Text = "Ejecutar Comandos"
+        '
+        'ToolStripMenuItem1
+        '
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(222, 6)
+        '
+        'MToolStripMenuItem
+        '
+        Me.MToolStripMenuItem.Name = "MToolStripMenuItem"
+        Me.MToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
+        Me.MToolStripMenuItem.Text = "Minimizar al área de notificación"
+        '
+        'TD_MP_Salir
+        '
+        Me.TD_MP_Salir.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.TD_MP_Salir.Name = "TD_MP_Salir"
+        Me.TD_MP_Salir.Size = New System.Drawing.Size(225, 22)
+        Me.TD_MP_Salir.Text = "&Salir"
+        '
+        'TD_MP_Opciones
+        '
+        Me.TD_MP_Opciones.Name = "TD_MP_Opciones"
+        Me.TD_MP_Opciones.Size = New System.Drawing.Size(63, 20)
+        Me.TD_MP_Opciones.Text = "&Opciones"
+        '
+        'TD_MP_Herramientas
+        '
+        Me.TD_MP_Herramientas.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TD_MP_MostrarInfoSistema, Me.TD_MP_MostrarInfoRed, Me.TD_MP_ConseguirIP})
+        Me.TD_MP_Herramientas.Name = "TD_MP_Herramientas"
+        Me.TD_MP_Herramientas.Size = New System.Drawing.Size(83, 20)
+        Me.TD_MP_Herramientas.Text = "&Herramientas"
+        '
+        'TD_MP_MostrarInfoSistema
+        '
+        Me.TD_MP_MostrarInfoSistema.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.TD_MP_MostrarInfoSistema.Name = "TD_MP_MostrarInfoSistema"
+        Me.TD_MP_MostrarInfoSistema.Size = New System.Drawing.Size(228, 22)
+        Me.TD_MP_MostrarInfoSistema.Text = "Mostrar Información del Sistema"
+        '
+        'TD_MP_MostrarInfoRed
+        '
+        Me.TD_MP_MostrarInfoRed.Name = "TD_MP_MostrarInfoRed"
+        Me.TD_MP_MostrarInfoRed.Size = New System.Drawing.Size(228, 22)
+        Me.TD_MP_MostrarInfoRed.Text = "Mostrar Información de Red"
+        '
+        'TD_MP_ConseguirIP
+        '
+        Me.TD_MP_ConseguirIP.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.TD_MP_ConseguirIP.Name = "TD_MP_ConseguirIP"
+        Me.TD_MP_ConseguirIP.Size = New System.Drawing.Size(228, 22)
+        Me.TD_MP_ConseguirIP.Text = "Conseguir IP"
+        '
+        'TD_MP_AcercaDe
+        '
+        Me.TD_MP_AcercaDe.Name = "TD_MP_AcercaDe"
+        Me.TD_MP_AcercaDe.Size = New System.Drawing.Size(68, 20)
+        Me.TD_MP_AcercaDe.Text = "Acerca &De"
+        '
+        'Currante_Winsock
+        '
+        Me.Currante_Winsock.WorkerReportsProgress = True
         '
         'TelnetDeluxe
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(662, 494)
-        Me.Controls.Add(Me.GrupoOtros)
-        Me.Controls.Add(Me.GrupoConsola)
+        Me.BackColor = System.Drawing.SystemColors.Control
+        Me.ClientSize = New System.Drawing.Size(683, 457)
+        Me.Controls.Add(Me.TDBarraEstado)
+        Me.Controls.Add(Me.TD_MenuPrincipal)
         Me.Controls.Add(Me.GrupoConfig)
+        Me.Controls.Add(Me.GrupoConsola)
+        Me.ForeColor = System.Drawing.SystemColors.ControlText
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MainMenuStrip = Me.TD_MenuPrincipal
         Me.MaximizeBox = False
         Me.Name = "TelnetDeluxe"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Telnet Deluxe"
         Me.GrupoConfig.ResumeLayout(False)
         Me.GrupoConfig.PerformLayout()
-        Me.GrupoConsola.ResumeLayout(False)
-        Me.GrupoOtros.ResumeLayout(False)
-        Me.GrupoOtros.PerformLayout()
-        Me.MenuTray.ResumeLayout(False)
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GrupoConsola.ResumeLayout(False)
+        Me.MenuConsola.ResumeLayout(False)
+        Me.MenuTray.ResumeLayout(False)
+        Me.TDBarraEstado.ResumeLayout(False)
+        Me.TDBarraEstado.PerformLayout()
+        Me.TD_MenuPrincipal.ResumeLayout(False)
+        Me.TD_MenuPrincipal.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents GrupoConfig As System.Windows.Forms.GroupBox
-    Friend WithEvents txtbox_conf_iprouter As System.Windows.Forms.TextBox
-    Friend WithEvents label_conf_iprouter As System.Windows.Forms.Label
-    Friend WithEvents txtbox_conf_puerto As System.Windows.Forms.TextBox
-    Friend WithEvents label_conf_puerto As System.Windows.Forms.Label
-    Friend WithEvents boton_actualizar As System.Windows.Forms.Button
     Friend WithEvents crono_principal As System.Windows.Forms.Timer
     Friend WithEvents GrupoConsola As System.Windows.Forms.GroupBox
     Friend WithEvents Consola As System.Windows.Forms.RichTextBox
-    Friend WithEvents label_estado As System.Windows.Forms.Label
     Friend WithEvents label_info_ipact As System.Windows.Forms.Label
     Friend WithEvents txtbox_info_ipant As System.Windows.Forms.TextBox
     Friend WithEvents label_info_ipant As System.Windows.Forms.Label
     Friend WithEvents txtbox_info_ipact As System.Windows.Forms.TextBox
-    Friend WithEvents txtbox_conf_refresco As System.Windows.Forms.TextBox
-    Friend WithEvents label_conf_refresco As System.Windows.Forms.Label
-    Friend WithEvents GrupoOtros As System.Windows.Forms.GroupBox
-    Friend WithEvents boton_Acercade As System.Windows.Forms.Button
-    Friend WithEvents Combo_inirouters As System.Windows.Forms.ComboBox
-    Friend WithEvents label_conf_inirouter As System.Windows.Forms.Label
-    Friend WithEvents boton_cargarini As System.Windows.Forms.Button
     Friend WithEvents TD_Tray As System.Windows.Forms.NotifyIcon
     Friend WithEvents MenuTray As System.Windows.Forms.ContextMenuStrip
-    Friend WithEvents boton_ocultar As System.Windows.Forms.Button
     Friend WithEvents RenovarIPToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RestaurarToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem2 As System.Windows.Forms.ToolStripSeparator
@@ -441,7 +494,32 @@ Partial Class TelnetDeluxe
     Friend WithEvents TD_ToolTip As System.Windows.Forms.ToolTip
     Friend WithEvents Timer_ConexInet As System.Windows.Forms.Timer
     Friend WithEvents label_inetconex As System.Windows.Forms.Label
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
+    Friend WithEvents TDBarraEstado As System.Windows.Forms.StatusStrip
+    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
+    Friend WithEvents label_estado As System.Windows.Forms.Label
+    Friend WithEvents TDBE_labelinfo As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents TDBE_Progreso As System.Windows.Forms.ToolStripProgressBar
+    Public WithEvents Currante_Ping As System.ComponentModel.BackgroundWorker
+    Friend WithEvents Currante_ConseguirIP As System.ComponentModel.BackgroundWorker
+    Friend WithEvents TDLB_Progreso As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents TD_MenuPrincipal As System.Windows.Forms.MenuStrip
+    Friend WithEvents TD_MP_Funciones As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents TD_MP_EjecutarComandos As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents TD_MP_Salir As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents TD_MP_Opciones As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents TD_MP_Herramientas As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents TD_MP_MostrarInfoSistema As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents TD_MP_ConseguirIP As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents TD_MP_AcercaDe As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents TD_MP_MostrarInfoRed As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenuConsola As System.Windows.Forms.ContextMenuStrip
+    Friend WithEvents MenuConsola_Copiar As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MenuConsola_SelTodo As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem3 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents MenuConsola_Limpiar As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents Currante_Winsock As System.ComponentModel.BackgroundWorker
 
 End Class

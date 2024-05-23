@@ -1,17 +1,13 @@
 Public NotInheritable Class TDSplash
 
-    'TODO: Este formulario se puede establecer fácilmente como pantalla de bienvenida para la aplicación desde la ficha "Aplicación"
-    '  del Diseñador de proyectos ("Propiedades" bajo el menú "Proyecto").
-
-
-    Private Sub TDSplash_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        'Configure el texto del cuadro de diálogo en tiempo de ejecución según la información del ensamblado de la aplicación.  
-
-        'TODO: Personalice la información del ensamblado de la aplicación en el panel "Aplicación" del cuadro de diálogo 
-        '  propiedades del proyecto (bajo el menú "Proyecto").
-
-
-
+    Private Sub TDSplash_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+        Try
+            Me.Dispose(True)
+        Catch oEX As Exception
+            TelnetDeluxe.MostrarEnConsola(oEX.Message, "Error")
+            Exit Sub
+        End Try
     End Sub
+
 
 End Class

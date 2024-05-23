@@ -117,4 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="TableLayoutPanel1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAIAAAJYCAIAAADHXqDLAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAwpJREFUWEe9zIly
+        okAUheFrxIVdNlEWAWVxARTFZJKZ93+uORkqZTSKYFLT9VOf3X3bzrH8Q1jg/VdryvIPorL8jX6Kw+/y
+        gD9rwlt5eKPD4Q39FPu3wx5/dsHrYf+Kw8/s96+Ivkvxui/wL8UvdJ2i+IXoYXYvxe6F8N1jt3tB1Ijn
+        3e4ZkxXbZ1TLdvuMqJ7jdnvEyBn5cZvjsIY8PyK6pMzzEoc1ZGWeYeQaWVYiyrIDakR6yFJMXiNN94ja
+        s9mnG7z7oEg3BXb/2GwK1IZ1sVnjwXqHLlivd4hasNquV1vC94nVaouoEflqldNqmaPrLJc5ohtky2WG
+        uzOSbJng8IwkyRBdkiZJisNrxGkS4+6MOE4RxfEGNSLaxBEmz4iiNaIWhOsoxIOKMFyhNixW4QIPFkv0
+        wWKxRNSCebKYJ4Tvnfk8Qc2I5/OY5kGMLgiCGNENoiCIcHeGHwU+Dit8P0JfCH0/xOE1vND3cFfheSE6
+        sfC8BXY1zBbeDCNnzGZzRC1w5zMXD9wAkesGqA1O4Dp44PiIHMdHbbA9x/YI3zu27aE7zGx7hpEKa4Y+
+        sKwZonpcy3IxUjF10QfTqYvoEmc6dXB4jYkzneCuYjJx0Al7MrGxq8G0JyZGKkzTRics07Swu8/YMscW
+        jccWAlPUBmM6NvDAmCAyjAlqg24aukn43tF1EzVjrOtjTFZoY0SaNkZ3MDTNwMgZqqGpBqmqgW6hq6qO
+        uxoUXVV0UhQdfUFTFA2HNYw0ZaTRaKShE+popGLXGFkdySrJsoqAgh5AUmRJIUkaoUeQJUkmSZQRiaKM
+        WiGJooQHFYKESBAk1AxREERMnsGLAo/DCp4X0S0EnhdwVwMn8JxAHCegW/Acx+PuPizPsTyxLI++wLEs
+        h8PGDDl2yNFwyKET7HDIYvcgA3Y4YGkwGKLvM8CiQX+AqN8foG/Qx8Lzz/R6fUSP08PC82swvR7TI4bp
+        oVYwWHhwny7DdBnqdhnUjC4WJh/j6amLqJ4nLIz8IJ3OE6JLOlg4/E8Qdf71rfUXouqDmOl8xisAAAAA
+        SUVORK5CYII=
+</value>
+  </data>
+  <data name="lbl_acercade_licenciadlx.Text" xml:space="preserve">
+    <value>Todos los productos, nombres de compañías, logos, etc.. usados en este pueden ser marcas de fábrica y/o marcas de servicio de sus respectivos propietarios.
+Abra el archivo "Leeme.txt" para encontrar más información
+
+Gracias por usar Telnet Deluxe
+__________________________________________________________________</value>
+  </data>
 </root>

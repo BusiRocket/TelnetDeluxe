@@ -18,7 +18,8 @@
     <ManifestKeyFile>TelnetDeluxe_TemporaryKey.pfx</ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
     <TargetZone>LocalIntranet</TargetZone>
-    <PublishUrl>publish\</PublishUrl>
+    <OptionStrict>On</OptionStrict>
+    <PublishUrl>D:\DeluxeSoftware\Telnet Deluxe\Publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -32,7 +33,7 @@
     <TargetCulture>es-ES</TargetCulture>
     <ProductName>TelnetDeluxe</ProductName>
     <PublisherName>Cristian Deluxe</PublisherName>
-    <ApplicationVersion>0.2.0.%2a</ApplicationVersion>
+    <ApplicationVersion>0.3.0.%2a</ApplicationVersion>
     <BootstrapperEnabled>false</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -42,7 +43,10 @@
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>TelnetDeluxe.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <NoWarn>
+    </NoWarn>
+    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -51,7 +55,10 @@
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>TelnetDeluxe.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <NoWarn>
+    </NoWarn>
+    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -73,6 +80,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Dlx_ToolBox.vb" />
+    <Compile Include="TD_Opciones.Designer.vb">
+      <DependentUpon>TD_Opciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TD_Opciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Settings.vb" />
     <Compile Include="TDSplash.Designer.vb">
       <DependentUpon>TDSplash.vb</DependentUpon>
@@ -108,10 +122,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="TelnetFunciones.vb" />
+    <Compile Include="Dlx_INIMgr.vb" />
     <Compile Include="UniversalDeluxe.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="TD_Opciones.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>TD_Opciones.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TDSplash.resx">
       <SubType>Designer</SubType>
       <DependentUpon>TDSplash.vb</DependentUpon>
@@ -146,9 +164,10 @@
     <None Include="88x31.png" />
     <BaseApplicationManifest Include="My Project\app.manifest" />
     <Content Include="modem.ico" />
-    <None Include="Resources\FondoConsola.png" />
-    <None Include="Resources\FondoSpl.png" />
+    <None Include="Resources\adslzone.gif" />
     <None Include="Resources\Splash.png" />
+    <None Include="Resources\FondoSpl.png" />
+    <None Include="Resources\FondoConsola.png" />
     <None Include="Resources\Gui_Firefox.png" />
     <None Include="Resources\Gui_Router.png" />
   </ItemGroup>

@@ -79,32 +79,30 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="Dlx_ToolBox.vb" />
-    <Compile Include="TD_Opciones.Designer.vb">
+    <Compile Include="Clases\ApplicationEvents.vb" />
+    <Compile Include="Clases\Dlx_ToolBox.vb" />
+    <Compile Include="Formularios\TD_Opciones.Designer.vb">
       <DependentUpon>TD_Opciones.vb</DependentUpon>
     </Compile>
-    <Compile Include="TD_Opciones.vb">
+    <Compile Include="Formularios\TD_Opciones.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Settings.vb" />
-    <Compile Include="TDSplash.Designer.vb">
+    <Compile Include="Formularios\TDSplash.Designer.vb">
       <DependentUpon>TDSplash.vb</DependentUpon>
     </Compile>
-    <Compile Include="TDSplash.vb">
+    <Compile Include="Formularios\TDSplash.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TD_AcercaDe.Designer.vb">
+    <Compile Include="Formularios\TD_AcercaDe.Designer.vb">
       <DependentUpon>TD_AcercaDe.vb</DependentUpon>
     </Compile>
-    <Compile Include="TD_AcercaDe.vb">
+    <Compile Include="Formularios\TD_AcercaDe.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TelnetDeluxe.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TelnetDeluxe.Designer.vb">
+    <Compile Include="Formularios\TelnetDeluxe.Designer.vb">
       <DependentUpon>TelnetDeluxe.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\TelnetDeluxe.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -122,25 +120,25 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Dlx_INIMgr.vb" />
-    <Compile Include="UniversalDeluxe.vb" />
+    <Compile Include="Clases\Dlx_INIMgr.vb" />
+    <Compile Include="Clases\UniversalDeluxe.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="TD_Opciones.resx">
+    <EmbeddedResource Include="Formularios\TD_Opciones.resx">
       <SubType>Designer</SubType>
       <DependentUpon>TD_Opciones.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TDSplash.resx">
+    <EmbeddedResource Include="Formularios\TDSplash.resx">
       <SubType>Designer</SubType>
       <DependentUpon>TDSplash.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TD_AcercaDe.resx">
+    <EmbeddedResource Include="Formularios\TD_AcercaDe.resx">
       <SubType>Designer</SubType>
       <DependentUpon>TD_AcercaDe.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TelnetDeluxe.resx">
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Formularios\TelnetDeluxe.resx">
       <DependentUpon>TelnetDeluxe.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -161,13 +159,19 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="88x31.png" />
     <BaseApplicationManifest Include="My Project\app.manifest" />
     <Content Include="modem.ico" />
-    <None Include="Resources\adslzone.gif" />
+    <Content Include="Resources\88x31.png" />
     <None Include="Resources\Splash.png" />
+    <None Include="Resources\FondoGeneral.png" />
+    <None Include="Resources\FondoInicio.png" />
+    <None Include="Resources\BotonTelnetOFF.png" />
+    <None Include="Resources\BotonTelnetON.png" />
+    <None Include="Resources\ComandosTelnet.png" />
+    <None Include="Resources\ComandosAbort.png" />
+    <None Include="Resources\ComandosOpciones.png" />
+    <None Include="Resources\adslzone.gif" />
     <None Include="Resources\FondoSpl.png" />
-    <None Include="Resources\FondoConsola.png" />
     <None Include="Resources\Gui_Firefox.png" />
     <None Include="Resources\Gui_Router.png" />
   </ItemGroup>

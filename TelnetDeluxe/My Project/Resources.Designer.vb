@@ -67,6 +67,34 @@ Namespace My.Resources
             End Get
         End Property
         
+        Friend ReadOnly Property BotonTelnetOFF() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("BotonTelnetOFF", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property BotonTelnetON() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("BotonTelnetON", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property FondoGeneral() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("FondoGeneral", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property FondoInicio() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("FondoInicio", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
         Friend ReadOnly Property FondoSpl() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("FondoSpl", resourceCulture)
@@ -92,6 +120,13 @@ Namespace My.Resources
             Get
                 Dim obj As Object = ResourceManager.GetObject("iconocc", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property modem() As System.Drawing.Icon
+            Get
+                Dim obj As Object = ResourceManager.GetObject("modem", resourceCulture)
+                Return CType(obj,System.Drawing.Icon)
             End Get
         End Property
         

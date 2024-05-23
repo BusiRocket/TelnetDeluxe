@@ -10,7 +10,28 @@ Namespace My
     Partial Friend Class MyApplication
 
         Private Sub MyApplication_StartupNextInstance(ByVal sender As Object, ByVal e As Microsoft.VisualBasic.ApplicationServices.StartupNextInstanceEventArgs) Handles Me.StartupNextInstance
-            TelnetDeluxe.IniciarTD(e)
+            Try
+                TelnetDeluxe.NuevaInstancia(e)
+                Exit Sub
+            Catch ex As Exception
+                Dim DlxToolBox As New Dlx_ToolBox
+                DlxToolBox.MostrarError(ex)
+                DlxToolBox = Nothing
+                Exit Sub
+            End Try
+        End Sub
+
+        Public Sub MyApplication_UnhandledException(ByVal sender As Object, ByVal e As Microsoft.VisualBasic.ApplicationServices.UnhandledExceptionEventArgs) Handles Me.UnhandledException
+            Try
+                Dim DlxToolBox As New Dlx_ToolBox
+                e.ExitApplication = False
+                DlxToolBox.MostrarError(e.Exception)
+                DlxToolBox = Nothing
+                Exit Sub
+            Catch ex As Exception
+                MessageBox.Show("Error No Controlado" & vbNewLine & ex.Message)
+                Exit Sub
+            End Try
         End Sub
     End Class
 

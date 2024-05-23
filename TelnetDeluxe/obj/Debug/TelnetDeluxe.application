@@ -4,14 +4,14 @@
   <description asmv2:publisher="Cristian Deluxe" asmv2:product="TelnetDeluxe" asmv2:supportUrl="http://deluxeworld.googlepages.com/" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" />
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="TelnetDeluxe.exe.manifest" size="2656">
+    <dependentAssembly dependencyType="install" codebase="TelnetDeluxe.exe.manifest" size="3035">
       <assemblyIdentity name="TelnetDeluxe.exe" version="0.3.0.0" publicKeyToken="0000000000000000" language="es-ES" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>6jTSobq+u/z6edMBlUKWV7Ipsho=</dsig:DigestValue>
+        <dsig:DigestValue>WDn2H1hlYonxIyYJ+Mw0NUtH9dY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

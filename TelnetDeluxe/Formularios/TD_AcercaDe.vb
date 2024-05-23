@@ -1,5 +1,6 @@
 Public NotInheritable Class TD_AcercaDe
     Dim UniDlxVars As New UniversalDeluxe
+    Dim Dlxtoolbox As New Dlx_ToolBox
 
     Private Sub TD_AcercaDe_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         lbl_acercade_version.Text = "Telnet Deluxe v" & UniDlxVars.Version & ". Algunos derechos reservados"
@@ -13,8 +14,8 @@ Public NotInheritable Class TD_AcercaDe
         Try
             System.Diagnostics.Process.Start("http://www.adslzone.net")
         Catch oEX As Exception
-            TelnetDeluxe.MostrarEnConsola(UniDlxVars.Traduccion("Error_Generico"), "Error")
-            TelnetDeluxe.MostrarEnConsola(oEX.Message, "Error")
+            Dlxtoolbox.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
+            DlxToolBox.MostrarError(oEX)
             Exit Sub
         End Try
     End Sub
@@ -24,8 +25,8 @@ Public NotInheritable Class TD_AcercaDe
             enlace_cc.LinkVisited = True
             System.Diagnostics.Process.Start(enlace_cc.Text)
         Catch oEX As Exception
-            TelnetDeluxe.MostrarEnConsola(UniDlxVars.Traduccion("Error_Generico"), "Error")
-            TelnetDeluxe.MostrarEnConsola(oEX.Message, "Error")
+            Dlxtoolbox.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
+            Dlxtoolbox.MostrarError(oEX)
             Exit Sub
         End Try
     End Sub
@@ -35,8 +36,8 @@ Public NotInheritable Class TD_AcercaDe
             lbl_acercade_email.LinkVisited = True
             System.Diagnostics.Process.Start("mailto:" & lbl_acercade_email.Text)
         Catch oEX As Exception
-            TelnetDeluxe.MostrarEnConsola(UniDlxVars.Traduccion("Error_Generico"), "Error")
-            TelnetDeluxe.MostrarEnConsola(oEX.Message, "Error")
+            Dlxtoolbox.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
+            Dlxtoolbox.MostrarError(oEX)
             Exit Sub
         End Try
     End Sub
@@ -46,8 +47,8 @@ Public NotInheritable Class TD_AcercaDe
             lbl_acercade_dirweb.LinkVisited = True
             System.Diagnostics.Process.Start(lbl_acercade_dirweb.Text)
         Catch oEX As Exception
-            TelnetDeluxe.MostrarEnConsola(UniDlxVars.Traduccion("Error_Generico"), "Error")
-            TelnetDeluxe.MostrarEnConsola(oEX.Message, "Error")
+            Dlxtoolbox.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
+            Dlxtoolbox.MostrarError(oEX)
             Exit Sub
         End Try
     End Sub
@@ -56,8 +57,8 @@ Public NotInheritable Class TD_AcercaDe
         Try
             System.Diagnostics.Process.Start("http://creativecommons.org/licenses/by-nc-sa/3.0/")
         Catch oEX As Exception
-            TelnetDeluxe.MostrarEnConsola(UniDlxVars.Traduccion("Error_Generico"), "Error")
-            TelnetDeluxe.MostrarEnConsola(oEX.Message, "Error")
+            Dlxtoolbox.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
+            Dlxtoolbox.MostrarError(oEX)
             Exit Sub
         End Try
     End Sub

@@ -21,40 +21,37 @@ Partial Class TDSplash
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(TDSplash))
-        Me.MainLayoutPanel = New System.Windows.Forms.TableLayoutPanel
+        Me.Splash = New System.Windows.Forms.PictureBox
+        CType(Me.Splash, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'MainLayoutPanel
+        'Splash
         '
-        Me.MainLayoutPanel.BackgroundImage = CType(resources.GetObject("MainLayoutPanel.BackgroundImage"), System.Drawing.Image)
-        Me.MainLayoutPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.MainLayoutPanel.ColumnCount = 1
-        Me.MainLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 243.0!))
-        Me.MainLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.MainLayoutPanel.Location = New System.Drawing.Point(0, 0)
-        Me.MainLayoutPanel.Name = "MainLayoutPanel"
-        Me.MainLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 218.0!))
-        Me.MainLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38.0!))
-        Me.MainLayoutPanel.Size = New System.Drawing.Size(462, 257)
-        Me.MainLayoutPanel.TabIndex = 0
+        Me.Splash.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.Splash.Image = Global.TelnetDeluxe.My.Resources.Resources.Splash
+        Me.Splash.Location = New System.Drawing.Point(0, 0)
+        Me.Splash.Name = "Splash"
+        Me.Splash.Size = New System.Drawing.Size(463, 257)
+        Me.Splash.TabIndex = 1
+        Me.Splash.TabStop = False
         '
         'TDSplash
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(462, 257)
+        Me.ClientSize = New System.Drawing.Size(461, 255)
         Me.ControlBox = False
-        Me.Controls.Add(Me.MainLayoutPanel)
+        Me.Controls.Add(Me.Splash)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "TDSplash"
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        CType(Me.Splash, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents MainLayoutPanel As System.Windows.Forms.TableLayoutPanel
+    Friend WithEvents Splash As System.Windows.Forms.PictureBox
 
 End Class

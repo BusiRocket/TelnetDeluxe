@@ -1,0 +1,16 @@
+private0|0/tcp|reserved
+private0|0/udp|reserved
+rtmp|1/ddp|routing table maintenance protocol
+tcpmux|1/tcp|tcp port service multiplexer [rfc-1078], tcp port service multiplexer, tcp port multiplexer (rfc1078)
+tcpmux|1/udp|tcp port service multiplexer
+nbp|2/ddp|name binding protocol
+compressnet|2/tcp|management utility
+compressnet|2/udp|management utility
+compressnet|3/tcp|compression process
+compressnet|3/udp|compression process
+echo|4/ddp|appletalk echo protocol
+rje|5/tcp|remote job entry
+rje|5/udp|remote job entry
+zip|6/ddp|zone information protocol
+echo|7/tcp|echo
+echo|7/udp|echo

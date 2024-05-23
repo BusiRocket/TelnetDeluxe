@@ -102,20 +102,6 @@ Namespace My.Resources
             End Get
         End Property
         
-        Friend ReadOnly Property Gui_Firefox() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("Gui_Firefox", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        Friend ReadOnly Property Gui_Router() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("Gui_Router", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
         Friend ReadOnly Property iconocc() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("iconocc", resourceCulture)
@@ -123,9 +109,9 @@ Namespace My.Resources
             End Get
         End Property
         
-        Friend ReadOnly Property modem() As System.Drawing.Icon
+        Friend ReadOnly Property IconoPrincipal() As System.Drawing.Icon
             Get
-                Dim obj As Object = ResourceManager.GetObject("modem", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("IconoPrincipal", resourceCulture)
                 Return CType(obj,System.Drawing.Icon)
             End Get
         End Property

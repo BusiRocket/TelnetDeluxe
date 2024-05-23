@@ -1,2 +1,44 @@
-29/09/2007 14:16:20 - Ha ocurrido un error
-29/09/2007 14:19:47 - Ha ocurrido un error
+Error, el html descargado no contiene ninguna IP
+No es posible conectar con el servidor remoto
+08/01/08[00:39:53] Error, el html descargado no contiene ninguna IP
+08/01/08[00:39:53] Se excedió el tiempo de espera de la operación
+08/01/08[22:12:19] Error registrado el: 08/01/2008 22:12:19
+     Error detallado: 
+08/01/08[22:12:19] Error en el servidor remoto: (404) No se encontró.
+08/01/08[22:12:20] Error registrado el: 08/01/2008 22:12:20
+     Error detallado: 
+08/01/08[22:12:20] Error en el servidor remoto: (404) No se encontró.
+08/01/08[22:12:21] Error registrado el: 08/01/2008 22:12:21
+     Error detallado: 
+08/01/08[22:12:21] Error en el servidor remoto: (404) No se encontró.
+08/01/08[22:14:36] Error registrado el: 08/01/2008 22:14:36
+     Error detallado: 
+08/01/08[22:14:36] Error en el servidor remoto: (404) No se encontró.
+08/01/08[22:14:37] Error registrado el: 08/01/2008 22:14:37
+     Error detallado: 
+08/01/08[22:14:37] Error en el servidor remoto: (404) No se encontró.
+08/01/08[22:14:38] Error registrado el: 08/01/2008 22:14:38
+     Error detallado: 
+08/01/08[22:14:38] Error en el servidor remoto: (404) No se encontró.
+11/01/08[23:46:46] Error registrado el: 11/01/2008 23:46:46
+     Error detallado: 
+11/01/08[23:46:46] Error en el servidor remoto: (403) Prohibido.
+11/01/08[23:49:29] Error registrado el: 11/01/2008 23:49:29
+     Error detallado: 
+11/01/08[23:49:29] Error en el servidor remoto: (403) Prohibido.
+12/01/08[00:00:44] Error registrado el: 12/01/2008 0:00:44
+     Error detallado: 
+12/01/08[00:00:44] No es posible conectar con el servidor remoto
+12/01/08[00:00:44] System.Net.Sockets.SocketException: No se ha podido establecer conexión ya que el equipo de destino ha denegado activamente dicha conexión
+   en System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   en System.Net.Sockets.Socket.InternalConnect(EndPoint remoteEP)
+   en System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Int32 timeout, Exception& exception)
+12/01/08[00:00:44] System
+12/01/08[00:00:44]    en System.Net.HttpWebRequest.GetResponse()
+   en TelnetDeluxe.Deluxe.Sync_http.EnviarHTTP(String URLRaw) en D:\Mis documentos\Visual Studio 2005\Projects\TelnetDeluxe\TelnetDeluxe\Clases\Funciones\Sync.Http.vb:línea 192
+12/01/08[00:00:44] System.Net.WebResponse GetResponse()
+12/01/08[11:47:30] Ha ocurrido un error
+12/01/08[11:47:30] Error registrado el: 12/01/2008 11:47:30
+     Error detallado: 
+12/01/08[11:47:30] El valor no puede ser nulo.
+Nombre del parámetro: text

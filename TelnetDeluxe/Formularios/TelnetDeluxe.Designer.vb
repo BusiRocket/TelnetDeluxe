@@ -1,5 +1,5 @@
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class TelnetDeluxe
+Partial Class TD_Principal
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
@@ -20,14 +20,12 @@ Partial Class TelnetDeluxe
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(TelnetDeluxe))
-        Me.Currante_Ping = New System.ComponentModel.BackgroundWorker
-        Me.crono_principal = New System.Windows.Forms.Timer(Me.components)
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(TD_Principal))
         Me.Consola = New System.Windows.Forms.RichTextBox
         Me.MenuConsola = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.MenuConsola_Copiar = New System.Windows.Forms.ToolStripMenuItem
         Me.MenuConsola_SelTodo = New System.Windows.Forms.ToolStripMenuItem
-        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripSeparator
+        Me.MenuConsola_Separador = New System.Windows.Forms.ToolStripSeparator
         Me.MenuConsola_Limpiar = New System.Windows.Forms.ToolStripMenuItem
         Me.TD_Tray = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.MenuTray = New System.Windows.Forms.ContextMenuStrip(Me.components)
@@ -35,12 +33,10 @@ Partial Class TelnetDeluxe
         Me.RestaurarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripSeparator
         Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.Timer_ConexInet = New System.Windows.Forms.Timer(Me.components)
         Me.TDBarraEstado = New System.Windows.Forms.StatusStrip
         Me.TDBE_labelinfo = New System.Windows.Forms.ToolStripStatusLabel
         Me.TDBE_Progreso = New System.Windows.Forms.ToolStripProgressBar
         Me.TDLB_Progreso = New System.Windows.Forms.ToolStripStatusLabel
-        Me.Currante_ConseguirIP = New System.ComponentModel.BackgroundWorker
         Me.TD_MenuPrincipal = New System.Windows.Forms.MenuStrip
         Me.TD_MP_Funciones = New System.Windows.Forms.ToolStripMenuItem
         Me.TD_MP_EjecutarComandos = New System.Windows.Forms.ToolStripMenuItem
@@ -52,27 +48,19 @@ Partial Class TelnetDeluxe
         Me.TD_MP_MostrarInfoRed = New System.Windows.Forms.ToolStripMenuItem
         Me.TD_MP_ConseguirIP = New System.Windows.Forms.ToolStripMenuItem
         Me.TD_MP_AcercaDe = New System.Windows.Forms.ToolStripMenuItem
-        Me.Currante_Winsock = New System.ComponentModel.BackgroundWorker
         Me.PictureBox1 = New System.Windows.Forms.PictureBox
         Me.label_estado = New System.Windows.Forms.Label
         Me.txtbox_info_ipant = New System.Windows.Forms.TextBox
         Me.label_inetconex = New System.Windows.Forms.Label
         Me.txtbox_info_ipact = New System.Windows.Forms.TextBox
         Me.EComandos = New System.Windows.Forms.Button
-        Me.Label1 = New System.Windows.Forms.Label
+        Me.lbl_consola = New System.Windows.Forms.Label
         Me.MenuConsola.SuspendLayout()
         Me.MenuTray.SuspendLayout()
         Me.TDBarraEstado.SuspendLayout()
         Me.TD_MenuPrincipal.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'Currante_Ping
-        '
-        '
-        'crono_principal
-        '
-        Me.crono_principal.Interval = 1500
         '
         'Consola
         '
@@ -98,8 +86,9 @@ Partial Class TelnetDeluxe
         '
         'MenuConsola
         '
+        Me.MenuConsola.BackColor = System.Drawing.Color.Black
         Me.MenuConsola.BackgroundImage = Global.TelnetDeluxe.My.Resources.Resources.FondoGeneral
-        Me.MenuConsola.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuConsola_Copiar, Me.MenuConsola_SelTodo, Me.ToolStripMenuItem3, Me.MenuConsola_Limpiar})
+        Me.MenuConsola.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MenuConsola_Copiar, Me.MenuConsola_SelTodo, Me.MenuConsola_Separador, Me.MenuConsola_Limpiar})
         Me.MenuConsola.Name = "MenuConsola"
         Me.MenuConsola.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
         Me.MenuConsola.ShowImageMargin = False
@@ -107,6 +96,7 @@ Partial Class TelnetDeluxe
         '
         'MenuConsola_Copiar
         '
+        Me.MenuConsola_Copiar.BackgroundImage = Global.TelnetDeluxe.My.Resources.Resources.FondoGeneral
         Me.MenuConsola_Copiar.ForeColor = System.Drawing.Color.GreenYellow
         Me.MenuConsola_Copiar.Name = "MenuConsola_Copiar"
         Me.MenuConsola_Copiar.Size = New System.Drawing.Size(130, 22)
@@ -114,15 +104,18 @@ Partial Class TelnetDeluxe
         '
         'MenuConsola_SelTodo
         '
+        Me.MenuConsola_SelTodo.BackgroundImage = Global.TelnetDeluxe.My.Resources.Resources.FondoGeneral
         Me.MenuConsola_SelTodo.ForeColor = System.Drawing.Color.GreenYellow
         Me.MenuConsola_SelTodo.Name = "MenuConsola_SelTodo"
         Me.MenuConsola_SelTodo.Size = New System.Drawing.Size(130, 22)
         Me.MenuConsola_SelTodo.Text = "Seleccionar &Todo"
         '
-        'ToolStripMenuItem3
+        'MenuConsola_Separador
         '
-        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(127, 6)
+        Me.MenuConsola_Separador.ForeColor = System.Drawing.Color.YellowGreen
+        Me.MenuConsola_Separador.Name = "MenuConsola_Separador"
+        Me.MenuConsola_Separador.Overflow = System.Windows.Forms.ToolStripItemOverflow.Always
+        Me.MenuConsola_Separador.Size = New System.Drawing.Size(127, 6)
         '
         'MenuConsola_Limpiar
         '
@@ -139,46 +132,43 @@ Partial Class TelnetDeluxe
         Me.TD_Tray.ContextMenuStrip = Me.MenuTray
         Me.TD_Tray.Icon = CType(resources.GetObject("TD_Tray.Icon"), System.Drawing.Icon)
         Me.TD_Tray.Text = "Telnet Deluxe"
-        Me.TD_Tray.Visible = True
         '
         'MenuTray
         '
+        Me.MenuTray.BackColor = System.Drawing.Color.Black
         Me.MenuTray.BackgroundImage = Global.TelnetDeluxe.My.Resources.Resources.FondoGeneral
         Me.MenuTray.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RenovarIPToolStripMenuItem, Me.RestaurarToolStripMenuItem, Me.ToolStripMenuItem2, Me.SalirToolStripMenuItem})
         Me.MenuTray.Name = "MenuTray"
         Me.MenuTray.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
         Me.MenuTray.ShowImageMargin = False
-        Me.MenuTray.Size = New System.Drawing.Size(104, 76)
+        Me.MenuTray.Size = New System.Drawing.Size(128, 98)
         '
         'RenovarIPToolStripMenuItem
         '
+        Me.RenovarIPToolStripMenuItem.BackgroundImage = Global.TelnetDeluxe.My.Resources.Resources.FondoGeneral
         Me.RenovarIPToolStripMenuItem.ForeColor = System.Drawing.Color.GreenYellow
         Me.RenovarIPToolStripMenuItem.Name = "RenovarIPToolStripMenuItem"
-        Me.RenovarIPToolStripMenuItem.Size = New System.Drawing.Size(103, 22)
+        Me.RenovarIPToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
         Me.RenovarIPToolStripMenuItem.Text = "&Renovar IP"
         '
         'RestaurarToolStripMenuItem
         '
         Me.RestaurarToolStripMenuItem.ForeColor = System.Drawing.Color.GreenYellow
         Me.RestaurarToolStripMenuItem.Name = "RestaurarToolStripMenuItem"
-        Me.RestaurarToolStripMenuItem.Size = New System.Drawing.Size(103, 22)
+        Me.RestaurarToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
         Me.RestaurarToolStripMenuItem.Text = "Restaurar"
         '
         'ToolStripMenuItem2
         '
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(100, 6)
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(124, 6)
         '
         'SalirToolStripMenuItem
         '
         Me.SalirToolStripMenuItem.ForeColor = System.Drawing.Color.GreenYellow
         Me.SalirToolStripMenuItem.Name = "SalirToolStripMenuItem"
-        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(103, 22)
+        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
         Me.SalirToolStripMenuItem.Text = "Salir"
-        '
-        'Timer_ConexInet
-        '
-        Me.Timer_ConexInet.Interval = 2000
         '
         'TDBarraEstado
         '
@@ -218,11 +208,9 @@ Partial Class TelnetDeluxe
         Me.TDLB_Progreso.Size = New System.Drawing.Size(36, 17)
         Me.TDLB_Progreso.Text = "100%"
         '
-        'Currante_ConseguirIP
-        '
-        '
         'TD_MenuPrincipal
         '
+        Me.TD_MenuPrincipal.BackColor = System.Drawing.Color.Black
         Me.TD_MenuPrincipal.BackgroundImage = Global.TelnetDeluxe.My.Resources.Resources.FondoGeneral
         Me.TD_MenuPrincipal.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TD_MP_Funciones, Me.TD_MP_Opciones, Me.TD_MP_Herramientas, Me.TD_MP_AcercaDe})
         Me.TD_MenuPrincipal.Location = New System.Drawing.Point(0, 0)
@@ -234,6 +222,7 @@ Partial Class TelnetDeluxe
         '
         'TD_MP_Funciones
         '
+        Me.TD_MP_Funciones.BackColor = System.Drawing.Color.Black
         Me.TD_MP_Funciones.BackgroundImage = Global.TelnetDeluxe.My.Resources.Resources.FondoGeneral
         Me.TD_MP_Funciones.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TD_MP_EjecutarComandos, Me.MToolStripMenuItem, Me.TD_MP_Salir})
         Me.TD_MP_Funciones.ForeColor = System.Drawing.Color.GreenYellow
@@ -247,7 +236,8 @@ Partial Class TelnetDeluxe
         Me.TD_MP_EjecutarComandos.BackgroundImage = Global.TelnetDeluxe.My.Resources.Resources.FondoGeneral
         Me.TD_MP_EjecutarComandos.ForeColor = System.Drawing.Color.GreenYellow
         Me.TD_MP_EjecutarComandos.Name = "TD_MP_EjecutarComandos"
-        Me.TD_MP_EjecutarComandos.Size = New System.Drawing.Size(225, 22)
+        Me.TD_MP_EjecutarComandos.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.R), System.Windows.Forms.Keys)
+        Me.TD_MP_EjecutarComandos.Size = New System.Drawing.Size(265, 22)
         Me.TD_MP_EjecutarComandos.Text = "Ejecutar Comandos"
         '
         'MToolStripMenuItem
@@ -255,7 +245,8 @@ Partial Class TelnetDeluxe
         Me.MToolStripMenuItem.BackgroundImage = Global.TelnetDeluxe.My.Resources.Resources.FondoGeneral
         Me.MToolStripMenuItem.ForeColor = System.Drawing.Color.GreenYellow
         Me.MToolStripMenuItem.Name = "MToolStripMenuItem"
-        Me.MToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
+        Me.MToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.M), System.Windows.Forms.Keys)
+        Me.MToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
         Me.MToolStripMenuItem.Text = "Minimizar al área de notificación"
         '
         'TD_MP_Salir
@@ -264,19 +255,23 @@ Partial Class TelnetDeluxe
         Me.TD_MP_Salir.BackgroundImage = Global.TelnetDeluxe.My.Resources.Resources.FondoGeneral
         Me.TD_MP_Salir.ForeColor = System.Drawing.Color.GreenYellow
         Me.TD_MP_Salir.Name = "TD_MP_Salir"
-        Me.TD_MP_Salir.Size = New System.Drawing.Size(225, 22)
+        Me.TD_MP_Salir.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Q), System.Windows.Forms.Keys)
+        Me.TD_MP_Salir.Size = New System.Drawing.Size(265, 22)
         Me.TD_MP_Salir.Text = "&Salir"
         '
         'TD_MP_Opciones
         '
+        Me.TD_MP_Opciones.BackColor = System.Drawing.Color.Black
+        Me.TD_MP_Opciones.BackgroundImage = Global.TelnetDeluxe.My.Resources.Resources.FondoGeneral
         Me.TD_MP_Opciones.ForeColor = System.Drawing.Color.GreenYellow
         Me.TD_MP_Opciones.Name = "TD_MP_Opciones"
+        Me.TD_MP_Opciones.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
         Me.TD_MP_Opciones.Size = New System.Drawing.Size(63, 20)
         Me.TD_MP_Opciones.Text = "&Opciones"
         '
         'TD_MP_Herramientas
         '
-        Me.TD_MP_Herramientas.BackColor = System.Drawing.SystemColors.Control
+        Me.TD_MP_Herramientas.BackColor = System.Drawing.Color.Black
         Me.TD_MP_Herramientas.BackgroundImage = Global.TelnetDeluxe.My.Resources.Resources.FondoGeneral
         Me.TD_MP_Herramientas.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TD_MP_MostrarInfoSistema, Me.TD_MP_MostrarInfoRed, Me.TD_MP_ConseguirIP})
         Me.TD_MP_Herramientas.ForeColor = System.Drawing.Color.GreenYellow
@@ -307,19 +302,17 @@ Partial Class TelnetDeluxe
         Me.TD_MP_ConseguirIP.BackgroundImage = Global.TelnetDeluxe.My.Resources.Resources.FondoGeneral
         Me.TD_MP_ConseguirIP.ForeColor = System.Drawing.Color.GreenYellow
         Me.TD_MP_ConseguirIP.Name = "TD_MP_ConseguirIP"
+        Me.TD_MP_ConseguirIP.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.I), System.Windows.Forms.Keys)
         Me.TD_MP_ConseguirIP.Size = New System.Drawing.Size(228, 22)
         Me.TD_MP_ConseguirIP.Text = "Conseguir IP"
         '
         'TD_MP_AcercaDe
         '
+        Me.TD_MP_AcercaDe.BackColor = System.Drawing.Color.Black
         Me.TD_MP_AcercaDe.ForeColor = System.Drawing.Color.GreenYellow
         Me.TD_MP_AcercaDe.Name = "TD_MP_AcercaDe"
         Me.TD_MP_AcercaDe.Size = New System.Drawing.Size(68, 20)
         Me.TD_MP_AcercaDe.Text = "Acerca &De"
-        '
-        'Currante_Winsock
-        '
-        Me.Currante_Winsock.WorkerReportsProgress = True
         '
         'PictureBox1
         '
@@ -409,25 +402,25 @@ Partial Class TelnetDeluxe
         Me.EComandos.TabIndex = 1
         Me.EComandos.UseVisualStyleBackColor = False
         '
-        'Label1
+        'lbl_consola
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.ForeColor = System.Drawing.Color.GreenYellow
-        Me.Label1.Location = New System.Drawing.Point(7, 91)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(48, 13)
-        Me.Label1.TabIndex = 19
-        Me.Label1.Text = "Consola:"
+        Me.lbl_consola.AutoSize = True
+        Me.lbl_consola.BackColor = System.Drawing.Color.Transparent
+        Me.lbl_consola.ForeColor = System.Drawing.Color.GreenYellow
+        Me.lbl_consola.Location = New System.Drawing.Point(7, 91)
+        Me.lbl_consola.Name = "lbl_consola"
+        Me.lbl_consola.Size = New System.Drawing.Size(48, 13)
+        Me.lbl_consola.TabIndex = 19
+        Me.lbl_consola.Text = "Consola:"
         '
-        'TelnetDeluxe
+        'TD_Principal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.ClientSize = New System.Drawing.Size(679, 482)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.lbl_consola)
         Me.Controls.Add(Me.Consola)
         Me.Controls.Add(Me.EComandos)
         Me.Controls.Add(Me.txtbox_info_ipact)
@@ -442,7 +435,7 @@ Partial Class TelnetDeluxe
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.TD_MenuPrincipal
         Me.MaximizeBox = False
-        Me.Name = "TelnetDeluxe"
+        Me.Name = "TD_Principal"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Telnet Deluxe"
         Me.MenuConsola.ResumeLayout(False)
@@ -456,7 +449,6 @@ Partial Class TelnetDeluxe
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents crono_principal As System.Windows.Forms.Timer
     Friend WithEvents Consola As System.Windows.Forms.RichTextBox
     Friend WithEvents TD_Tray As System.Windows.Forms.NotifyIcon
     Friend WithEvents MenuTray As System.Windows.Forms.ContextMenuStrip
@@ -464,12 +456,9 @@ Partial Class TelnetDeluxe
     Friend WithEvents RestaurarToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem2 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents SalirToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents Timer_ConexInet As System.Windows.Forms.Timer
     Friend WithEvents TDBarraEstado As System.Windows.Forms.StatusStrip
     Friend WithEvents TDBE_labelinfo As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents TDBE_Progreso As System.Windows.Forms.ToolStripProgressBar
-    Public WithEvents Currante_Ping As System.ComponentModel.BackgroundWorker
-    Friend WithEvents Currante_ConseguirIP As System.ComponentModel.BackgroundWorker
     Friend WithEvents TDLB_Progreso As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents TD_MenuPrincipal As System.Windows.Forms.MenuStrip
     Friend WithEvents TD_MP_Funciones As System.Windows.Forms.ToolStripMenuItem
@@ -485,15 +474,14 @@ Partial Class TelnetDeluxe
     Friend WithEvents MenuConsola As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents MenuConsola_Copiar As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MenuConsola_SelTodo As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem3 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents MenuConsola_Separador As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents MenuConsola_Limpiar As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents Currante_Winsock As System.ComponentModel.BackgroundWorker
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents label_estado As System.Windows.Forms.Label
     Friend WithEvents txtbox_info_ipant As System.Windows.Forms.TextBox
     Friend WithEvents label_inetconex As System.Windows.Forms.Label
     Friend WithEvents txtbox_info_ipact As System.Windows.Forms.TextBox
     Friend WithEvents EComandos As System.Windows.Forms.Button
-    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents lbl_consola As System.Windows.Forms.Label
 
 End Class

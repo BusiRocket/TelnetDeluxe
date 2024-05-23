@@ -3,147 +3,133 @@ Option Explicit On
 Imports System.IO
 Imports System.Net
 Imports System.Net.Sockets
-Imports System.Net.NetworkInformation
 Imports System.Text
-Public Class TelnetDeluxe
+Imports TelnetDeluxe.Deluxe
+Public Class TD_Principal
     Inherits System.Windows.Forms.Form
 
-    ' Esta constante corresponde al valor del WParam del mensaje que se envia a la forma cuando se minimiza
-    Private Const SC_MINIMIZE As Int32 = &HF020&
+    Public Eventos As New DlxEventos
+    Private Errores As New DlxErrores
     Private UniDlxVars As New UniversalDeluxe
-    Private DlxToolBox As New Dlx_ToolBox
-    Private DlxTCP As New TcpClient
+    Private MainLoop As New Main_Loop
 
-    Public Estado As Dlx_ToolBox.Estado
-    Public ConfigTelnet As Dlx_ToolBox.CFGTelnet
-    Public OpcionesTD As Dlx_ToolBox.Opciones
-    Public ColorConsola As Dlx_ToolBox.ColorConsola
+    Private OpcionesMng As New DlxOpcionesManager
+    Private Variables As New DlxVariables
+    Private Crono As New DlxCrono
+    Private Informacion As New DlxInformacion
+    Private Formularios As New DlxFormularios
+    Public ToolBox As New DlxToolBox
 
-    Public Version As String = UniDlxVars.Version
-    Public TituloForm As String = "Telnet Deluxe v" & Version
+    Public miMutex As System.Threading.Mutex
 
-    '////////////////////////////////////////////////////////////////////
-    '/// Variables Generales
+    Public ConfigTelnet As Estructuras.CFGTelnet
+    Public OpcionesTD As Estructuras.Opciones_General
+    Public CProgreso As Estructuras.ComponentesProgreso
 
-
-    '////////////////////////////////////////////////////////////////////
-    '/// Variables para la conexión Winsock
-
-    Public DirPING As String = "208.69.34.230"
-    Dim LectorTCP As NetworkStream
-    Dim MensajeRecibido As Boolean = False
-
-    '////////////////////////////////////////////////////////////////////
-    '/// Variables Configuración para el Router
-    Public ComandoArray() As String
-
+    Dim FirstTime As Boolean = True
 
 
     ' ###########################################################
     ' <************ Funciones de los formularios ***************>
     ' ###########################################################
-    Public Sub NuevaInstancia(ByVal e As Microsoft.VisualBasic.ApplicationServices.StartupNextInstanceEventArgs)
+    Private Sub PrimeraApertura()
         Try
-            Dim tam As Integer = e.CommandLine.Count
-            Dim array(e.CommandLine.Count + 1) As String
+            Me.TD_Tray.Visible = False
+            Me.Text = Variables.TituloForm
 
-            e.BringToForeground = False
-            e.CommandLine.CopyTo(array, 1)
-            IniciarTD(array)
+            'Me.Show()
+            'Me.Focus()
+            'Me.Activate()
         Catch oEX As Exception
-            DlxToolBox.MostrarError(oEX)
-            DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
+            Errores.MostrarError(oEX)
+            Errores.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
             Exit Sub
         End Try
     End Sub
 
     Private Sub OpcionesDefecto()
         Try
-            Estado.EstamosConectados = False
-            Estado.ComprobarIP = False
-            Estado.NuevaIP = True
-            Estado.ConectadoAInet = False
-            Estado.MacroOK = True
-            Estado.IniRouterCargada = False
-            Estado.TarjetaRedConectada = True
+            Me.OpcionesTD = OpcionesMng.OpcionesObj()
 
-            OpcionesTD.Consola_MostrarHora = True
-            OpcionesTD.LOG_LoguearIPs = True
-            OpcionesTD.GUI_MinimToTray = False
-            OpcionesTD.LOG_LoguearErrores = True
-            OpcionesTD.LOG_MostrarErrDetallado = True
-            OpcionesTD.FUNC_IPShow_Web = "http://www.showmyip.com"
-            OpcionesTD.Telnet_Intervalo = 3
-            OpcionesTD.EsperaBallonTip = 1000
-
-            ColorConsola.Color_Fondo = Color.FromArgb(64, 64, 64)
-            ColorConsola.Color_defecto = Color.Yellow
-            ColorConsola.Color_info = Color.Orange
-            ColorConsola.Color_error = Color.Red
-            ColorConsola.Color_router = Color.White
-            ColorConsola.Color_accion = Color.YellowGreen
-            ColorConsola.Color_DirIP = Color.Aqua
-
+            Me.CProgreso.IconoNotificacion = Me.TD_Tray
+            Me.CProgreso.IN_Titulo = Variables.TituloForm
+            Me.CProgreso.IN_TipoIcono = ToolTipIcon.Info
+            Me.CProgreso.IN_Esperar = OpcionesTD.Opciones.EsperaBallonTip
+            Me.CProgreso.IN_Mensaje = String.Empty
+            Me.CProgreso.EtiquetaEstado = Me.TDBE_labelinfo
+            Me.CProgreso.Texto = String.Empty
+            Me.CProgreso.TextoDefecto = Variables.TituloForm
+            Me.CProgreso.EtiquetaProgreso = Me.TDLB_Progreso
+            Me.CProgreso.BarraProgreso = Me.TDBE_Progreso
+            Me.CProgreso.Progreso = 0
+            Me.CProgreso.ProgresoMax = 100
         Catch oEX As Exception
-            DlxToolBox.MostrarError(oEX)
-            DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
+            Errores.MostrarError(oEX)
+            Errores.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
+            Exit Sub
+        End Try
+    End Sub
+
+    Public Sub NuevaInstancia(ByVal e As Microsoft.VisualBasic.ApplicationServices.StartupNextInstanceEventArgs)
+        Try
+            Dim array(e.CommandLine.Count + 1) As String
+            e.BringToForeground = False
+            e.CommandLine.CopyTo(array, 1)
+            IniciarTD(array)
+            array = Nothing
+        Catch oEX As Exception
+            Errores.MostrarError(oEX)
+            Errores.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
             Exit Sub
         End Try
     End Sub
 
     Public Sub IniciarTD(ByVal comandos() As String)
         Try
-            Dim lineacomandos As String
-            Dim Mostrar As Boolean = True
-
             ' Definir valores por defecto
-            TDLB_Progreso.Text = "0%"
-            TDBE_Progreso.Value = 0
-            Timer_ConexInet.Enabled = True
-            TD_Tray.Visible = False
-            TD_Tray.Text = DlxToolBox.TituloForm
-            Me.Text = DlxToolBox.TituloForm
+            Me.TDLB_Progreso.Text = "0%"
+            Me.TDBE_Progreso.Value = 0
+            Me.TD_Tray.Text = Variables.TituloForm
 
-            OpcionesDefecto()
+            Me.OpcionesDefecto()
 
             ' Carga la configuración
-
-            TD_Opciones.CargarOpciones()
+            F_Opciones.CargarOpciones()
 
             ' Aplica las opciones
-            Consola.BackColor = ColorConsola.Color_Fondo
+            Me.Consola.BackColor = OpcionesTD.Opciones.ColorConsola.Color_Fondo
 
             ' Prepara el programa
-            LimpiarConsola()
-            DlxToolBox.Esperar(500)
+            If FirstTime = True Then
+                LimpiarConsola()
+                FirstTime = False
+            Else
+                Me.PrepararConsola()
+            End If
 
-            Me.Show()
-            Me.Focus()
-            Me.Activate()
+
 
             If comandos.Length > 1 Then
-                lineacomandos = UCase(comandos(1))
+                Dim lineacomandos As String = UCase(comandos(1))
+                Dim Mostrar As Boolean = True
                 If lineacomandos = "/RYC" Then
-                    DlxToolBox.Esperar(1000)
-                    Macro()
-                    While Not Estado.ConectadoAInet
-                        DlxToolBox.Esperar(100)
+                    EjecutarComandos()
+                    While Not OpcionesTD.Estado.Conexion_ConectadoaInternet
+                        Crono.Esperar(100)
                     End While
                     Me.Close()
                     Mostrar = True
                 ElseIf lineacomandos = "/RYCS" Then
                     IrATray()
-                    DlxToolBox.Esperar(1000)
-                    Macro()
-                    While Not Estado.ConectadoAInet
-                        DlxToolBox.Esperar(100)
+                    EjecutarComandos()
+                    While Not OpcionesTD.Estado.Conexion_ConectadoaInternet
+                        Crono.Esperar(100)
                     End While
                     Me.Close()
                     Mostrar = False
                 ElseIf lineacomandos = "/RENOVAR" Then
-                    DlxToolBox.Esperar(3000)
-                    Macro()
-                    Mostrar = False
+                    EjecutarComandos()
+                    Mostrar = True
                 ElseIf lineacomandos = "/CERRAR" Then
                     Me.Close()
                     Mostrar = False
@@ -151,7 +137,7 @@ Public Class TelnetDeluxe
                     IrATray()
                     Mostrar = False
                 Else
-                    'DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_ComandoBad") & lineacomandos & UniDlxVars.Traduccion("Error_ComandoBadFin"))
+                    'Errores.MostrarError(UniDlxVars.Traduccion("Error_ComandoBad") & lineacomandos & UniDlxVars.Traduccion("Error_ComandoBadFin"))
                     Mostrar = False
                 End If
 
@@ -164,20 +150,12 @@ Public Class TelnetDeluxe
                 Else
 
                 End If
+                lineacomandos = Nothing
+                Mostrar = Nothing
             End If
-            lineacomandos = Nothing
         Catch oEX As Exception
-            DlxToolBox.MostrarError(oEX)
-            DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
-            Exit Sub
-        End Try
-    End Sub
-
-    Shared Sub Main()
-        Try
-            'Application.Run(New TelnetDeluxe)
-        Catch oex As Exception
-            MessageBox.Show("ERROR: " & oex.Message)
+            Errores.MostrarError(oEX)
+            Errores.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
             Exit Sub
         End Try
     End Sub
@@ -185,53 +163,112 @@ Public Class TelnetDeluxe
     '////////////////////////////////////////////////////////////////////
     '/// Funciones del formulario
 
-    Private Sub TelnetDeluxe_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+    Private Sub TelnetDeluxe_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
-            Timer_ConexInet.Enabled = False
-            crono_principal.Enabled = False
-            TD_Tray.Visible = False
-            Estado.MacroOK = False
-            DlxToolBox.Esperar(200)
-            If Estado.EstamosConectados = True Then
-                Desconectar()
-            End If
-
-            TD_Opciones.GuardarIP()
-            Select Case Me.WindowState
-                Case FormWindowState.Normal
-                    Dim rect As Rectangle = Me.Bounds
-                Case Else
-                    Dim rect As Rectangle = Me.RestoreBounds
-            End Select
-
-        Catch ex As Exception
-            MessageBox.Show(UniDlxVars.Traduccion("Error_NoControlado") & vbNewLine & ex.Message & vbNewLine & ex.ToString)
+            Dim nuevaInstancia As Boolean
+            miMutex = New System.Threading.Mutex(True, "Telnet Deluxe", nuevaInstancia)
+            IniciarTD(Environment.GetCommandLineArgs())
+            nuevaInstancia = Nothing
+        Catch EX As Exception
+            Errores.MostrarVError(EX)
             Exit Sub
         End Try
     End Sub
 
-    Private Sub TelnetDeluxe_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub TelnetDeluxe_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         Try
-            Dim miMutex As System.Threading.Mutex
-            Dim nuevaInstancia As Boolean
-            miMutex = New System.Threading.Mutex(True, "Telnet Deluxe", nuevaInstancia)
-            IniciarTD(Environment.GetCommandLineArgs())
-        Catch EX As Exception
-            MessageBox.Show(UniDlxVars.Traduccion("Error_NoControlado") & vbNewLine & EX.Message)
+            TD_Tray.Visible = False
+            TD_Tray.Dispose()
+            Crono.Esperar(200)
+            'If OpcionesTD.Estado.Conexion_ConectadoaRouter = True Then
+            '    FuncRouter.Cerrar()
+            'End If
+            OpcionesMng.GuardarIP()
+        Catch ex As Exception
+            Errores.MostrarVError(ex)
+            Exit Sub
+        End Try
+    End Sub
+
+    Public Sub RouterConectado()
+        Try
+            Me.MostrarEnConsola(UniDlxVars.Traduccion("Console_Msg_ConexionOK"), Estructuras.MensajeConsola.MSG_Accion)
+            Me.MostrarEnConsola(UniDlxVars.Traduccion("Console_Msg_ConectadoA") & ConfigTelnet.IPRouter & UniDlxVars.Traduccion("Console_Msg_ConectadoAPuerto") & ConfigTelnet.Puerto, Estructuras.MensajeConsola.MSG_Accion)
+            Me.label_estado.Text = UniDlxVars.Traduccion("Gui_General_Conectado")
+            Me.label_estado.BackColor = Color.OliveDrab
+        Catch oEX As Exception
+            Errores.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
+            Errores.MostrarError(oEX)
+            Exit Sub
+        End Try
+    End Sub
+
+    Public Sub RouterDesconectado()
+        Try
+            Me.OpcionesTD.Estado.Conexion_ConectadoaRouter = False
+            Me.label_estado.Text = UniDlxVars.Traduccion("Gui_General_DesConectado")
+            Me.label_estado.BackColor = Color.Red
+            Me.MostrarEnConsola()
+            Me.MostrarEnConsola()
+            Me.MostrarEnConsola(UniDlxVars.Traduccion("Console_Msg_Desconectado"), Estructuras.MensajeConsola.MSG_Accion)
+            Me.Refresh()
+            'Dnet.ComprobarConexion()
+            Me.EComandos.Image = My.Resources.BotonTelnetON
+            Me.EComandos.Tag = "Enviar comandos Telnet"
+        Catch oEX As Exception
+            Errores.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
+            Errores.MostrarError(oEX)
+            Exit Sub
+        End Try
+    End Sub
+
+    Public Sub ConexionCambiada(ByVal conex As TelnetDeluxe.Deluxe.ArgumentosConexion)
+        Try
+            If conex.PConexion.Conectado Then
+                MainLoop.CronoConex.Interval = 15000
+                Me.label_inetconex.Text = UniDlxVars.Traduccion("Gui_General_Online")
+                Me.label_inetconex.BackColor = Color.OliveDrab
+                Me.OpcionesTD.Estado.Conexion_ConectadoaInternet = True
+                If Me.OpcionesTD.Opciones.IP_CompRsinc And Me.OpcionesTD.Estado.Accion_NuevaIP Then
+                    Me.OpcionesTD.Estado.Accion_NuevaIP = False
+                    Me.CProgreso.IN_Mensaje = UniDlxVars.Traduccion("Tray_Msg_Online")
+                    Formularios.MostrarTrayTip(Me.CProgreso)
+                    Me.ConseguirIpPublica()
+                End If
+                Me.OpcionesTD.MsgControl.NoHayTarjetaDeRed = True
+            Else
+                MainLoop.CronoConex.Interval = 2000
+                Me.label_inetconex.Text = UniDlxVars.Traduccion("Gui_General_Offline")
+                Me.label_inetconex.BackColor = Color.Red
+                Me.OpcionesTD.Estado.Conexion_ConectadoaInternet = False
+            End If
+
+            If Me.ToolBox.ComprobarRedLocal() = False Then
+                Errores.MostrarError(UniDlxVars.Traduccion("Error_NoTarjetaRed"))
+                Me.OpcionesTD.MsgControl.NoHayTarjetaDeRed = True
+                Me.OpcionesTD.Estado.Conexion_TarjetaRedDisp = False
+            Else
+                Me.OpcionesTD.MsgControl.NoHayTarjetaDeRed = False
+                Me.OpcionesTD.Estado.Conexion_TarjetaRedDisp = True
+            End If
+        Catch oEX As Exception
+            Errores.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
+            Errores.MostrarError(oEX)
             Exit Sub
         End Try
     End Sub
 
     Protected Overrides Sub WndProc(ByRef m As Message)
         Try
+            Const SC_MINIMIZE As Int32 = &HF020&
             MyBase.WndProc(m)
             If CLng(m.WParam.ToInt32) = SC_MINIMIZE Then
-                If OpcionesTD.GUI_MinimToTray = True Then
+                If OpcionesTD.Opciones.GUI_MinimToTray = True Then
                     IrATray()
                 End If
             End If
-        Catch oEX As Exception
-            DlxToolBox.MostrarError(oEX)
+        Catch oEX As TypeInitializationException
+            'Errores.MostrarError(oEX)
             Exit Sub
         End Try
     End Sub
@@ -241,9 +278,9 @@ Public Class TelnetDeluxe
 
     Private Sub TD_MP_AcercaDe_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TD_MP_AcercaDe.Click
         Try
-            TD_AcercaDe.Show()
+            F_AcercaDe.Show()
         Catch oEX As Exception
-            DlxToolBox.MostrarError(oEX)
+            Errores.MostrarError(oEX)
             Exit Sub
         End Try
     End Sub
@@ -251,19 +288,18 @@ Public Class TelnetDeluxe
 
     Private Sub TD_MP_EjecutarComandos_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TD_MP_EjecutarComandos.Click
         Try
-            LimpiarConsola()
+            Me.PrepararConsola()
             ' Inis Router
             If String.IsNullOrEmpty(ConfigTelnet.Archivo) Then
-                MostrarEnConsola(UniDlxVars.Traduccion("Console_Msg_SeleccionaCFG"), Dlx_ToolBox.MensajeConsola.MSG_Info)
-            ElseIf File.Exists(DlxToolBox.CarpetaIniRouters & "\" & ConfigTelnet.Archivo) = False Then
-                DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_INIRouterBad") & ConfigTelnet.Archivo & ")")
+                MostrarEnConsola(UniDlxVars.Traduccion("Console_Msg_SeleccionaCFG"), Estructuras.MensajeConsola.MSG_Info)
+            ElseIf File.Exists(Variables.CarpetaIniRouters & "\" & ConfigTelnet.Archivo) = False Then
+                Errores.MostrarError(UniDlxVars.Traduccion("Error_INIRouterBad") & ConfigTelnet.Archivo & ")")
             Else
-                TD_Opciones.Combo_inirouters.Text = ConfigTelnet.Archivo
-                CargarIniRouter()
-                Macro()
+                F_Opciones.Combo_inirouters.Text = ConfigTelnet.Archivo
+                EjecutarComandos()
             End If
         Catch oEX As Exception
-            DlxToolBox.MostrarError(oEX)
+            Errores.MostrarError(oEX)
             Exit Sub
         End Try
     End Sub
@@ -272,7 +308,7 @@ Public Class TelnetDeluxe
         Try
             Me.Close()
         Catch oEX As Exception
-            DlxToolBox.MostrarError(oEX)
+            Errores.MostrarError(oEX)
             Exit Sub
         End Try
     End Sub
@@ -281,50 +317,49 @@ Public Class TelnetDeluxe
         Try
             IrATray()
         Catch oEX As Exception
-            DlxToolBox.MostrarError(oEX)
+            Errores.MostrarError(oEX)
             Exit Sub
         End Try
     End Sub
 
     Private Sub TD_MP_Opciones_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TD_MP_Opciones.Click
         Try
-            TD_Opciones.Show()
+            F_Opciones.Show()
         Catch oEX As Exception
-            DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
-            DlxToolBox.MostrarError(oEX)
+            Errores.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
+            Errores.MostrarError(oEX)
             Exit Sub
         End Try
     End Sub
 
     Private Sub TD_MP_MostrarInfoSistema_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TD_MP_MostrarInfoSistema.Click
         Try
-            DlxToolBox.MostrarInfoSistema()
+            Informacion.MostrarInfoSistema()
         Catch oEX As Exception
-            DlxToolBox.MostrarError(oEX)
+            Errores.MostrarError(oEX)
             Exit Sub
         End Try
     End Sub
 
     Private Sub TD_MP_MostrarInfoRed_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TD_MP_MostrarInfoRed.Click
         Try
-            DlxToolBox.MostrarInfoRed()
+            Informacion.MostrarInfoRed()
         Catch oEX As Exception
-            DlxToolBox.MostrarError(oEX)
+            Errores.MostrarError(oEX)
             Exit Sub
         End Try
     End Sub
 
     Private Sub TD_MP_ConseguirIP_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TD_MP_ConseguirIP.Click
         Try
-            Estado.NuevaIP = False
-            LeerIP()
+            OpcionesTD.Estado.Accion_NuevaIP = False
+            ConseguirIpPublica()
         Catch oEX As WebException
-            DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
-            DlxToolBox.MostrarError(oEX)
+            Errores.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
+            Errores.MostrarError(oEX)
             Exit Sub
         End Try
     End Sub
-
 
     '////////////////////////////////////////////////////////////////////
     '/// Funciones del menú de la consola
@@ -337,8 +372,8 @@ Public Class TelnetDeluxe
                 MenuConsola_Copiar.Enabled = False
             End If
         Catch oEX As Exception
-            DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
-            DlxToolBox.MostrarError(oEX)
+            Errores.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
+            Errores.MostrarError(oEX)
             Exit Sub
         End Try
     End Sub
@@ -347,8 +382,8 @@ Public Class TelnetDeluxe
         Try
             LimpiarConsola()
         Catch oEX As Exception
-            DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_NoPuedoCargarINI"))
-            DlxToolBox.MostrarError(oEX)
+            Errores.MostrarError(UniDlxVars.Traduccion("Error_NoPuedoCargarINI"))
+            Errores.MostrarError(oEX)
             Exit Sub
         End Try
     End Sub
@@ -359,18 +394,20 @@ Public Class TelnetDeluxe
             Consola.SelectionStart = 0
             Consola.SelectionLength = Consola.TextLength
         Catch oEX As Exception
-            DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
-            DlxToolBox.MostrarError(oEX)
+            Errores.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
+            Errores.MostrarError(oEX)
             Exit Sub
         End Try
     End Sub
 
     Private Sub MenuConsola_Copiar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MenuConsola_Copiar.Click
         Try
-            My.Computer.Clipboard.SetText(Consola.SelectedText)
+            If Consola.SelectedText.Length > 0 Then
+                My.Computer.Clipboard.SetText(Consola.SelectedText)
+            End If
         Catch oEX As Exception
-            DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
-            DlxToolBox.MostrarError(oEX)
+            Errores.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
+            Errores.MostrarError(oEX)
             Exit Sub
         End Try
     End Sub
@@ -379,30 +416,6 @@ Public Class TelnetDeluxe
     '////////////////////////////////////////////////////////////////////
     '/// Funciones Automatizadas
 
-    Private Sub crono_principal_Tick(ByVal sender As Object, ByVal e As System.EventArgs) Handles crono_principal.Tick
-        Try
-            ComprobarMensajes()
-        Catch oEX As Exception
-            DlxToolBox.MostrarError(oEX)
-            Exit Sub
-        End Try
-    End Sub
-
-    Private Sub Timer_ConexInet_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer_ConexInet.Tick
-        Try
-            ComprobarConexion()
-            If Estado.EjecutandoMacro = True Then
-                EComandos.Image = My.Resources.BotonTelnetOFF
-                EComandos.Tag = "Cancelar envío de Comandos"
-            Else
-                EComandos.Image = My.Resources.BotonTelnetON
-                EComandos.Tag = "Ejecutar Comandos Telnet"
-            End If
-        Catch oEX As Exception
-            DlxToolBox.MostrarError(oEX)
-            Exit Sub
-        End Try
-    End Sub
 
     Private Sub Consola_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles Consola.TextChanged
         Try
@@ -420,7 +433,7 @@ Public Class TelnetDeluxe
         Try
             SalirDeTray()
         Catch oEX As Exception
-            DlxToolBox.MostrarError(oEX)
+            Errores.MostrarError(oEX)
             Exit Sub
         End Try
     End Sub
@@ -429,7 +442,7 @@ Public Class TelnetDeluxe
         Try
             SalirDeTray()
         Catch oEX As Exception
-            DlxToolBox.MostrarError(oEX)
+            Errores.MostrarError(oEX)
             Exit Sub
         End Try
     End Sub
@@ -440,13 +453,14 @@ Public Class TelnetDeluxe
 
     Private Sub RenovarIPToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RenovarIPToolStripMenuItem.Click
         Try
-            MostrarTrayTip(UniDlxVars.Traduccion("Tray_Msg_RenovandoIP"))
-            Macro()
-
-            MostrarTrayTip(UniDlxVars.Traduccion("Tray_Msg_ComandosOK"))
+            CProgreso.IN_Mensaje = UniDlxVars.Traduccion("Tray_Msg_RenovandoIP")
+            Formularios.MostrarTrayTip(CProgreso)
+            EjecutarComandos()
+            CProgreso.IN_Mensaje = UniDlxVars.Traduccion("Tray_Msg_ComandosOK")
+            Formularios.MostrarTrayTip(CProgreso)
         Catch oEX As Exception
-            DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
-            DlxToolBox.MostrarError(oEX)
+            Errores.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
+            Errores.MostrarError(oEX)
             Exit Sub
         End Try
     End Sub
@@ -454,13 +468,13 @@ Public Class TelnetDeluxe
     ' ###########################################################
     ' <*************** Se ha cambiado la config ****************>
     ' ###########################################################
-
-    Public Sub ConfigCambiada()
+    Public Sub ConfigCambiada(ByVal NuevasOpciones As Estructuras.Opciones_General)
         Try
-            Consola.BackColor = ColorConsola.Color_Fondo
+            OpcionesTD = NuevasOpciones
+            Consola.BackColor = OpcionesTD.Opciones.ColorConsola.Color_Fondo
         Catch oEX As Exception
-            DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
-            DlxToolBox.MostrarError(oEX)
+            Errores.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
+            Errores.MostrarError(oEX)
             Exit Sub
         End Try
     End Sub
@@ -474,8 +488,8 @@ Public Class TelnetDeluxe
             TD_Tray.Visible = True
             ShowInTaskbar = False
         Catch oEX As Exception
-            DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
-            DlxToolBox.MostrarError(oEX)
+            Errores.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
+            Errores.MostrarError(oEX)
             Exit Sub
         End Try
     End Sub
@@ -487,21 +501,11 @@ Public Class TelnetDeluxe
             TD_Tray.Visible = False
             Me.Activate()
         Catch oEX As Exception
-            DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
-            DlxToolBox.MostrarError(oEX)
+            Errores.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
+            Errores.MostrarError(oEX)
             Exit Sub
         End Try
     End Sub
-
-    Private Sub MostrarTrayTip(ByVal MensajeTip As String)
-        If TD_Tray.Visible = True Then
-            TD_Tray.BalloonTipIcon = ToolTipIcon.Info
-            TD_Tray.BalloonTipTitle = DlxToolBox.TituloForm
-            TD_Tray.BalloonTipText = MensajeTip
-            TD_Tray.ShowBalloonTip(OpcionesTD.EsperaBallonTip)
-        End If
-    End Sub
-
 
     Sub MostrarProgresoBE(ByVal Progreso As Integer)
         Try
@@ -520,69 +524,76 @@ Public Class TelnetDeluxe
             End If
             TantoPorCiento = Nothing
         Catch oEX As Exception
-            DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
-            DlxToolBox.MostrarError(oEX)
+            Errores.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
+            Errores.MostrarError(oEX)
             Exit Sub
         End Try
     End Sub
 
     Sub MostrarInfoProgreso(ByVal info As String)
         Try
-            TD_Tray.Text = info
+            If info.Length >= 64 Then
+                TD_Tray.Text = info.Substring(0, 60) & "..."
+            Else
+                TD_Tray.Text = info
+            End If
             TDBE_labelinfo.Text = info
         Catch oEX As Exception
-            DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
-            DlxToolBox.MostrarError(oEX)
+            Errores.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
+            Errores.MostrarError(oEX)
             Exit Sub
         End Try
     End Sub
-
-
 
     ' ###########################################################
     ' <************* Funciones para la consola ****************>
     ' ###########################################################
 
-    Public Sub MostrarEnConsola(Optional ByVal Datos As String = "", Optional ByVal TipoMensaje As Dlx_ToolBox.MensajeConsola = Dlx_ToolBox.MensajeConsola.MSG_Defecto)
+    Public Sub MostrarEnConsola(Optional ByVal Datos As String = "", Optional ByVal TipoMensaje As Estructuras.MensajeConsola = Estructuras.MensajeConsola.MSG_Defecto)
         Try
             Dim TextoAEscribir As String
             Dim Pre_Consola As String = ""
 
-            If OpcionesTD.Consola_MostrarHora = True And String.IsNullOrEmpty(Datos) = False Then
-                Pre_Consola = DlxToolBox.MostrarHora
+            If OpcionesTD.Opciones.Consola_MostrarHora = True And String.IsNullOrEmpty(Datos) = False Then
+                Pre_Consola = Crono.DevolverFecha(True)
             End If
 
-            If String.IsNullOrEmpty(Datos) = False Then
-                TextoAEscribir = Datos & ControlChars.CrLf
+            If Consola.TextLength > 0 Then
+                Consola.SelectionStart = Consola.TextLength
+            End If
+
+            If TipoMensaje = Estructuras.MensajeConsola.MSG_Defecto Then
+                Consola.SelectionColor = OpcionesTD.Opciones.ColorConsola.Color_defecto
+            ElseIf TipoMensaje = Estructuras.MensajeConsola.MSG_Info Then
+                Consola.SelectionColor = OpcionesTD.Opciones.ColorConsola.Color_info
+            ElseIf TipoMensaje = Estructuras.MensajeConsola.MSG_Error Then
+                Consola.SelectionColor = OpcionesTD.Opciones.ColorConsola.Color_error
+            ElseIf TipoMensaje = Estructuras.MensajeConsola.MSG_Router Then
+                Consola.SelectionColor = OpcionesTD.Opciones.ColorConsola.Color_router
+                Pre_Consola = ""
+            ElseIf TipoMensaje = Estructuras.MensajeConsola.MSG_Accion Then
+                Consola.SelectionColor = OpcionesTD.Opciones.ColorConsola.Color_accion
+            ElseIf TipoMensaje = Estructuras.MensajeConsola.MSG_DirIP Then
+                Consola.SelectionColor = OpcionesTD.Opciones.ColorConsola.Color_DirIP
             Else
-                TextoAEscribir = Datos & ControlChars.CrLf
+                Consola.SelectionColor = OpcionesTD.Opciones.ColorConsola.Color_defecto
+            End If
+
+            TextoAEscribir = Datos
+
+            If TipoMensaje <> Estructuras.MensajeConsola.MSG_Router Then
+                TextoAEscribir = TextoAEscribir & ControlChars.CrLf
             End If
 
             TextoAEscribir = Pre_Consola & TextoAEscribir
-            Consola.SelectionStart = Consola.TextLength
 
-            If TipoMensaje = Dlx_ToolBox.MensajeConsola.MSG_Defecto Then
-                Consola.SelectionColor = ColorConsola.Color_defecto
-            ElseIf TipoMensaje = Dlx_ToolBox.MensajeConsola.MSG_Info Then
-                Consola.SelectionColor = ColorConsola.Color_info
-            ElseIf TipoMensaje = Dlx_ToolBox.MensajeConsola.MSG_Error Then
-                Consola.SelectionColor = ColorConsola.Color_error
-            ElseIf TipoMensaje = Dlx_ToolBox.MensajeConsola.MSG_Router Then
-                Consola.SelectionColor = ColorConsola.Color_router
-            ElseIf TipoMensaje = Dlx_ToolBox.MensajeConsola.MSG_Accion Then
-                Consola.SelectionColor = ColorConsola.Color_accion
-            ElseIf TipoMensaje = Dlx_ToolBox.MensajeConsola.MSG_DirIP Then
-                Consola.SelectionColor = ColorConsola.Color_DirIP
-            Else
-                Consola.SelectionColor = ColorConsola.Color_defecto
-            End If
             Consola.SelectedText = TextoAEscribir
             Consola.SelectionStart = Consola.Text.Length
             Consola.ScrollToCaret()
             TextoAEscribir = Nothing
             Pre_Consola = Nothing
         Catch ex As Exception
-            MessageBox.Show(UniDlxVars.Traduccion("Error_NoControlado") & ex.Message)
+            Errores.MostrarVError(ex)
             Exit Sub
         End Try
     End Sub
@@ -592,7 +603,22 @@ Public Class TelnetDeluxe
             Consola.Text = ""
             MensajeBienvenida()
         Catch ex As Exception
-            MessageBox.Show(UniDlxVars.Traduccion("Error_NoControlado") & ex.Message)
+            Errores.MostrarVError(ex)
+            Exit Sub
+        End Try
+    End Sub
+
+    Private Sub PrepararConsola()
+        Try
+            If OpcionesTD.Opciones.GUI_AutoLimpiarConsola Then
+                Me.LimpiarConsola()
+            Else
+                MostrarEnConsola()
+                MostrarEnConsola()
+            End If
+
+        Catch ex As Exception
+            Errores.MostrarVError(ex)
             Exit Sub
         End Try
     End Sub
@@ -600,144 +626,11 @@ Public Class TelnetDeluxe
     Private Sub MensajeBienvenida()
         Try
             MostrarEnConsola()
-            MostrarEnConsola(UniDlxVars.Traduccion("General_BienvenidaInfo"), Dlx_ToolBox.MensajeConsola.MSG_Info)
-            MostrarEnConsola(UniDlxVars.Traduccion("General_Comenzo") & System.DateTime.Now, Dlx_ToolBox.MensajeConsola.MSG_Info)
+            MostrarEnConsola(UniDlxVars.Traduccion("General_BienvenidaInfo"), Estructuras.MensajeConsola.MSG_Info)
+            MostrarEnConsola(UniDlxVars.Traduccion("General_Comenzo") & System.DateTime.Now, Estructuras.MensajeConsola.MSG_Info)
             MostrarEnConsola()
         Catch ex As Exception
-            MessageBox.Show(UniDlxVars.Traduccion("Error_NoControlado") & ex.Message)
-            Exit Sub
-        End Try
-    End Sub
-
-    ' ###########################################################
-    ' <****************** Funciones Telnet *********************>
-    ' ###########################################################
-
-    Private Sub Conectar()
-        Try
-            If My.Computer.Network.IsAvailable Then
-                Dim SolicitudPing As NetworkInformation.PingReply
-                Dim CliPing As New NetworkInformation.Ping
-                SolicitudPing = CliPing.Send(DirPING)
-
-
-                If SolicitudPing.Status = IPStatus.Success Then
-                    DlxTCP = New TcpClient(ConfigTelnet.IPRouter.Trim, CInt(ConfigTelnet.Puerto.Trim))
-                    If DlxTCP.Connected Then
-                        LectorTCP = DlxTCP.GetStream
-                        LectorTCP.ReadTimeout = 3
-                        LectorTCP.WriteTimeout = 3
-                        'MostrarEnConsola(DlxTCP.ReceiveTimeout.ToString, Dlx_ToolBox.MensajeConsola.MSG_DirIP)
-
-                        MostrarEnConsola(UniDlxVars.Traduccion("Console_Msg_ConexionOK"), Dlx_ToolBox.MensajeConsola.MSG_Accion)
-                        MostrarEnConsola(UniDlxVars.Traduccion("Console_Msg_ConectadoA") & ConfigTelnet.IPRouter & UniDlxVars.Traduccion("Console_Msg_ConectadoAPuerto") & ConfigTelnet.Puerto, Dlx_ToolBox.MensajeConsola.MSG_Accion)
-                        label_estado.Text = UniDlxVars.Traduccion("Gui_General_Conectado")
-                        label_estado.BackColor = Color.OliveDrab
-
-                        crono_principal.Enabled = True
-                        Estado.EstamosConectados = True
-                        Me.Refresh()
-                    Else
-                        DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_CompruebaIpPuerto"))
-                        Estado.EstamosConectados = False
-                        Estado.MacroOK = False
-                    End If
-                ElseIf SolicitudPing.Status = IPStatus.DestinationHostUnreachable Then
-                    DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_NoPING") & ConfigTelnet.IPRouter & UniDlxVars.Traduccion("Error_NoPING2"))
-                    Estado.EstamosConectados = False
-                    Estado.MacroOK = False
-                Else
-                    DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_NoPING") & ConfigTelnet.IPRouter & UniDlxVars.Traduccion("Error_NoPING2"))
-                    Estado.EstamosConectados = False
-                    Estado.MacroOK = False
-                End If
-                CliPing.Dispose()
-            Else
-                DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_NoTarjetaRed"))
-                Estado.EstamosConectados = False
-                Estado.MacroOK = False
-            End If
-        Catch oEX As SocketException
-            DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_NoPuedoConectar"))
-            DlxToolBox.MostrarError(oEX)
-            Estado.MacroOK = False
-            Exit Sub
-        End Try
-    End Sub
-
-    Private Sub Desconectar()
-        Try
-            DlxTCP.Close()
-            DlxTCP = Nothing
-            Estado.EstamosConectados = False
-            label_estado.Text = UniDlxVars.Traduccion("Gui_General_DesConectado")
-            label_estado.BackColor = Color.Red
-            MostrarEnConsola(UniDlxVars.Traduccion("Console_Msg_Desconectado"), Dlx_ToolBox.MensajeConsola.MSG_Accion)
-            Me.Refresh()
-            crono_principal.Enabled = False
-        Catch oEX As SocketException
-            DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_NoPuedoDesconectar"))
-            DlxToolBox.MostrarError(oEX)
-            Estado.MacroOK = False
-            Exit Sub
-        End Try
-    End Sub
-
-    Private Sub ComprobarMensajes()
-        Try
-            Dim CadenaRecibida As String = String.Empty
-            Dim NumBytes As Integer = 0
-            Dim BytesARecibir(1024) As [Byte]
-            Dim DatosParaRecibir As [Byte]()
-
-            If Estado.PararMacro = True Then
-                Exit Sub
-            ElseIf DlxTCP.Connected Then
-                If LectorTCP.DataAvailable Then
-                    DlxToolBox.Esperar(1000)
-                    DatosParaRecibir = New [Byte](256) {}
-                    If LectorTCP.CanRead Then
-                        Dim bytes As Int32 = LectorTCP.Read(DatosParaRecibir, 0, DatosParaRecibir.Length)
-                        CadenaRecibida = System.Text.Encoding.ASCII.GetString(DatosParaRecibir, 0, bytes)
-                        MostrarEnConsola(CadenaRecibida, Dlx_ToolBox.MensajeConsola.MSG_Router)
-                        MostrarInfoProgreso("Recibidos " & CadenaRecibida.Length.ToString & " Bytes")
-                        CadenaRecibida = Nothing
-                    Else
-                        DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_ConexionPerdida"))
-                    End If
-                Else
-                    MostrarEnConsola(UniDlxVars.Traduccion("Console_Msg_EsperandoRespuesta"), Dlx_ToolBox.MensajeConsola.MSG_Accion)
-                End If
-            Else
-                DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_ConexionPerdida"))
-                Estado.MacroOK = False
-            End If
-
-            CadenaRecibida = Nothing
-            NumBytes = Nothing
-            BytesARecibir = Nothing
-        Catch oEX As SocketException
-            Estado.MacroOK = False
-            DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_NoRespuestaRouter"))
-            DlxToolBox.MostrarError(oEX)
-            Exit Sub
-        End Try
-    End Sub
-
-    Private Sub EnviarComandos(ByVal comandos As String)
-        Try
-            Dim BytesParaEnviar As [Byte]() = Encoding.ASCII.GetBytes(comandos & vbCrLf)
-            If LectorTCP.CanWrite Then
-                LectorTCP.Write(BytesParaEnviar, 0, BytesParaEnviar.Length)
-                BytesParaEnviar = Nothing
-            Else
-                DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_NoPuedoEnviarComando"))
-                Estado.MacroOK = False
-            End If
-        Catch oEX As SocketException
-            DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_EnviandoComando"))
-            DlxToolBox.MostrarError(oEX)
-            Estado.MacroOK = False
+            Errores.MostrarVError(ex)
             Exit Sub
         End Try
     End Sub
@@ -746,350 +639,100 @@ Public Class TelnetDeluxe
     ' <****************** Funciones Generales ******************>
     ' ###########################################################
 
-    Public Sub Macro()
+    Public Sub EjecutarComandos()
         Try
-            Estado.MacroOK = True
-            Estado.PararMacro = False
-            TDLB_Progreso.Text = "0%"
-            TDBE_Progreso.Value = 0
-
-            Estado.EjecutandoMacro = True
-
-
-            If Estado.IniRouterCargada = False Then
-                CargarIniRouter()
-            End If
-
-            TDBE_Progreso.Maximum = ComandoArray.Length
-
-
-            If My.Computer.Network.IsAvailable = False Then
-                DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_NoTarjetaRed"))
-                DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_Macro"))
-                MostrarEnConsola()
-                Exit Sub
-            End If
-
-            'LeerIP()
-            Conectar()
-            DlxToolBox.Esperar(3000)
-
-            If Estado.EstamosConectados = False Then
-                DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_NoConectadoRouter"))
-                MostrarEnConsola()
-                Exit Sub
-            End If
-
-            For Each ComandoTelnet As String In ComandoArray
-                If Estado.MacroOK = True And Estado.PararMacro = False Then
-                    Me.Cursor = Cursors.WaitCursor
-                    MostrarProgresoBE(TDBE_Progreso.Value + 1)
-                    MostrarInfoProgreso("Enviando Comando: " & ComandoTelnet)
-                    EnviarComandos(ComandoTelnet)
-                    Me.Cursor = Cursors.Default
-                    DlxToolBox.Esperar(OpcionesTD.Telnet_Intervalo * 1000)
-                Else
-                    Exit For
-                End If
-            Next
-
-            Desconectar()
-            DlxToolBox.Esperar(3000)
-
-            If Estado.PararMacro = True Then
-                MostrarEnConsola()
-                MostrarEnConsola(UniDlxVars.Traduccion("Console_Msg_OperacionCancelada"), Dlx_ToolBox.MensajeConsola.MSG_Error)
-                Estado.ComprobarIP = False
-                Estado.NuevaIP = False
-            ElseIf Estado.MacroOK = True Then
-                MostrarEnConsola()
-                MostrarEnConsola(UniDlxVars.Traduccion("Console_Msg_ComandosOK"), Dlx_ToolBox.MensajeConsola.MSG_Accion)
-                MostrarEnConsola(UniDlxVars.Traduccion("Console_Msg_ComandosOKWait"), Dlx_ToolBox.MensajeConsola.MSG_Info)
-                MostrarEnConsola()
-                MostrarInfoProgreso(UniDlxVars.Traduccion("Console_Msg_ComandosOK"))
-                DlxToolBox.Esperar(3000)
-                ComprobarConexion()
-                Estado.ComprobarIP = True
-                Estado.NuevaIP = True
-            Else
-                MostrarEnConsola()
-                DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_Macro"))
-                MostrarEnConsola()
-                MostrarInfoProgreso(UniDlxVars.Traduccion("Error_Macro_General"))
-                DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_Macro_General"))
-                MostrarEnConsola()
-                MostrarProgresoBE(TDBE_Progreso.Maximum)
-                Estado.ComprobarIP = False
-            End If
-
-            EComandos.Image = My.Resources.BotonTelnetON
-            EComandos.Tag = "Ejecutar Comandos Telnet"
-            Estado.EjecutandoMacro = False
-            MostrarProgresoBE(0)
-            MostrarInfoProgreso("Telnet Deluxe...")
-
-        Catch oEX As Exception
-            DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_Macro_General"))
-            DlxToolBox.MostrarError(oEX)
-            MostrarProgresoBE(TDBE_Progreso.Maximum)
-            MostrarInfoProgreso("Ocurrió un error")
-            Desconectar()
+            Dim FuncRouter As New D_Sync
+            FuncRouter.RouterSync()
+            FuncRouter.Cerrar()
+        Catch ex As Exception
+            Errores.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
+            Errores.MostrarError(ex)
             Exit Sub
         End Try
     End Sub
-
 
     ' ###########################################################
     ' <****************** Funciones Internet *******************>
     ' ###########################################################
 
-    Sub LeerIP()
+    Private Sub ConseguirIpPublica()
         Try
-            MostrarEnConsola(UniDlxVars.Traduccion("Console_Msg_ConsiguiendoIP"), Dlx_ToolBox.MensajeConsola.MSG_Accion)
-            MostrarEnConsola(UniDlxVars.Traduccion("Console_Msg_EsperaLarga"), Dlx_ToolBox.MensajeConsola.MSG_Info)
-            MostrarEnConsola()
-            MostrarEnConsola(UniDlxVars.Traduccion("Console_Msg_ConectandoCon") & OpcionesTD.FUNC_IPShow_Web, Dlx_ToolBox.MensajeConsola.MSG_Accion)
-            MostrarEnConsola()
-            If Currante_ConseguirIP.IsBusy = False And Estado.ConectadoAInet Then
-                Currante_ConseguirIP.RunWorkerAsync()
-            End If
+            Dim GetIP As New NetTool_GetIp()
+            GetIP.LeerIP(OpcionesTD.Opciones.IP_WebConseguir)
+            GetIP.Cerrar()
+            GetIP = Nothing
         Catch oEX As Exception
-            DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_NoConsigoIP"))
-            DlxToolBox.MostrarError(oEX)
+            Errores.MostrarError(UniDlxVars.Traduccion("Error_NoConsigoIP"))
+            Errores.MostrarError(oEX)
             Exit Sub
         End Try
     End Sub
 
-    Private Sub Currante_ConseguirIP_DoWork(ByVal sender As Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles Currante_ConseguirIP.DoWork
+    Public Sub MostrarIPPublica(ByVal DirIP As String)
         Try
-            Dim ClienteWeb As New System.Net.WebClient
-
-            If My.Computer.Network.IsAvailable Then
-                Dim Archivo As New System.IO.StreamReader(ClienteWeb.OpenRead(OpcionesTD.FUNC_IPShow_Web))
-                e.Result = Archivo.ReadToEnd()
-                Archivo.Close()
-                Archivo.Dispose()
-                Archivo = Nothing
-            Else
-                e.Result = ""
-            End If
-
-            ClienteWeb.Dispose()
-            ClienteWeb = Nothing
-        Catch oEX As Exception
-             e.Result = ""
-            Exit Sub
-        End Try
-    End Sub
-
-    Private Sub Currante_ConseguirIP_RunWorkerCompleted(ByVal sender As Object, ByVal e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles Currante_ConseguirIP.RunWorkerCompleted
-        Try
-            MostrarIP(e.Result.ToString)
-            e = Nothing
-            Currante_ConseguirIP.Dispose()
-        Catch oEX As Exception
-            DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
-            DlxToolBox.MostrarError(oEX)
-            Exit Sub
-        End Try
-    End Sub
-
-    Public Sub MostrarIP(ByVal RawHtml As String)
-        Try
-            Dim reg As RegularExpressions.Regex
-            Dim mc As RegularExpressions.MatchCollection
-            Dim DirIPActual As String
-
-            If RawHtml <> "" Then
-                reg = New RegularExpressions.Regex("\b(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b", RegularExpressions.RegexOptions.IgnoreCase Or RegularExpressions.RegexOptions.Compiled Or RegularExpressions.RegexOptions.Multiline)
-                mc = reg.Matches(RawHtml)
-                If mc.Count > 0 Then
-                    DirIPActual = Trim(mc.Item(0).ToString)
-                Else
-                    DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_ConsiguiendoHTML"))
-                    Exit Sub
-                End If
-
-                MostrarEnConsola(UniDlxVars.Traduccion("Console_Msg_IPActual") & DirIPActual, Dlx_ToolBox.MensajeConsola.MSG_DirIP)
+            If DirIP <> "False" Then
+                MostrarEnConsola(UniDlxVars.Traduccion("Console_Msg_IPActual") & DirIP, Estructuras.MensajeConsola.MSG_DirIP)
                 MostrarEnConsola()
-                MostrarTrayTip(UniDlxVars.Traduccion("Console_Msg_IPActual") & DirIPActual)
-
-                If txtbox_info_ipact.Text <> DirIPActual Then
-                    txtbox_info_ipant.Text = txtbox_info_ipact.Text
-                    txtbox_info_ipact.Text = DirIPActual
-                    If OpcionesTD.LOG_LoguearIPs = True Then
-                        DlxToolBox.EscribirLogIP(DirIPActual)
-                    End If
-                Else
-                    If Estado.NuevaIP Then
-                        MostrarEnConsola(UniDlxVars.Traduccion("Console_Msg_IPIgual"), Dlx_ToolBox.MensajeConsola.MSG_Info)
-                        MostrarEnConsola()
-                    End If
-                End If
-                Estado.ComprobarIP = False
-                Estado.NuevaIP = False
+                CProgreso.IN_Mensaje = UniDlxVars.Traduccion("Console_Msg_IPActual") & DirIP
+                Formularios.MostrarTrayTip(CProgreso)
             Else
-                DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_ConsiguiendoHTML"))
+                Errores.MostrarError(UniDlxVars.Traduccion("Error_ConsiguiendoHTML"))
                 Exit Sub
             End If
-            reg = Nothing
-            mc = Nothing
-            DirIPActual = Nothing
-        Catch oEX As Exception
-            DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_NoConsigoIP"))
-            DlxToolBox.MostrarError(oEX)
-            Exit Sub
-        End Try
-    End Sub
 
-
-    Private Sub ComprobarConexion()
-        Try
-            If My.Computer.Network.IsAvailable Then
-                Estado.TarjetaRedConectada = True
-                If Currante_Ping.IsBusy = False Then
-                    Currante_Ping.RunWorkerAsync()
+            If txtbox_info_ipact.Text <> DirIP Then
+                txtbox_info_ipant.Text = txtbox_info_ipact.Text
+                txtbox_info_ipact.Text = DirIP
+                If OpcionesTD.Opciones.IP_LoguearConseguidas = True Then
+                    ToolBox.EscribirLogIP(DirIP)
                 End If
             Else
-                If Estado.TarjetaRedConectada Then
-                    DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_NoTarjetaRed"))
-                    Estado.TarjetaRedConectada = False
-                    label_inetconex.Text = UniDlxVars.Traduccion("Gui_General_Offline")
-                    label_inetconex.BackColor = Color.Red
-                    Timer_ConexInet.Interval = 2000
-                    Estado.ConectadoAInet = False
+                If OpcionesTD.Estado.Accion_NuevaIP Then
+                    MostrarEnConsola(UniDlxVars.Traduccion("Console_Msg_IPIgual"), Estructuras.MensajeConsola.MSG_Info)
+                    MostrarEnConsola()
                 End If
-                Exit Sub
             End If
+            OpcionesTD.Estado.Accion_NuevaIP = False
+
         Catch oEX As Exception
-            DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_NoConexion"))
-            DlxToolBox.MostrarError(oEX)
+            Errores.MostrarError(UniDlxVars.Traduccion("Error_NoConsigoIP"))
+            Errores.MostrarError(oEX)
             Exit Sub
         End Try
     End Sub
-
-    Public Sub Currante_Ping_DoWork(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles Currante_Ping.DoWork
-        Try
-            If My.Computer.Network.IsAvailable Then
-                Dim SolicitudPing As NetworkInformation.PingReply
-                Dim CliPing As New NetworkInformation.Ping
-                SolicitudPing = CliPing.Send(DirPING)
-                If SolicitudPing.Status = IPStatus.Success Then
-                    e.Result = True
-                Else
-                    e.Result = False
-                End If
-            Else
-                e.Result = False
-            End If
-        Catch oEX As Exception
-            MessageBox.Show(UniDlxVars.Traduccion("Error_Generico") & vbNewLine & oEX.Message)
-            Exit Sub
-        End Try
-    End Sub
-
-    Private Sub Currante_Ping_RunWorkerCompleted(ByVal sender As Object, ByVal e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles Currante_Ping.RunWorkerCompleted
-        Try
-            MostrarConexionInet(CBool(e.Result.ToString))
-        Catch oEX As Exception
-            DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
-            DlxToolBox.MostrarError(oEX)
-            Exit Sub
-        End Try
-    End Sub
-
-    Public Sub MostrarConexionInet(ByVal Conectado As Boolean)
-        Try
-            If Conectado = True Then
-                label_inetconex.Text = UniDlxVars.Traduccion("Gui_General_Online")
-                label_inetconex.BackColor = Color.OliveDrab
-                Timer_ConexInet.Interval = 15000
-                Estado.ConectadoAInet = True
-                If Estado.ComprobarIP = True Then
-                    MostrarTrayTip(UniDlxVars.Traduccion("Tray_Msg_Online"))
-                    LeerIP()
-                End If
-            Else
-                label_inetconex.Text = UniDlxVars.Traduccion("Gui_General_Offline")
-                label_inetconex.BackColor = Color.Red
-                Timer_ConexInet.Interval = 3000
-                Estado.ConectadoAInet = False
-            End If
-        Catch oEX As Exception
-            DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_Generico"))
-            DlxToolBox.MostrarError(oEX)
-            Exit Sub
-        End Try
-    End Sub
-
-
-    ' ###########################################################
-    ' <****************** Funciones De Archivo *****************>
-    ' ###########################################################
-    Sub CargarIniRouter()
-        Try
-            Dim DeluxeIniMgr As New Dlx_IniMgr
-            If File.Exists(ConfigTelnet.IniSeleccionado) = False Then
-                DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_NoExisteCFG") & ConfigTelnet.IniSeleccionado & ")")
-                Exit Sub
-            Else
-                Dim InfoRouter As New Dlx_ToolBox.InfoRouter
-
-                MostrarEnConsola(UniDlxVars.Traduccion("Console_Msg_LeyendoCFG"), Dlx_ToolBox.MensajeConsola.MSG_Accion)
-                MostrarEnConsola()
-
-                ' Carga la configuración del INI y la guarda en las variables
-                InfoRouter.NombreRouter = DeluxeIniMgr.INIMgr_Conseguir(ConfigTelnet.IniSeleccionado, UniDlxVars.VarIniPrincipal("Ini_Router"), UniDlxVars.VarIniPrincipal("Ini_Router_NombreRouter"), "No se ha seleccionado ningún router")
-                ComandoArray = Split(ConfigTelnet.Usuario & "," & ConfigTelnet.Pass & "," & DeluxeIniMgr.INIMgr_Conseguir(ConfigTelnet.IniSeleccionado, UniDlxVars.VarIniPrincipal("Ini_Router"), UniDlxVars.VarIniPrincipal("Ini_Router_Comandos"), "selecciona,fichero,ini"), ",")
-                InfoRouter.Revision = DeluxeIniMgr.INIMgr_Conseguir(ConfigTelnet.IniSeleccionado, UniDlxVars.VarIniPrincipal("Ini_Router"), UniDlxVars.VarIniPrincipal("Ini_Router_Revision"), "")
-                InfoRouter.Fecha = DeluxeIniMgr.INIMgr_Conseguir(ConfigTelnet.IniSeleccionado, UniDlxVars.VarIniPrincipal("Ini_Router"), UniDlxVars.VarIniPrincipal("Ini_Router_Fecha"), "")
-                InfoRouter.Autor = DeluxeIniMgr.INIMgr_Conseguir(ConfigTelnet.IniSeleccionado, UniDlxVars.VarIniPrincipal("Ini_Router"), UniDlxVars.VarIniPrincipal("Ini_Router_Autor"), "")
-                Estado.IniRouterCargada = True
-
-                Me.Text = InfoRouter.NombreRouter & " | INI by " & InfoRouter.Autor & " | " & DlxToolBox.TituloForm
-
-                MostrarEnConsola(UniDlxVars.Traduccion("Console_Msg_InfoCFG") & InfoRouter.NombreRouter & UniDlxVars.Traduccion("Console_Msg_InfoCFG2") & InfoRouter.Revision, Dlx_ToolBox.MensajeConsola.MSG_Info)
-                MostrarEnConsola(UniDlxVars.Traduccion("Console_Msg_InfoCFG3") & InfoRouter.Autor & UniDlxVars.Traduccion("Console_Msg_InfoCFG4") & InfoRouter.Fecha, Dlx_ToolBox.MensajeConsola.MSG_Info)
-                MostrarEnConsola()
-                MostrarEnConsola(UniDlxVars.Traduccion("Console_Msg_InfoCargOK"), Dlx_ToolBox.MensajeConsola.MSG_Accion)
-                MostrarEnConsola()
-
-                DeluxeIniMgr = Nothing
-                InfoRouter = Nothing
-            End If
-        Catch oEX As Exception
-            DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_NoPuedoCargarINI"))
-            DlxToolBox.MostrarError(oEX)
-            Exit Sub
-        End Try
-    End Sub
-
 
     Private Sub EComandos_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EComandos.Click
         Try
-            If Estado.EjecutandoMacro = True Then
+            If OpcionesTD.Estado.Macro_Ejecutando = True Then
                 MostrarEnConsola()
-                MostrarEnConsola(UniDlxVars.Traduccion("Console_Msg_CancelarOperacion"), Dlx_ToolBox.MensajeConsola.MSG_Info)
+                MostrarEnConsola(UniDlxVars.Traduccion("Console_Msg_CancelarOperacion"), Estructuras.MensajeConsola.MSG_Info)
                 MostrarEnConsola()
-                Estado.PararMacro = True
+                OpcionesTD.Estado.Macro_Cancelar = True
             Else
-                LimpiarConsola()
+                Me.PrepararConsola()
                 EComandos.Image = My.Resources.BotonTelnetOFF
                 EComandos.Tag = "Cancelar envío de Comandos"
                 If String.IsNullOrEmpty(ConfigTelnet.Archivo) Then
-                    MostrarEnConsola(UniDlxVars.Traduccion("Console_Msg_SeleccionaCFG"), Dlx_ToolBox.MensajeConsola.MSG_Info)
-                ElseIf File.Exists(DlxToolBox.CarpetaIniRouters & "\" & ConfigTelnet.Archivo) = False Then
-                    DlxToolBox.MostrarError(UniDlxVars.Traduccion("Error_INIRouterBad") & ConfigTelnet.Archivo & ")")
+                    MostrarEnConsola(UniDlxVars.Traduccion("Console_Msg_SeleccionaCFG"), Estructuras.MensajeConsola.MSG_Info)
+                ElseIf File.Exists(Variables.CarpetaIniRouters & "\" & ConfigTelnet.Archivo) = False Then
+                    Errores.MostrarError(UniDlxVars.Traduccion("Error_INIRouterBad") & ConfigTelnet.Archivo & ")")
                 Else
-                    TD_Opciones.Combo_inirouters.Text = ConfigTelnet.Archivo
-                    CargarIniRouter()
-                    Macro()
+                    F_Opciones.Combo_inirouters.Text = ConfigTelnet.Archivo
+                    EjecutarComandos()
                 End If
             End If
         Catch oEX As Exception
-            DlxToolBox.MostrarError(oEX)
+            Errores.MostrarError(oEX)
+            Exit Sub
+        End Try
+    End Sub
+
+    Public Sub MaxProgreso(ByVal Maximo As Integer)
+        Try
+            TDBE_Progreso.Maximum = Maximo
+        Catch oEX As Exception
+            Errores.MostrarError(oEX)
             Exit Sub
         End Try
     End Sub
 End Class
-

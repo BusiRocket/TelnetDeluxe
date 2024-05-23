@@ -1,0 +1,20 @@
+20|FTP|Utilizado por FTP||
+21|FTP|Utilizado por FTP||
+22|SSH|Secure Shell||
+23|TELNET|Acceso remoto||
+25|SMTP|Servidor de correo SMTP||
+53|DNS|Servidor DNS||
+79|FINGER|Servidor de información de usuarios de un PC||
+80|HTTP|Servidor web||
+110|POP3|Servidor de correo POP3||
+119|NNTP|Servidor de noticias||
+135|DCOM-scm|Solo se puede cerrar a través de un cortafuegos||
+139|NETBIOS|Compartición de Ficheros a través de una red||
+143|IMAP|Servidor de correo IMAP||
+389|LDAP|LDAP. Tambien Puede ser utilizado por Neetmeting||
+443|HTTPS|Servidor web seguro||
+445|MSFT DS|Server Message Block.||
+631|IPP|Servidor de Impresion||
+1433|MS SQL|Base de Datos de Microsoft||
+3306|MYSQL|Base de Datos MYSQL||
+5000|UPnP|En windows está activado este puerto por defecto||

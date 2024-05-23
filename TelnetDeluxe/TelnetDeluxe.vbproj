@@ -12,13 +12,14 @@
     <AssemblyName>TelnetDeluxe</AssemblyName>
     <MyType>WindowsForms</MyType>
     <ApplicationIcon>modem.ico</ApplicationIcon>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <ManifestCertificateThumbprint>473B9211DCF5D1BFB9AFEB3C06A03BAE90E9D795</ManifestCertificateThumbprint>
     <ManifestKeyFile>TelnetDeluxe_TemporaryKey.pfx</ManifestKeyFile>
-    <GenerateManifests>true</GenerateManifests>
-    <TargetZone>LocalIntranet</TargetZone>
+    <GenerateManifests>false</GenerateManifests>
+    <TargetZone>Internet</TargetZone>
     <OptionStrict>On</OptionStrict>
+    <ExcludedPermissions>System.Drawing.Printing.PrintingPermission, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</ExcludedPermissions>
     <PublishUrl>D:\DeluxeSoftware\Telnet Deluxe\Publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -33,8 +34,10 @@
     <TargetCulture>es-ES</TargetCulture>
     <ProductName>TelnetDeluxe</ProductName>
     <PublisherName>Cristian Deluxe</PublisherName>
-    <ApplicationVersion>0.3.0.%2a</ApplicationVersion>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <ApplicationVersion>0.5.0.%2a</ApplicationVersion>
     <BootstrapperEnabled>false</BootstrapperEnabled>
+    <OptionCompare>Text</OptionCompare>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,23 +45,27 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>TelnetDeluxe.xml</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
     <NoWarn>
     </NoWarn>
-    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
+    <WarningsAsErrors>41998,41999,42004,42016,42017,42018,42019,42020,42021,42022,42024,42025,42026,42029,42030,42031,42032,42036,42104,42105,42106,42107,42108,42109</WarningsAsErrors>
     <UseVSHostingProcess>false</UseVSHostingProcess>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+    <DebugType>None</DebugType>
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>TelnetDeluxe.xml</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
     <NoWarn>
     </NoWarn>
-    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
+    <WarningsAsErrors>41998,41999,42004,42016,42017,42018,42019,42020,42021,42022,42024,42025,42026,42029,42030,42031,42032,42036,42104,42105,42106,42107,42108,42109</WarningsAsErrors>
     <UseVSHostingProcess>false</UseVSHostingProcess>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -79,24 +86,36 @@
     <Import Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clases\ApplicationEvents.vb" />
-    <Compile Include="Clases\Dlx_ToolBox.vb" />
-    <Compile Include="Formularios\TD_Opciones.Designer.vb">
-      <DependentUpon>TD_Opciones.vb</DependentUpon>
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Clases\Deluxe\Dlx.Crypt.vb" />
+    <Compile Include="Clases\Deluxe\Dlx.Main.Loop.vb" />
+    <Compile Include="Clases\Miscelanea\Eventos.vb" />
+    <Compile Include="Clases\NetTool\Dlx.NetTool.GetIp.vb" />
+    <Compile Include="Clases\Funciones\Sync.Telnet.vb" />
+    <Compile Include="Clases\Deluxe\Dlx.Archivos.vb" />
+    <Compile Include="Clases\Deluxe\Dlx.Crono.vb" />
+    <Compile Include="Clases\Deluxe\Dlx.Errores.vb" />
+    <Compile Include="Clases\Deluxe\Dlx.Formularios.vb" />
+    <Compile Include="Clases\Deluxe\Dlx.Informacion.vb" />
+    <Compile Include="Clases\Deluxe\Dlx.OpcionesManager.vb" />
+    <Compile Include="Clases\Deluxe\Dlx.ToolBox.vb" />
+    <Compile Include="Clases\Deluxe\Dlx.Estructuras.vb" />
+    <Compile Include="Clases\Funciones\Sync.Main.vb" />
+    <Compile Include="Clases\Funciones\Sync.HTTP.vb" />
+    <Compile Include="Clases\Miscelanea\TD.Generadores.vb" />
+    <Compile Include="Clases\NetTool\Dlx.NetTool.CheckConexion.vb" />
+    <Compile Include="Clases\Deluxe\Dlx.Variables.vb" />
+    <Compile Include="Clases\Miscelanea\Variable_Inis.vb" />
+    <Compile Include="Formularios\F_AcercaDe.Designer.vb">
+      <DependentUpon>F_AcercaDe.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\TD_Opciones.vb">
+    <Compile Include="Formularios\F_AcercaDe.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\TDSplash.Designer.vb">
-      <DependentUpon>TDSplash.vb</DependentUpon>
+    <Compile Include="Formularios\F_Opciones.Designer.vb">
+      <DependentUpon>F_Opciones.vb</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\TDSplash.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\TD_AcercaDe.Designer.vb">
-      <DependentUpon>TD_AcercaDe.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\TD_AcercaDe.vb">
+    <Compile Include="Formularios\F_Opciones.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\TelnetDeluxe.Designer.vb">
@@ -115,26 +134,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="My Project\Settings.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <Compile Include="Clases\Dlx_INIMgr.vb" />
-    <Compile Include="Clases\UniversalDeluxe.vb" />
+    <Compile Include="Clases\Miscelanea\UniversalDeluxe.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Formularios\TD_Opciones.resx">
+    <EmbeddedResource Include="Formularios\F_AcercaDe.resx">
+      <DependentUpon>F_AcercaDe.vb</DependentUpon>
       <SubType>Designer</SubType>
-      <DependentUpon>TD_Opciones.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\TDSplash.resx">
+    <EmbeddedResource Include="Formularios\F_Opciones.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>TDSplash.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\TD_AcercaDe.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>TD_AcercaDe.vb</DependentUpon>
+      <DependentUpon>F_Opciones.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\TelnetDeluxe.resx">
       <DependentUpon>TelnetDeluxe.vb</DependentUpon>
@@ -152,11 +161,6 @@
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
-    <None Include="My Project\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <CustomToolNamespace>My</CustomToolNamespace>
-      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <BaseApplicationManifest Include="My Project\app.manifest" />
@@ -167,13 +171,8 @@
     <None Include="Resources\FondoInicio.png" />
     <None Include="Resources\BotonTelnetOFF.png" />
     <None Include="Resources\BotonTelnetON.png" />
-    <None Include="Resources\ComandosTelnet.png" />
-    <None Include="Resources\ComandosAbort.png" />
-    <None Include="Resources\ComandosOpciones.png" />
     <None Include="Resources\adslzone.gif" />
     <None Include="Resources\FondoSpl.png" />
-    <None Include="Resources\Gui_Firefox.png" />
-    <None Include="Resources\Gui_Router.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">

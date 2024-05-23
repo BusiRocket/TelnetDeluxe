@@ -8,9 +8,7 @@ bin\Debug\TelnetDeluxe.xml
 obj\Debug\TelnetDeluxe.exe
 obj\Debug\TelnetDeluxe.xml
 obj\Debug\TelnetDeluxe.pdb
-bin\Debug\TelnetDeluxe.exe.config
 obj\Debug\TelnetDeluxe.TD_AcercaDe.resources
-bin\Release\TelnetDeluxe.exe.config
 bin\Release\TelnetDeluxe.exe.manifest
 bin\Release\TelnetDeluxe.application
 bin\Release\TelnetDeluxe.exe
@@ -27,3 +25,10 @@ obj\Release\TelnetDeluxe.application
 obj\Release\TelnetDeluxe.exe
 obj\Release\TelnetDeluxe.xml
 obj\Release\TelnetDeluxe.pdb
+bin\Debug\TelnetDeluxe.exe.manifest
+bin\Debug\TelnetDeluxe.application
+obj\Debug\TelnetDeluxe.TrustInfo.xml
+obj\Debug\TelnetDeluxe.exe.manifest
+obj\Debug\TelnetDeluxe.application
+obj\Release\TelnetDeluxe.TDSplash.resources
+obj\Debug\TelnetDeluxe.TDSplash.resources

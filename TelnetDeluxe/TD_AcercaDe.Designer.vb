@@ -24,12 +24,12 @@ Partial Class TD_AcercaDe
         Me.lbl_acercade_version = New System.Windows.Forms.Label
         Me.lbl_acercade_Licencia = New System.Windows.Forms.Label
         Me.enlace_cc = New System.Windows.Forms.LinkLabel
-        Me.imagen_cc = New System.Windows.Forms.PictureBox
         Me.lbl_acercade_licenciadlx = New System.Windows.Forms.Label
         Me.lbl_acercade_desarrollo = New System.Windows.Forms.Label
         Me.lbl_acercade_email = New System.Windows.Forms.LinkLabel
         Me.lbl_acercade_dirweb = New System.Windows.Forms.LinkLabel
         Me.boton_dejamesalir = New System.Windows.Forms.Button
+        Me.imagen_cc = New System.Windows.Forms.PictureBox
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.imagen_cc, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -37,10 +37,10 @@ Partial Class TD_AcercaDe
         'TableLayoutPanel1
         '
         Me.TableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.TableLayoutPanel1.BackgroundImage = Global.TelnetDeluxe.My.Resources.Resources.FondoSpl
         Me.TableLayoutPanel1.ColumnCount = 2
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.72414!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 153.0!))
-        Me.TableLayoutPanel1.Controls.Add(Me.lbl_acercade_version, 0, 0)
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 97.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.lbl_acercade_Licencia, 0, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.enlace_cc, 0, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.imagen_cc, 1, 1)
@@ -49,8 +49,9 @@ Partial Class TD_AcercaDe
         Me.TableLayoutPanel1.Controls.Add(Me.lbl_acercade_email, 0, 5)
         Me.TableLayoutPanel1.Controls.Add(Me.lbl_acercade_dirweb, 0, 6)
         Me.TableLayoutPanel1.Controls.Add(Me.boton_dejamesalir, 1, 4)
-        Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(9, 9)
+        Me.TableLayoutPanel1.Controls.Add(Me.lbl_acercade_version, 0, 0)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
+        Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 7
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
@@ -60,22 +61,27 @@ Partial Class TD_AcercaDe
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(551, 250)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(517, 259)
         Me.TableLayoutPanel1.TabIndex = 0
         '
         'lbl_acercade_version
         '
         Me.lbl_acercade_version.AutoSize = True
+        Me.lbl_acercade_version.BackColor = System.Drawing.Color.Transparent
+        Me.lbl_acercade_version.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbl_acercade_version.ForeColor = System.Drawing.Color.White
         Me.lbl_acercade_version.Location = New System.Drawing.Point(3, 0)
         Me.lbl_acercade_version.Name = "lbl_acercade_version"
-        Me.lbl_acercade_version.Size = New System.Drawing.Size(73, 13)
+        Me.lbl_acercade_version.Size = New System.Drawing.Size(86, 13)
         Me.lbl_acercade_version.TabIndex = 1
         Me.lbl_acercade_version.Text = "Telnet Deluxe"
         '
         'lbl_acercade_Licencia
         '
         Me.lbl_acercade_Licencia.AutoSize = True
-        Me.lbl_acercade_Licencia.Location = New System.Drawing.Point(3, 23)
+        Me.lbl_acercade_Licencia.BackColor = System.Drawing.Color.Transparent
+        Me.lbl_acercade_Licencia.ForeColor = System.Drawing.Color.White
+        Me.lbl_acercade_Licencia.Location = New System.Drawing.Point(3, 26)
         Me.lbl_acercade_Licencia.Name = "lbl_acercade_Licencia"
         Me.lbl_acercade_Licencia.Size = New System.Drawing.Size(382, 39)
         Me.lbl_acercade_Licencia.TabIndex = 2
@@ -85,31 +91,24 @@ Partial Class TD_AcercaDe
         '
         'enlace_cc
         '
+        Me.enlace_cc.ActiveLinkColor = System.Drawing.Color.Yellow
         Me.enlace_cc.AutoSize = True
-        Me.enlace_cc.Location = New System.Drawing.Point(3, 70)
+        Me.enlace_cc.BackColor = System.Drawing.Color.Transparent
+        Me.enlace_cc.LinkColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.enlace_cc.Location = New System.Drawing.Point(3, 79)
         Me.enlace_cc.Name = "enlace_cc"
         Me.enlace_cc.Size = New System.Drawing.Size(252, 13)
         Me.enlace_cc.TabIndex = 3
         Me.enlace_cc.TabStop = True
         Me.enlace_cc.Text = "http://creativecommons.org/licenses/by-nc-sa/3.0/"
-        '
-        'imagen_cc
-        '
-        Me.imagen_cc.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.imagen_cc.Image = Global.TelnetDeluxe.My.Resources.Resources.iconocc
-        Me.imagen_cc.Location = New System.Drawing.Point(401, 26)
-        Me.imagen_cc.Name = "imagen_cc"
-        Me.TableLayoutPanel1.SetRowSpan(Me.imagen_cc, 2)
-        Me.imagen_cc.Size = New System.Drawing.Size(147, 77)
-        Me.imagen_cc.TabIndex = 0
-        Me.imagen_cc.TabStop = False
+        Me.enlace_cc.VisitedLinkColor = System.Drawing.Color.Yellow
         '
         'lbl_acercade_licenciadlx
         '
         Me.lbl_acercade_licenciadlx.AutoSize = True
-        Me.lbl_acercade_licenciadlx.Location = New System.Drawing.Point(3, 106)
+        Me.lbl_acercade_licenciadlx.BackColor = System.Drawing.Color.Transparent
+        Me.lbl_acercade_licenciadlx.ForeColor = System.Drawing.Color.White
+        Me.lbl_acercade_licenciadlx.Location = New System.Drawing.Point(3, 115)
         Me.lbl_acercade_licenciadlx.Name = "lbl_acercade_licenciadlx"
         Me.lbl_acercade_licenciadlx.Size = New System.Drawing.Size(288, 39)
         Me.lbl_acercade_licenciadlx.TabIndex = 4
@@ -119,7 +118,8 @@ Partial Class TD_AcercaDe
         'lbl_acercade_desarrollo
         '
         Me.lbl_acercade_desarrollo.AutoSize = True
-        Me.lbl_acercade_desarrollo.Location = New System.Drawing.Point(3, 161)
+        Me.lbl_acercade_desarrollo.BackColor = System.Drawing.Color.Transparent
+        Me.lbl_acercade_desarrollo.Location = New System.Drawing.Point(3, 170)
         Me.lbl_acercade_desarrollo.Name = "lbl_acercade_desarrollo"
         Me.lbl_acercade_desarrollo.Size = New System.Drawing.Size(157, 39)
         Me.lbl_acercade_desarrollo.TabIndex = 5
@@ -127,46 +127,70 @@ Partial Class TD_AcercaDe
         '
         'lbl_acercade_email
         '
+        Me.lbl_acercade_email.ActiveLinkColor = System.Drawing.Color.Yellow
         Me.lbl_acercade_email.AutoSize = True
-        Me.lbl_acercade_email.Location = New System.Drawing.Point(3, 208)
+        Me.lbl_acercade_email.BackColor = System.Drawing.Color.Transparent
+        Me.lbl_acercade_email.LinkColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.lbl_acercade_email.Location = New System.Drawing.Point(3, 217)
         Me.lbl_acercade_email.Name = "lbl_acercade_email"
         Me.lbl_acercade_email.Size = New System.Drawing.Size(137, 13)
         Me.lbl_acercade_email.TabIndex = 6
         Me.lbl_acercade_email.TabStop = True
         Me.lbl_acercade_email.Text = "djcristiandeluxe@gmail.com"
+        Me.lbl_acercade_email.VisitedLinkColor = System.Drawing.Color.Yellow
         '
         'lbl_acercade_dirweb
         '
+        Me.lbl_acercade_dirweb.ActiveLinkColor = System.Drawing.Color.Yellow
         Me.lbl_acercade_dirweb.AutoSize = True
-        Me.lbl_acercade_dirweb.Location = New System.Drawing.Point(3, 229)
+        Me.lbl_acercade_dirweb.BackColor = System.Drawing.Color.Transparent
+        Me.lbl_acercade_dirweb.LinkColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.lbl_acercade_dirweb.Location = New System.Drawing.Point(3, 238)
         Me.lbl_acercade_dirweb.Name = "lbl_acercade_dirweb"
         Me.lbl_acercade_dirweb.Size = New System.Drawing.Size(186, 13)
         Me.lbl_acercade_dirweb.TabIndex = 7
         Me.lbl_acercade_dirweb.TabStop = True
         Me.lbl_acercade_dirweb.Text = "http://deluxeworld.googlepages.com/"
+        Me.lbl_acercade_dirweb.VisitedLinkColor = System.Drawing.Color.Yellow
         '
         'boton_dejamesalir
         '
-        Me.boton_dejamesalir.BackColor = System.Drawing.Color.DimGray
+        Me.boton_dejamesalir.BackColor = System.Drawing.Color.Transparent
         Me.boton_dejamesalir.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.boton_dejamesalir.Dock = System.Windows.Forms.DockStyle.Fill
         Me.boton_dejamesalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.boton_dejamesalir.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.boton_dejamesalir.ForeColor = System.Drawing.Color.White
-        Me.boton_dejamesalir.Location = New System.Drawing.Point(401, 164)
+        Me.boton_dejamesalir.Location = New System.Drawing.Point(423, 173)
         Me.boton_dejamesalir.Name = "boton_dejamesalir"
-        Me.boton_dejamesalir.Size = New System.Drawing.Size(147, 41)
+        Me.boton_dejamesalir.Size = New System.Drawing.Size(91, 41)
         Me.boton_dejamesalir.TabIndex = 0
         Me.boton_dejamesalir.Text = "&Aceptar"
         Me.boton_dejamesalir.UseVisualStyleBackColor = False
+        '
+        'imagen_cc
+        '
+        Me.imagen_cc.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.imagen_cc.BackColor = System.Drawing.Color.Transparent
+        Me.imagen_cc.Image = Global.TelnetDeluxe.My.Resources.Resources.iconocc
+        Me.imagen_cc.Location = New System.Drawing.Point(423, 29)
+        Me.imagen_cc.Name = "imagen_cc"
+        Me.TableLayoutPanel1.SetRowSpan(Me.imagen_cc, 2)
+        Me.imagen_cc.Size = New System.Drawing.Size(91, 83)
+        Me.imagen_cc.TabIndex = 0
+        Me.imagen_cc.TabStop = False
         '
         'TD_AcercaDe
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size(569, 268)
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.ClientSize = New System.Drawing.Size(516, 258)
         Me.Controls.Add(Me.TableLayoutPanel1)
+        Me.ForeColor = System.Drawing.Color.White
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.MaximizeBox = False
         Me.MinimizeBox = False
